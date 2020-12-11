@@ -34,13 +34,42 @@ XProperty:
 GroupProperty:
 	name = STRING
 	'('
-		(subProperties += SingleProperty)
-		(',' subProperties += SingleProperty)*
+		(statements += Statement) 
+		(',' statements += Statement)*
 	')'
 ;
 
+Statement:
+	SingleStatement | MultiStatement
+;
+
+SingleStatement:
+	property = [CustomProperty | Property]
+	'='
+	value = STRING
+;
+
+MultiStatement:
+	property = Property
+	'('
+		(states += State ';')+
+	')'
+;
+
+State:
+	selector = Selector
+	'='
+	value = STRING
+;
+
+Property:
+	name = STRING
+;
+
+/*
+
 SingleProperty:
-	Property | CustomProperty
+	Property | [CustomProperty]
 ;
 
 CustomProperty:
@@ -66,9 +95,26 @@ Property:
 ;
 
 Rule:
-	([GroupProperty]) | ([CustomProperty] ':' States) | (Property ':' States)
+	(selectors += XSelector)
+	(',' selectors += XSelector)*
+	':'
+	(statements += XStatement ';')+
 ;
 
-States:
+XStatement:
+	Statement | GroupStatement | CustomStatement
+;
+
+
+
+	(property=[GroupProperty]) |
+	(property=[CustomProperty] ':'
+		(states+=State)* ) |
+	(property=Property ':' State)
+;
+
+State:
 	
 ;
+ */
+*/
