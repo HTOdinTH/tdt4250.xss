@@ -1,0 +1,74 @@
+grammar tdt4250.xss.XSS with org.eclipse.xtext.common.Terminals
+
+generate xSS "http://www.xss.tdt4250/XSS"
+
+Stylesheet returns stylesheet:
+	('XSelectors:' 
+		(customSelectors += XSelector)* )? &
+	('XProperties:'
+		(customProperties += XProperty)* )?
+	'Rules:'
+		(rules += Rule)+
+;
+	
+XSelector:
+	GroupSelector
+;
+
+GroupSelector:
+	name = STRING
+	'('
+		(subSelectors += Selector)
+		(',' subSelectors += Selector)*
+	')'
+;
+
+Selector:
+	name = STRING
+;
+
+XProperty:
+	CustomProperty | GroupProperty
+;
+
+GroupProperty:
+	name = STRING
+	'('
+		(subProperties += SingleProperty)
+		(',' subProperties += SingleProperty)*
+	')'
+;
+
+SingleProperty:
+	Property | CustomProperty
+;
+
+CustomProperty:
+	name = STRING
+	'('
+		(subRules += SubRule)
+		(',' subRules += SubRule)*
+	')'
+;
+
+SubRule:
+	property = Property
+	':'
+	expression = Expression
+;
+
+Expression:
+	expression = STRING
+;
+
+Property:
+	property = STRING
+;
+
+Rule:
+	([GroupProperty]) | ([CustomProperty] ':' States) | (Property ':' States)
+;
+
+States:
+	
+;
