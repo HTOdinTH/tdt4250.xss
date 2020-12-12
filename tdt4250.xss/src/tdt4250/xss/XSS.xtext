@@ -1,22 +1,46 @@
 grammar tdt4250.xss.XSS with org.eclipse.xtext.common.Terminals
 
-generate xSS "http://www.xss.tdt4250/XSS"
+generate xSS "tdt4250.xss.model" // this is the model
 
 Stylesheet returns stylesheet:
-	('XSelectors:' 
-		(customSelectors += XSelector)* )? &
-	('XProperties:'
-		(customProperties += XProperty)* )?
+	'XSelectors:' 
+		(customSelectors += GroupSelector)+ // ill make them ordered, then
+	/*
+	'XProperties:'
+		(customProperties += XProperty)+ // ll make them mandatory, then
 	'Rules:'
 		(rules += Rule)+
-;
-	
-XSelector:
-	GroupSelector
+	*/
 ;
 
+terminal NAME: (ID | '-')+;
+//PREFIX: ('::'|':'|'.'|'#');
+//COMBINER: ('>'|'+'|'~');
+terminal SEL: ('::'|':'|'.'|'#')? NAME ((('>'|'+'|'~') | ('::'|':'|'.'|'#') | (('>'|'+'|'~') ('::'|':'|'.'|'#'))) NAME)*;
+/*
+terminal fragment WORD: ('a'..'z'|'A'..'Z'|'-')+;
+terminal fragment PREFIX: '::'|':'|'.'|'#';
+terminal fragment COMBINER: ' '|'>'|'+'|'~';
+terminal LB: '\r'?'\n';
+terminal NAME: WORD;
+terminal SEL: PREFIX? WORD ((COMBINER | PREFIX | (COMBINER PREFIX)) WORD)*;
+terminal VAL: ('a'..'z'|'A'..'Z'|'0'..'9'|'-'|'%'|'{'|'}')+;
+*/
+
+/*
+STRING_OR_NAME:
+	(STRING | NAME)
+;
+*/
+
+/*	
+XSelector:
+	GroupSelector
+;*/
+
 GroupSelector:
-	name = STRING
+	'sel'
+	name = NAME
 	'('
 		(subSelectors += Selector)
 		(',' subSelectors += Selector)*
@@ -24,29 +48,66 @@ GroupSelector:
 ;
 
 Selector:
-	name = STRING
+	(names += (SEL | STRING))+
 ;
-
+/*
 XProperty:
-	CustomProperty | GroupProperty
+	'prop' (CustomProperty | GroupProperty)
 ;
 
-GroupProperty:
-	name = STRING
+CustomProperty:
+	name = NAME
 	'('
-		(statements += Statement) 
-		(',' statements += Statement)*
+		(subRule += SubRule ';')+
 	')'
 ;
 
-Statement:
-	SingleStatement | MultiStatement
+SubRule:
+	property = Property
+	'='
+	expression = Expression
+;
+
+Expression:
+	name = STRING_OR_VAL
+;
+
+GroupProperty:
+	name = NAME
+	'('
+		(statements += XStatement ';')+
+	')'
+;
+
+XStatement:
+	XSingleStatement | XMultiStatement
+;
+
+XSingleStatement:
+	SingleRefStatement | SingleStatement 
+;
+
+SingleRefStatement:
+	property = [CustomProperty] // secretly means [CustomProperty | STRING]
+	'='
+	value = STRING_OR_VAL
 ;
 
 SingleStatement:
-	property = [CustomProperty | Property]
+	property = Property
 	'='
-	value = STRING
+	value = STRING_OR_VAL
+;
+
+XMultiStatement:
+	MultiRefStatement | MultiStatement
+;
+
+MultiRefStatement:
+	property = [CustomProperty]
+	'('
+		(states += State ';')+
+	')'
 ;
 
 MultiStatement:
@@ -57,64 +118,19 @@ MultiStatement:
 ;
 
 State:
-	selector = Selector
+	modifier = Selector // TODO: might need separate class
 	'='
-	value = STRING
+	value = STRING_OR_VAL
 ;
 
 Property:
-	name = STRING
-;
-
-/*
-
-SingleProperty:
-	Property | [CustomProperty]
-;
-
-CustomProperty:
-	name = STRING
-	'('
-		(subRules += SubRule)
-		(',' subRules += SubRule)*
-	')'
-;
-
-SubRule:
-	property = Property
-	':'
-	expression = Expression
-;
-
-Expression:
-	expression = STRING
-;
-
-Property:
-	property = STRING
+	name = NAME // WORD, really
 ;
 
 Rule:
-	(selectors += XSelector)
-	(',' selectors += XSelector)*
+	(selectors += Selector) | (groupSelectors += [GroupSelector]) // at least one of either
+	(',' (selectors += Selector)? & (groupSelectors += [GroupSelector])?)* // then, any number of either, separated by comma
 	':'
-	(statements += XStatement ';')+
+	(((xStatements += XStatement) | (groupStatements += [GroupProperty])) ';')+ // either kind of statement, then semicolon, at least one time
 ;
-
-XStatement:
-	Statement | GroupStatement | CustomStatement
-;
-
-
-
-	(property=[GroupProperty]) |
-	(property=[CustomProperty] ':'
-		(states+=State)* ) |
-	(property=Property ':' State)
-;
-
-State:
-	
-;
- */
 */

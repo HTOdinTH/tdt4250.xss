@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-31j"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package
+			uri = "tdt4250.xss.model"
+			class = "tdt4250.xss.xSS.XSSPackage"
+			genModel = "model/generated/XSS.genmodel" />
+	</extension>
+</plugin>

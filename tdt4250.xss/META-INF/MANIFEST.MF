@@ -8,5 +8,22 @@ Bundle-SymbolicName: tdt4250.xss; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.xbase,
- org.eclipse.equinox.common;bundle-version="3.5.0"
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: tdt4250.xss.generator,
+ tdt4250.xss.parser.antlr,
+ tdt4250.xss,
+ tdt4250.xss.xSS,
+ tdt4250.xss.serializer,
+ tdt4250.xss.scoping,
+ tdt4250.xss.xSS.util,
+ tdt4250.xss.validation,
+ tdt4250.xss.parser.antlr.internal,
+ tdt4250.xss.xSS.impl,
+ tdt4250.xss.services
+Import-Package: org.apache.log4j
