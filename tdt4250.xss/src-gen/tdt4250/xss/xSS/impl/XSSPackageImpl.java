@@ -21,6 +21,7 @@ import tdt4250.xss.xSS.Selector;
 import tdt4250.xss.xSS.SingleRefStatement;
 import tdt4250.xss.xSS.SingleStatement;
 import tdt4250.xss.xSS.State;
+import tdt4250.xss.xSS.Stylesheet;
 import tdt4250.xss.xSS.SubRule;
 import tdt4250.xss.xSS.XMultiStatement;
 import tdt4250.xss.xSS.XProperty;
@@ -29,7 +30,6 @@ import tdt4250.xss.xSS.XSSPackage;
 import tdt4250.xss.xSS.XSelector;
 import tdt4250.xss.xSS.XSingleStatement;
 import tdt4250.xss.xSS.XStatement;
-import tdt4250.xss.xSS.stylesheet;
 
 /**
  * <!-- begin-user-doc -->
@@ -234,7 +234,7 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
    * @generated
    */
   @Override
-  public EClass getstylesheet()
+  public EClass getStylesheet()
   {
     return stylesheetEClass;
   }
@@ -245,7 +245,7 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
    * @generated
    */
   @Override
-  public EReference getstylesheet_CustomSelectors()
+  public EReference getStylesheet_CustomSelectors()
   {
     return (EReference)stylesheetEClass.getEStructuralFeatures().get(0);
   }
@@ -256,7 +256,7 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
    * @generated
    */
   @Override
-  public EReference getstylesheet_CustomProperties()
+  public EReference getStylesheet_CustomProperties()
   {
     return (EReference)stylesheetEClass.getEStructuralFeatures().get(1);
   }
@@ -267,7 +267,7 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
    * @generated
    */
   @Override
-  public EReference getstylesheet_Rules()
+  public EReference getStylesheet_Rules()
   {
     return (EReference)stylesheetEClass.getEStructuralFeatures().get(2);
   }
@@ -377,7 +377,7 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
    * @generated
    */
   @Override
-  public EReference getCustomProperty_SubRule()
+  public EReference getCustomProperty_SubRules()
   {
     return (EReference)customPropertyEClass.getEStructuralFeatures().get(0);
   }
@@ -739,7 +739,7 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
     createEAttribute(xPropertyEClass, XPROPERTY__NAME);
 
     customPropertyEClass = createEClass(CUSTOM_PROPERTY);
-    createEReference(customPropertyEClass, CUSTOM_PROPERTY__SUB_RULE);
+    createEReference(customPropertyEClass, CUSTOM_PROPERTY__SUB_RULES);
 
     subRuleEClass = createEClass(SUB_RULE);
     createEAttribute(subRuleEClass, SUB_RULE__PROPERTY);
@@ -822,10 +822,10 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
     multiStatementEClass.getESuperTypes().add(this.getXMultiStatement());
 
     // Initialize classes and features; add operations and parameters
-    initEClass(stylesheetEClass, stylesheet.class, "stylesheet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getstylesheet_CustomSelectors(), this.getXSelector(), null, "customSelectors", null, 0, -1, stylesheet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getstylesheet_CustomProperties(), this.getXProperty(), null, "customProperties", null, 0, -1, stylesheet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getstylesheet_Rules(), this.getRule(), null, "rules", null, 0, -1, stylesheet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(stylesheetEClass, Stylesheet.class, "Stylesheet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getStylesheet_CustomSelectors(), this.getXSelector(), null, "customSelectors", null, 0, -1, Stylesheet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStylesheet_CustomProperties(), this.getXProperty(), null, "customProperties", null, 0, -1, Stylesheet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStylesheet_Rules(), this.getRule(), null, "rules", null, 0, -1, Stylesheet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(xSelectorEClass, XSelector.class, "XSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -840,7 +840,7 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
     initEAttribute(getXProperty_Name(), ecorePackage.getEString(), "name", null, 0, 1, XProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(customPropertyEClass, CustomProperty.class, "CustomProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCustomProperty_SubRule(), this.getSubRule(), null, "subRule", null, 0, -1, CustomProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCustomProperty_SubRules(), this.getSubRule(), null, "subRules", null, 0, -1, CustomProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(subRuleEClass, SubRule.class, "SubRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSubRule_Property(), ecorePackage.getEString(), "property", null, 0, 1, SubRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

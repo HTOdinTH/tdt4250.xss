@@ -484,17 +484,17 @@ ruleCustomProperty returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getCustomPropertyAccess().getSubRuleSubRuleParserRuleCall_2_0_0());
+						newCompositeNode(grammarAccess.getCustomPropertyAccess().getSubRulesSubRuleParserRuleCall_2_0_0());
 					}
-					lv_subRule_2_0=ruleSubRule
+					lv_subRules_2_0=ruleSubRule
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getCustomPropertyRule());
 						}
 						add(
 							$current,
-							"subRule",
-							lv_subRule_2_0,
+							"subRules",
+							lv_subRules_2_0,
 							"tdt4250.xss.XSS.SubRule");
 						afterParserOrEnumRuleCall();
 					}
@@ -1325,7 +1325,7 @@ RULE_NAME : (RULE_ID|'-')+;
 
 RULE_SEL : ('::'|':'|'.'|'#')? RULE_NAME ((('>'|'+'|'~')|('::'|':'|'.'|'#')|('>'|'+'|'~') ('::'|':'|'.'|'#')) RULE_NAME)*;
 
-RULE_VAL : ('a'..'z'|'A'..'Z'|'-'|'0'..'9'|'.'|'%'|'{'|'}'|'*'|'+')+;
+RULE_VAL : ('a'..'z'|'A'..'Z'|'-'|'0'..'9'|'.'|','|'%'|'#'|'{'|'}'|'('|')'|'*'|'+')+;
 
 fragment RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

@@ -27,7 +27,7 @@ import tdt4250.xss.xSS.XSSPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link tdt4250.xss.xSS.impl.CustomPropertyImpl#getSubRule <em>Sub Rule</em>}</li>
+ *   <li>{@link tdt4250.xss.xSS.impl.CustomPropertyImpl#getSubRules <em>Sub Rules</em>}</li>
  * </ul>
  *
  * @generated
@@ -35,14 +35,14 @@ import tdt4250.xss.xSS.XSSPackage;
 public class CustomPropertyImpl extends XPropertyImpl implements CustomProperty
 {
   /**
-   * The cached value of the '{@link #getSubRule() <em>Sub Rule</em>}' containment reference list.
+   * The cached value of the '{@link #getSubRules() <em>Sub Rules</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSubRule()
+   * @see #getSubRules()
    * @generated
    * @ordered
    */
-  protected EList<SubRule> subRule;
+  protected EList<SubRule> subRules;
 
   /**
    * <!-- begin-user-doc -->
@@ -71,13 +71,13 @@ public class CustomPropertyImpl extends XPropertyImpl implements CustomProperty
    * @generated
    */
   @Override
-  public EList<SubRule> getSubRule()
+  public EList<SubRule> getSubRules()
   {
-    if (subRule == null)
+    if (subRules == null)
     {
-      subRule = new EObjectContainmentEList<SubRule>(SubRule.class, this, XSSPackage.CUSTOM_PROPERTY__SUB_RULE);
+      subRules = new EObjectContainmentEList<SubRule>(SubRule.class, this, XSSPackage.CUSTOM_PROPERTY__SUB_RULES);
     }
-    return subRule;
+    return subRules;
   }
 
   /**
@@ -90,8 +90,8 @@ public class CustomPropertyImpl extends XPropertyImpl implements CustomProperty
   {
     switch (featureID)
     {
-      case XSSPackage.CUSTOM_PROPERTY__SUB_RULE:
-        return ((InternalEList<?>)getSubRule()).basicRemove(otherEnd, msgs);
+      case XSSPackage.CUSTOM_PROPERTY__SUB_RULES:
+        return ((InternalEList<?>)getSubRules()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -106,8 +106,8 @@ public class CustomPropertyImpl extends XPropertyImpl implements CustomProperty
   {
     switch (featureID)
     {
-      case XSSPackage.CUSTOM_PROPERTY__SUB_RULE:
-        return getSubRule();
+      case XSSPackage.CUSTOM_PROPERTY__SUB_RULES:
+        return getSubRules();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -123,9 +123,9 @@ public class CustomPropertyImpl extends XPropertyImpl implements CustomProperty
   {
     switch (featureID)
     {
-      case XSSPackage.CUSTOM_PROPERTY__SUB_RULE:
-        getSubRule().clear();
-        getSubRule().addAll((Collection<? extends SubRule>)newValue);
+      case XSSPackage.CUSTOM_PROPERTY__SUB_RULES:
+        getSubRules().clear();
+        getSubRules().addAll((Collection<? extends SubRule>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -141,8 +141,8 @@ public class CustomPropertyImpl extends XPropertyImpl implements CustomProperty
   {
     switch (featureID)
     {
-      case XSSPackage.CUSTOM_PROPERTY__SUB_RULE:
-        getSubRule().clear();
+      case XSSPackage.CUSTOM_PROPERTY__SUB_RULES:
+        getSubRules().clear();
         return;
     }
     super.eUnset(featureID);
@@ -158,8 +158,8 @@ public class CustomPropertyImpl extends XPropertyImpl implements CustomProperty
   {
     switch (featureID)
     {
-      case XSSPackage.CUSTOM_PROPERTY__SUB_RULE:
-        return subRule != null && !subRule.isEmpty();
+      case XSSPackage.CUSTOM_PROPERTY__SUB_RULES:
+        return subRules != null && !subRules.isEmpty();
     }
     return super.eIsSet(featureID);
   }

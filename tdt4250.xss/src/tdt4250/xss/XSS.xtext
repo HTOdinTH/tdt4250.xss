@@ -2,7 +2,7 @@ grammar tdt4250.xss.XSS with org.eclipse.xtext.common.Terminals
 
 generate xSS "tdt4250.xss.model" // this is the model
 
-Stylesheet returns stylesheet:
+Stylesheet returns Stylesheet:
 	('XSelectors:' 
 		(customSelectors += XSelector)+)? 
 	('XProperties:'
@@ -15,7 +15,7 @@ terminal NAME: (ID | '-')+;
 //PREFIX: ('::'|':'|'.'|'#');
 //COMBINER: ('>'|'+'|'~');
 terminal SEL: ('::'|':'|'.'|'#')? NAME ((('>'|'+'|'~') | ('::'|':'|'.'|'#') | (('>'|'+'|'~') ('::'|':'|'.'|'#'))) NAME)*;
-terminal VAL: ('a'..'z'|'A'..'Z'|'-'|'0'..'9'|'.'|'%'|'{'|'}'|'*'|'+')+;
+terminal VAL: ('a'..'z'|'A'..'Z'|'-'|'0'..'9'|'.'|','|'%'|'#'|'{'|'}'|'('|')'|'*'|'+')+;
 
 STRING_OR_SEL:
 	(STRING | SEL | NAME)
@@ -50,7 +50,7 @@ XProperty:
 CustomProperty:
 	name = NAME
 	'('
-		(subRule += SubRule ';')+
+		(subRules += SubRule ';')+
 	')'
 ;
 

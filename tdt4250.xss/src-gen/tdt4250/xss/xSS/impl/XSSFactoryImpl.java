@@ -65,7 +65,7 @@ public class XSSFactoryImpl extends EFactoryImpl implements XSSFactory
   {
     switch (eClass.getClassifierID())
     {
-      case XSSPackage.STYLESHEET: return createstylesheet();
+      case XSSPackage.STYLESHEET: return createStylesheet();
       case XSSPackage.XSELECTOR: return createXSelector();
       case XSSPackage.GROUP_SELECTOR: return createGroupSelector();
       case XSSPackage.SELECTOR: return createSelector();
@@ -94,9 +94,9 @@ public class XSSFactoryImpl extends EFactoryImpl implements XSSFactory
    * @generated
    */
   @Override
-  public stylesheet createstylesheet()
+  public Stylesheet createStylesheet()
   {
-    stylesheetImpl stylesheet = new stylesheetImpl();
+    StylesheetImpl stylesheet = new StylesheetImpl();
     return stylesheet;
   }
 

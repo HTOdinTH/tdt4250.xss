@@ -26,9 +26,9 @@ import tdt4250.xss.xSS.Selector;
 import tdt4250.xss.xSS.SingleRefStatement;
 import tdt4250.xss.xSS.SingleStatement;
 import tdt4250.xss.xSS.State;
+import tdt4250.xss.xSS.Stylesheet;
 import tdt4250.xss.xSS.SubRule;
 import tdt4250.xss.xSS.XSSPackage;
-import tdt4250.xss.xSS.stylesheet;
 
 @SuppressWarnings("all")
 public class XSSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
@@ -77,11 +77,11 @@ public class XSSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case XSSPackage.STATE:
 				sequence_State(context, (State) semanticObject); 
 				return; 
+			case XSSPackage.STYLESHEET:
+				sequence_Stylesheet(context, (Stylesheet) semanticObject); 
+				return; 
 			case XSSPackage.SUB_RULE:
 				sequence_SubRule(context, (SubRule) semanticObject); 
-				return; 
-			case XSSPackage.STYLESHEET:
-				sequence_Stylesheet(context, (stylesheet) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -94,7 +94,7 @@ public class XSSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     CustomProperty returns CustomProperty
 	 *
 	 * Constraint:
-	 *     (name=NAME subRule+=SubRule+)
+	 *     (name=NAME subRules+=SubRule+)
 	 */
 	protected void sequence_CustomProperty(ISerializationContext context, CustomProperty semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -277,12 +277,12 @@ public class XSSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Stylesheet returns stylesheet
+	 *     Stylesheet returns Stylesheet
 	 *
 	 * Constraint:
 	 *     (customSelectors+=XSelector* customProperties+=XProperty* rules+=Rule+)
 	 */
-	protected void sequence_Stylesheet(ISerializationContext context, stylesheet semanticObject) {
+	protected void sequence_Stylesheet(ISerializationContext context, Stylesheet semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

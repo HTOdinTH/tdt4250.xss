@@ -18,27 +18,27 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import tdt4250.xss.xSS.Rule;
+import tdt4250.xss.xSS.Stylesheet;
 import tdt4250.xss.xSS.XProperty;
 import tdt4250.xss.xSS.XSSPackage;
 import tdt4250.xss.xSS.XSelector;
-import tdt4250.xss.xSS.stylesheet;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>stylesheet</b></em>'.
+ * An implementation of the model object '<em><b>Stylesheet</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link tdt4250.xss.xSS.impl.stylesheetImpl#getCustomSelectors <em>Custom Selectors</em>}</li>
- *   <li>{@link tdt4250.xss.xSS.impl.stylesheetImpl#getCustomProperties <em>Custom Properties</em>}</li>
- *   <li>{@link tdt4250.xss.xSS.impl.stylesheetImpl#getRules <em>Rules</em>}</li>
+ *   <li>{@link tdt4250.xss.xSS.impl.StylesheetImpl#getCustomSelectors <em>Custom Selectors</em>}</li>
+ *   <li>{@link tdt4250.xss.xSS.impl.StylesheetImpl#getCustomProperties <em>Custom Properties</em>}</li>
+ *   <li>{@link tdt4250.xss.xSS.impl.StylesheetImpl#getRules <em>Rules</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class stylesheetImpl extends MinimalEObjectImpl.Container implements stylesheet
+public class StylesheetImpl extends MinimalEObjectImpl.Container implements Stylesheet
 {
   /**
    * The cached value of the '{@link #getCustomSelectors() <em>Custom Selectors</em>}' containment reference list.
@@ -75,7 +75,7 @@ public class stylesheetImpl extends MinimalEObjectImpl.Container implements styl
    * <!-- end-user-doc -->
    * @generated
    */
-  protected stylesheetImpl()
+  protected StylesheetImpl()
   {
     super();
   }
@@ -246,4 +246,4 @@ public class stylesheetImpl extends MinimalEObjectImpl.Container implements styl
     return super.eIsSet(featureID);
   }
 
-} //stylesheetImpl
+} //StylesheetImpl

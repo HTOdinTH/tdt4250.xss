@@ -14,7 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link tdt4250.xss.xSS.CustomProperty#getSubRule <em>Sub Rule</em>}</li>
+ *   <li>{@link tdt4250.xss.xSS.CustomProperty#getSubRules <em>Sub Rules</em>}</li>
  * </ul>
  *
  * @see tdt4250.xss.xSS.XSSPackage#getCustomProperty()
@@ -24,15 +24,15 @@ import org.eclipse.emf.common.util.EList;
 public interface CustomProperty extends XProperty
 {
   /**
-   * Returns the value of the '<em><b>Sub Rule</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Sub Rules</b></em>' containment reference list.
    * The list contents are of type {@link tdt4250.xss.xSS.SubRule}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Sub Rule</em>' containment reference list.
-   * @see tdt4250.xss.xSS.XSSPackage#getCustomProperty_SubRule()
+   * @return the value of the '<em>Sub Rules</em>' containment reference list.
+   * @see tdt4250.xss.xSS.XSSPackage#getCustomProperty_SubRules()
    * @model containment="true"
    * @generated
    */
-  EList<SubRule> getSubRule();
+  EList<SubRule> getSubRules();
 
 } // CustomProperty

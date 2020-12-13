@@ -9,23 +9,23 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>stylesheet</b></em>'.
+ * A representation of the model object '<em><b>Stylesheet</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link tdt4250.xss.xSS.stylesheet#getCustomSelectors <em>Custom Selectors</em>}</li>
- *   <li>{@link tdt4250.xss.xSS.stylesheet#getCustomProperties <em>Custom Properties</em>}</li>
- *   <li>{@link tdt4250.xss.xSS.stylesheet#getRules <em>Rules</em>}</li>
+ *   <li>{@link tdt4250.xss.xSS.Stylesheet#getCustomSelectors <em>Custom Selectors</em>}</li>
+ *   <li>{@link tdt4250.xss.xSS.Stylesheet#getCustomProperties <em>Custom Properties</em>}</li>
+ *   <li>{@link tdt4250.xss.xSS.Stylesheet#getRules <em>Rules</em>}</li>
  * </ul>
  *
- * @see tdt4250.xss.xSS.XSSPackage#getstylesheet()
+ * @see tdt4250.xss.xSS.XSSPackage#getStylesheet()
  * @model
  * @generated
  */
-public interface stylesheet extends EObject
+public interface Stylesheet extends EObject
 {
   /**
    * Returns the value of the '<em><b>Custom Selectors</b></em>' containment reference list.
@@ -33,7 +33,7 @@ public interface stylesheet extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Custom Selectors</em>' containment reference list.
-   * @see tdt4250.xss.xSS.XSSPackage#getstylesheet_CustomSelectors()
+   * @see tdt4250.xss.xSS.XSSPackage#getStylesheet_CustomSelectors()
    * @model containment="true"
    * @generated
    */
@@ -45,7 +45,7 @@ public interface stylesheet extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Custom Properties</em>' containment reference list.
-   * @see tdt4250.xss.xSS.XSSPackage#getstylesheet_CustomProperties()
+   * @see tdt4250.xss.xSS.XSSPackage#getStylesheet_CustomProperties()
    * @model containment="true"
    * @generated
    */
@@ -57,10 +57,10 @@ public interface stylesheet extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Rules</em>' containment reference list.
-   * @see tdt4250.xss.xSS.XSSPackage#getstylesheet_Rules()
+   * @see tdt4250.xss.xSS.XSSPackage#getStylesheet_Rules()
    * @model containment="true"
    * @generated
    */
   EList<Rule> getRules();
 
-} // stylesheet
+} // Stylesheet

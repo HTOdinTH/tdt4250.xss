@@ -1,0 +1,83 @@
+[comment encoding = UTF-8 /]
+[module main('/tdt4250.xss/model/generated/XSS.ecore', 'http://www.eclipse.org/emf/2002/Ecore')]
+
+[template public generateStylesheet(stylesheet : Stylesheet)]
+[comment @main /]
+[file ('generated.css', false, 'UTF-8')]
+@charset "utf-8";
+/* CSS Document */
+
+[for (rule : Rule | stylesheet.rules)]
+  [generate(rule) /]
+[/for]
+[/file]
+[/template]
+
+
+
+[template public generate(rule : Rule)]
+
+[if (rule.xStatements
+->union(rule.groupStatements.statements->asSet())
+->selectByKind(XMultiStatement)
+->isEmpty())]
+	block_expression
+[/if]
+
+
+[for (selector : Selector | rule.selectors) separator (', ')]
+	[selector.name /] 
+[/for]
+[if not (rule.selectors->isEmpty() or rule.groupSelectors->isEmpty())], [/if]
+[for (selector : GroupSelector | rule.groupSelectors) separator (', ')]
+	[generate(selector) /] 
+[/for] {
+	[for (statement : GroupProperty | rule.groupStatements)]
+		[generate(statement) /]
+	[/for]
+	[for (statement : XStatement | rule.xStatements)]
+		[generate(statement) /]
+	[/for]
+}
+
+[/template]
+
+[template public modGenerate(rule : Rule, modifier : String)]
+	template_expression
+[/template]
+
+[template public generate(group : GroupSelector) post (trim())]
+[for (selector : Selector | group.subSelectors) separator (', ')]
+	[selector.name /] 
+[/for]
+[/template]
+
+[template public generate(group : GroupProperty)]
+[for (statement : XStatement | group.statements)]
+	[generate(statement) /] 
+[/for]
+[/template]
+
+[template public generate(statement : XStatement)][/template]
+[template public generate(statement : XMultiStatement)][/template]
+[template public generate(statement : XSingleStatement)][/template]
+
+[template public generate(statement : SingleStatement)]
+[statement.property /]: [statement.value /];
+[/template]
+
+[template public generate(statement : SingleRefStatement)]
+[for (rule : SubRule | statement.property.subRules)]
+	[rule.property /]: [invoke('tdt4250.xss.acceleo.util.Util',
+		'evaluate(java.lang.String, java.lang.String)',
+		Sequence{rule.expression.name, statement.value}) /];
+[/for]
+[/template]
+
+[template public generate(statement : MultiStatement)]
+
+[/template]
+
+[template public generate(statement : MultiRefStatement)]
+
+[/template]

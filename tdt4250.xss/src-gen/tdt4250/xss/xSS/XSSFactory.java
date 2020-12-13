@@ -24,13 +24,13 @@ public interface XSSFactory extends EFactory
   XSSFactory eINSTANCE = tdt4250.xss.xSS.impl.XSSFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>stylesheet</em>'.
+   * Returns a new object of class '<em>Stylesheet</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>stylesheet</em>'.
+   * @return a new object of class '<em>Stylesheet</em>'.
    * @generated
    */
-  stylesheet createstylesheet();
+  Stylesheet createStylesheet();
 
   /**
    * Returns a new object of class '<em>XSelector</em>'.

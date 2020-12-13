@@ -75,8 +75,8 @@ public class XSSSwitch<T> extends Switch<T>
     {
       case XSSPackage.STYLESHEET:
       {
-        stylesheet stylesheet = (stylesheet)theEObject;
-        T result = casestylesheet(stylesheet);
+        Stylesheet stylesheet = (Stylesheet)theEObject;
+        T result = caseStylesheet(stylesheet);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -217,17 +217,17 @@ public class XSSSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>stylesheet</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Stylesheet</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>stylesheet</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Stylesheet</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casestylesheet(stylesheet object)
+  public T caseStylesheet(Stylesheet object)
   {
     return null;
   }
