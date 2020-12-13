@@ -16,40 +16,47 @@
 
 
 [template public generate(rule : Rule)]
-
-[if (rule.xStatements
-->union(rule.groupStatements.statements->asSet())
-->selectByKind(XMultiStatement)
-->isEmpty())]
-	block_expression
+[let multistatements : Set(State) = rule.xStatements->union(rule.groupStatements.statements->asSet())->selectByKind(XMultiStatement).states]
+[let simple : Boolean = multistatements->isEmpty()]
+[if (simple)]
+	[plainGenerate(rule) /]
 [/if]
+[if (not simple)]
+	[for (mod : Selector | multistatements.modifier)]
+		[modGenerate(rule, mod) /]
+	[/for]
+[/if]
+[/let]
+[/let]
+[/template]
 
-
-[for (selector : Selector | rule.selectors) separator (', ')]
-	[selector.name /] 
-[/for]
-[if not (rule.selectors->isEmpty() or rule.groupSelectors->isEmpty())], [/if]
-[for (selector : GroupSelector | rule.groupSelectors) separator (', ')]
-	[generate(selector) /] 
-[/for] {
+[template public plainGenerate(rule : Rule)]
+[generateSelectors(rule.selectors, rule.groupSelectors) /] {
 	[for (statement : GroupProperty | rule.groupStatements)]
 		[generate(statement) /]
 	[/for]
-	[for (statement : XStatement | rule.xStatements)]
+	[for (statement : XStatement | rule.xStatements)] [comment Never multistatements /]
 		[generate(statement) /]
 	[/for]
 }
 
 [/template]
 
-[template public modGenerate(rule : Rule, modifier : String)]
-	template_expression
-[/template]
-
-[template public generate(group : GroupSelector) post (trim())]
-[for (selector : Selector | group.subSelectors) separator (', ')]
-	[selector.name /] 
-[/for]
+[template public modGenerate(rule : Rule, mod : Selector)]
+[generateSelectors(rule.selectors, rule.groupSelectors, mod) /] {
+	[for (statement : GroupProperty | rule.groupStatements)]
+		[generate(statement) /]
+	[/for]
+	[for (statement : XStatement | rule.xStatements)] [comment Can be multistatements /]
+		[if (statement.oclIsTypeOf(XMultiStatement))]
+			[modGenerate(statement.oclAsType(XMultiStatement), mod) /] 
+		[/if]
+		[if (statement.oclIsTypeOf(XSingleStatement))]
+			[generate(statement) /]
+		[/if]
+		[generate(statement) /]
+	[/for]
+}
 [/template]
 
 [template public generate(group : GroupProperty)]
@@ -67,17 +74,60 @@
 [/template]
 
 [template public generate(statement : SingleRefStatement)]
-[for (rule : SubRule | statement.property.subRules)]
+[refGenerate(statement.property, statement.value) /]
+[/template]
+
+[template public modGenerate(statement : XMultiStatement, mod : Selector)][/template]
+[template public modGenerate(statement : MultiStatement, mod : Selector) post (trim())]
+	[for (state : State | statement.states)]
+		[if (state.modifier.name = mod.name)]
+			[statement.property /]: [state.value /];
+		[/if]
+	[/for]
+[/template]
+
+[template public generate(statement : MultiRefStatement, mod : Selector)]
+	[for (state : State | statement.states)]
+		[if (state.modifier.name = mod.name)]
+			[refGenerate(statement.property, state.value) /]
+		[/if]
+	[/for]
+[/template]
+
+[template public refGenerate(prop : CustomProperty, value : String) post (trim())]
+[for (rule : SubRule | prop.subRules)]
 	[rule.property /]: [invoke('tdt4250.xss.acceleo.util.Util',
 		'evaluate(java.lang.String, java.lang.String)',
-		Sequence{rule.expression.name, statement.value}) /];
+		Sequence{rule.expression.name, value}) /];
 [/for]
 [/template]
 
-[template public generate(statement : MultiStatement)]
-
+[template public generateSelectors(selectors : OrderedSet(Selector), groups : Sequence(GroupSelector), mod : Selector)]
+[for (selector : Selector | selectors) separator (', ')]
+	[selector.name /][mod.name /] 
+[/for] [if not (selectors->isEmpty() or groups->isEmpty())], [/if] [for 
+(selector : GroupSelector | groups) separator (', ')]
+	[modGenerate(selector, mod) /] 
+[/for] [comment TODO: ENSURE NO WHITESPACE /] 
 [/template]
 
-[template public generate(statement : MultiRefStatement)]
+[template public generateSelectors(selectors : OrderedSet(Selector), groups : Sequence(GroupSelector))]
+[for (selector : Selector | selectors) separator (', ')]
+	[selector.name /] 
+[/for] [if not (selectors->isEmpty() or groups->isEmpty())], [/if] [for 
+(selector : GroupSelector | groups) separator (', ')]
+	[generate(selector) /] 
+[/for]
+[/template]
 
+[template public modGenerate(group : GroupSelector, mod : Selector) post (trim())]
+[for (selector : Selector | group.subSelectors) separator (', ')]
+	[selector.name /][mod.name /] 
+[/for]
+[/template]
+
+[template public generate(group : GroupSelector) post (trim())]
+[for (selector : Selector | group.subSelectors) separator (', ')]
+	[selector.name /] 
+[/for]
 [/template]

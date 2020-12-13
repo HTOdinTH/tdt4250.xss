@@ -16,7 +16,7 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class XSSGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
+		fsa.generateFile('oopsie.txt', 'heehee'); 
 //			resource.allContents
 //				.filter(Greeting)
 //				.map[name]

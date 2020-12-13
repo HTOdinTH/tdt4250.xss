@@ -934,7 +934,7 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//terminal VAL:
-	//	'a'..'z' | 'A'..'Z' | '-' | '0'..'9' | '.' | ',' | '%' | '#' | '{' | '}' | '(' | ')' | '*' | '+'+;
+	//	'a'..'z' | 'A'..'Z' | '-' | '0'..'9' | '.' | '%' | '#' | '{' | '}' | '*' | '+'+;
 	public TerminalRule getVALRule() {
 		return tVAL;
 	}
