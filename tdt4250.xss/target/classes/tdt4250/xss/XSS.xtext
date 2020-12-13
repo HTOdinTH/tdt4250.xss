@@ -1,22 +1,38 @@
 grammar tdt4250.xss.XSS with org.eclipse.xtext.common.Terminals
 
-generate xSS "http://www.xss.tdt4250/XSS"
+generate xSS "tdt4250.xss.model" // this is the model
 
 Stylesheet returns stylesheet:
 	('XSelectors:' 
-		(customSelectors += XSelector)* )? &
+		(customSelectors += XSelector)+)? 
 	('XProperties:'
-		(customProperties += XProperty)* )?
+		(customProperties += XProperty)+)?
 	'Rules:'
 		(rules += Rule)+
 ;
-	
+
+terminal NAME: (ID | '-')+;
+//PREFIX: ('::'|':'|'.'|'#');
+//COMBINER: ('>'|'+'|'~');
+terminal SEL: ('::'|':'|'.'|'#')? NAME ((('>'|'+'|'~') | ('::'|':'|'.'|'#') | (('>'|'+'|'~') ('::'|':'|'.'|'#'))) NAME)*;
+terminal VAL: ('a'..'z'|'A'..'Z'|'-'|'0'..'9'|'.'|'%'|'{'|'}'|'*'|'+')+;
+
+STRING_OR_SEL:
+	(STRING | SEL | NAME)
+;
+
+STRING_OR_VAL:
+	(STRING | VAL | NAME)
+;
+
+
 XSelector:
 	GroupSelector
 ;
 
 GroupSelector:
-	name = STRING
+	'@'?
+	name = NAME
 	'('
 		(subSelectors += Selector)
 		(',' subSelectors += Selector)*
@@ -24,51 +40,93 @@ GroupSelector:
 ;
 
 Selector:
-	name = STRING
+	name = STRING_OR_SEL
 ;
 
 XProperty:
-	CustomProperty | GroupProperty
-;
-
-GroupProperty:
-	name = STRING
-	'('
-		(subProperties += SingleProperty)
-		(',' subProperties += SingleProperty)*
-	')'
-;
-
-SingleProperty:
-	Property | CustomProperty
+	(('$' CustomProperty) | ('@'? GroupProperty))
 ;
 
 CustomProperty:
-	name = STRING
+	name = NAME
 	'('
-		(subRules += SubRule)
-		(',' subRules += SubRule)*
+		(subRule += SubRule ';')+
 	')'
 ;
 
 SubRule:
-	property = Property
-	':'
+	property = PROPERTY
+	'='
 	expression = Expression
 ;
 
 Expression:
-	expression = STRING
+	name = STRING_OR_VAL
 ;
 
-Property:
-	property = STRING
+GroupProperty:
+	name = NAME
+	'('
+		(statements += XStatement ';')+
+	')'
 ;
+
+XStatement:
+	XSingleStatement | XMultiStatement
+;
+
+XSingleStatement:
+	('$' SingleRefStatement) | SingleStatement 
+;
+
+SingleRefStatement:
+	property = [CustomProperty | NAME]
+	'='
+	value = VALUE
+;
+
+SingleStatement:
+	property = PROPERTY
+	'='
+	value = VALUE
+;
+
+XMultiStatement:
+	('$' MultiRefStatement) | MultiStatement
+;
+
+MultiRefStatement:
+	property = [CustomProperty | NAME]
+	'('
+		(states += State ';')+
+	')'
+;
+
+MultiStatement:
+	property = PROPERTY
+	'('
+		(states += State ';')+
+	')'
+;
+
+State:
+	modifier = Selector // ':default' = ''
+	'='
+	value = VALUE
+;
+
+PROPERTY:
+	NAME
+;
+
+VALUE:
+	STRING_OR_VAL
+;
+
 
 Rule:
-	([GroupProperty]) | ([CustomProperty] ':' States) | (Property ':' States)
-;
-
-States:
-	
+	((selectors += Selector) | ('@' groupSelectors += [GroupSelector | NAME])) // at least one of either
+	(',' ((selectors += Selector) | ('@' groupSelectors += [GroupSelector | NAME])))* // then, any number of either, separated by comma
+	':'
+	(((xStatements += XStatement) | ('@' groupStatements += [GroupProperty | NAME])) ';')+ // either kind of statement, then semicolon, at least one time
 ;
