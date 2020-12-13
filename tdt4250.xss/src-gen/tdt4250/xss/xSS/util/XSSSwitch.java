@@ -80,10 +80,18 @@ public class XSSSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case XSSPackage.XSELECTOR:
+      {
+        XSelector xSelector = (XSelector)theEObject;
+        T result = caseXSelector(xSelector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case XSSPackage.GROUP_SELECTOR:
       {
         GroupSelector groupSelector = (GroupSelector)theEObject;
         T result = caseGroupSelector(groupSelector);
+        if (result == null) result = caseXSelector(groupSelector);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -91,6 +99,106 @@ public class XSSSwitch<T> extends Switch<T>
       {
         Selector selector = (Selector)theEObject;
         T result = caseSelector(selector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XSSPackage.XPROPERTY:
+      {
+        XProperty xProperty = (XProperty)theEObject;
+        T result = caseXProperty(xProperty);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XSSPackage.CUSTOM_PROPERTY:
+      {
+        CustomProperty customProperty = (CustomProperty)theEObject;
+        T result = caseCustomProperty(customProperty);
+        if (result == null) result = caseXProperty(customProperty);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XSSPackage.SUB_RULE:
+      {
+        SubRule subRule = (SubRule)theEObject;
+        T result = caseSubRule(subRule);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XSSPackage.EXPRESSION:
+      {
+        Expression expression = (Expression)theEObject;
+        T result = caseExpression(expression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XSSPackage.GROUP_PROPERTY:
+      {
+        GroupProperty groupProperty = (GroupProperty)theEObject;
+        T result = caseGroupProperty(groupProperty);
+        if (result == null) result = caseXProperty(groupProperty);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XSSPackage.XSTATEMENT:
+      {
+        XStatement xStatement = (XStatement)theEObject;
+        T result = caseXStatement(xStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XSSPackage.XSINGLE_STATEMENT:
+      {
+        XSingleStatement xSingleStatement = (XSingleStatement)theEObject;
+        T result = caseXSingleStatement(xSingleStatement);
+        if (result == null) result = caseXStatement(xSingleStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XSSPackage.SINGLE_REF_STATEMENT:
+      {
+        SingleRefStatement singleRefStatement = (SingleRefStatement)theEObject;
+        T result = caseSingleRefStatement(singleRefStatement);
+        if (result == null) result = caseXSingleStatement(singleRefStatement);
+        if (result == null) result = caseXStatement(singleRefStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XSSPackage.SINGLE_STATEMENT:
+      {
+        SingleStatement singleStatement = (SingleStatement)theEObject;
+        T result = caseSingleStatement(singleStatement);
+        if (result == null) result = caseXSingleStatement(singleStatement);
+        if (result == null) result = caseXStatement(singleStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XSSPackage.XMULTI_STATEMENT:
+      {
+        XMultiStatement xMultiStatement = (XMultiStatement)theEObject;
+        T result = caseXMultiStatement(xMultiStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XSSPackage.MULTI_REF_STATEMENT:
+      {
+        MultiRefStatement multiRefStatement = (MultiRefStatement)theEObject;
+        T result = caseMultiRefStatement(multiRefStatement);
+        if (result == null) result = caseXMultiStatement(multiRefStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XSSPackage.MULTI_STATEMENT:
+      {
+        MultiStatement multiStatement = (MultiStatement)theEObject;
+        T result = caseMultiStatement(multiStatement);
+        if (result == null) result = caseXMultiStatement(multiStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XSSPackage.STATE:
+      {
+        State state = (State)theEObject;
+        T result = caseState(state);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -110,6 +218,22 @@ public class XSSSwitch<T> extends Switch<T>
    * @generated
    */
   public T casestylesheet(stylesheet object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>XSelector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>XSelector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseXSelector(XSelector object)
   {
     return null;
   }
@@ -142,6 +266,214 @@ public class XSSSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSelector(Selector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>XProperty</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>XProperty</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseXProperty(XProperty object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Custom Property</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Custom Property</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCustomProperty(CustomProperty object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Sub Rule</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Sub Rule</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSubRule(SubRule object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExpression(Expression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Group Property</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Group Property</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGroupProperty(GroupProperty object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>XStatement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>XStatement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseXStatement(XStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>XSingle Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>XSingle Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseXSingleStatement(XSingleStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Single Ref Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Single Ref Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSingleRefStatement(SingleRefStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Single Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Single Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSingleStatement(SingleStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>XMulti Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>XMulti Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseXMultiStatement(XMultiStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Multi Ref Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Multi Ref Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMultiRefStatement(MultiRefStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Multi Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Multi Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMultiStatement(MultiStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>State</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>State</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseState(State object)
   {
     return null;
   }

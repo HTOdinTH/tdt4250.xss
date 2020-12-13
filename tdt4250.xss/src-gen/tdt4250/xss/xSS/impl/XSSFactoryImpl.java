@@ -66,8 +66,22 @@ public class XSSFactoryImpl extends EFactoryImpl implements XSSFactory
     switch (eClass.getClassifierID())
     {
       case XSSPackage.STYLESHEET: return createstylesheet();
+      case XSSPackage.XSELECTOR: return createXSelector();
       case XSSPackage.GROUP_SELECTOR: return createGroupSelector();
       case XSSPackage.SELECTOR: return createSelector();
+      case XSSPackage.XPROPERTY: return createXProperty();
+      case XSSPackage.CUSTOM_PROPERTY: return createCustomProperty();
+      case XSSPackage.SUB_RULE: return createSubRule();
+      case XSSPackage.EXPRESSION: return createExpression();
+      case XSSPackage.GROUP_PROPERTY: return createGroupProperty();
+      case XSSPackage.XSTATEMENT: return createXStatement();
+      case XSSPackage.XSINGLE_STATEMENT: return createXSingleStatement();
+      case XSSPackage.SINGLE_REF_STATEMENT: return createSingleRefStatement();
+      case XSSPackage.SINGLE_STATEMENT: return createSingleStatement();
+      case XSSPackage.XMULTI_STATEMENT: return createXMultiStatement();
+      case XSSPackage.MULTI_REF_STATEMENT: return createMultiRefStatement();
+      case XSSPackage.MULTI_STATEMENT: return createMultiStatement();
+      case XSSPackage.STATE: return createState();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -83,6 +97,18 @@ public class XSSFactoryImpl extends EFactoryImpl implements XSSFactory
   {
     stylesheetImpl stylesheet = new stylesheetImpl();
     return stylesheet;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public XSelector createXSelector()
+  {
+    XSelectorImpl xSelector = new XSelectorImpl();
+    return xSelector;
   }
 
   /**
@@ -107,6 +133,162 @@ public class XSSFactoryImpl extends EFactoryImpl implements XSSFactory
   {
     SelectorImpl selector = new SelectorImpl();
     return selector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public XProperty createXProperty()
+  {
+    XPropertyImpl xProperty = new XPropertyImpl();
+    return xProperty;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CustomProperty createCustomProperty()
+  {
+    CustomPropertyImpl customProperty = new CustomPropertyImpl();
+    return customProperty;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SubRule createSubRule()
+  {
+    SubRuleImpl subRule = new SubRuleImpl();
+    return subRule;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Expression createExpression()
+  {
+    ExpressionImpl expression = new ExpressionImpl();
+    return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public GroupProperty createGroupProperty()
+  {
+    GroupPropertyImpl groupProperty = new GroupPropertyImpl();
+    return groupProperty;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public XStatement createXStatement()
+  {
+    XStatementImpl xStatement = new XStatementImpl();
+    return xStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public XSingleStatement createXSingleStatement()
+  {
+    XSingleStatementImpl xSingleStatement = new XSingleStatementImpl();
+    return xSingleStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SingleRefStatement createSingleRefStatement()
+  {
+    SingleRefStatementImpl singleRefStatement = new SingleRefStatementImpl();
+    return singleRefStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SingleStatement createSingleStatement()
+  {
+    SingleStatementImpl singleStatement = new SingleStatementImpl();
+    return singleStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public XMultiStatement createXMultiStatement()
+  {
+    XMultiStatementImpl xMultiStatement = new XMultiStatementImpl();
+    return xMultiStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MultiRefStatement createMultiRefStatement()
+  {
+    MultiRefStatementImpl multiRefStatement = new MultiRefStatementImpl();
+    return multiRefStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MultiStatement createMultiStatement()
+  {
+    MultiStatementImpl multiStatement = new MultiStatementImpl();
+    return multiStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public State createState()
+  {
+    StateImpl state = new StateImpl();
+    return state;
   }
 
   /**

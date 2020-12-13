@@ -3,15 +3,12 @@
  */
 package tdt4250.xss.xSS.impl;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EDataTypeEList;
 
 import tdt4250.xss.xSS.Selector;
 import tdt4250.xss.xSS.XSSPackage;
@@ -24,7 +21,7 @@ import tdt4250.xss.xSS.XSSPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link tdt4250.xss.xSS.impl.SelectorImpl#getNames <em>Names</em>}</li>
+ *   <li>{@link tdt4250.xss.xSS.impl.SelectorImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,14 +29,24 @@ import tdt4250.xss.xSS.XSSPackage;
 public class SelectorImpl extends MinimalEObjectImpl.Container implements Selector
 {
   /**
-   * The cached value of the '{@link #getNames() <em>Names</em>}' attribute list.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getNames()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected EList<String> names;
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,13 +75,23 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
    * @generated
    */
   @Override
-  public EList<String> getNames()
+  public String getName()
   {
-    if (names == null)
-    {
-      names = new EDataTypeEList<String>(String.class, this, XSSPackage.SELECTOR__NAMES);
-    }
-    return names;
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, XSSPackage.SELECTOR__NAME, oldName, name));
   }
 
   /**
@@ -87,8 +104,8 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
   {
     switch (featureID)
     {
-      case XSSPackage.SELECTOR__NAMES:
-        return getNames();
+      case XSSPackage.SELECTOR__NAME:
+        return getName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -98,15 +115,13 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case XSSPackage.SELECTOR__NAMES:
-        getNames().clear();
-        getNames().addAll((Collection<? extends String>)newValue);
+      case XSSPackage.SELECTOR__NAME:
+        setName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -122,8 +137,8 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
   {
     switch (featureID)
     {
-      case XSSPackage.SELECTOR__NAMES:
-        getNames().clear();
+      case XSSPackage.SELECTOR__NAME:
+        setName(NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -139,8 +154,8 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
   {
     switch (featureID)
     {
-      case XSSPackage.SELECTOR__NAMES:
-        return names != null && !names.isEmpty();
+      case XSSPackage.SELECTOR__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
   }
@@ -156,8 +171,8 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (names: ");
-    result.append(names);
+    result.append(" (name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }

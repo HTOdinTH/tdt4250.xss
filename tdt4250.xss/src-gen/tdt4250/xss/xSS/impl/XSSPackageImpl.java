@@ -10,10 +10,24 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import tdt4250.xss.xSS.CustomProperty;
+import tdt4250.xss.xSS.Expression;
+import tdt4250.xss.xSS.GroupProperty;
 import tdt4250.xss.xSS.GroupSelector;
+import tdt4250.xss.xSS.MultiRefStatement;
+import tdt4250.xss.xSS.MultiStatement;
 import tdt4250.xss.xSS.Selector;
+import tdt4250.xss.xSS.SingleRefStatement;
+import tdt4250.xss.xSS.SingleStatement;
+import tdt4250.xss.xSS.State;
+import tdt4250.xss.xSS.SubRule;
+import tdt4250.xss.xSS.XMultiStatement;
+import tdt4250.xss.xSS.XProperty;
 import tdt4250.xss.xSS.XSSFactory;
 import tdt4250.xss.xSS.XSSPackage;
+import tdt4250.xss.xSS.XSelector;
+import tdt4250.xss.xSS.XSingleStatement;
+import tdt4250.xss.xSS.XStatement;
 import tdt4250.xss.xSS.stylesheet;
 
 /**
@@ -36,6 +50,13 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass xSelectorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass groupSelectorEClass = null;
 
   /**
@@ -44,6 +65,97 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
    * @generated
    */
   private EClass selectorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass xPropertyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass customPropertyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass subRuleEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass expressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass groupPropertyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass xStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass xSingleStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass singleRefStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass singleStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass xMultiStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass multiRefStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass multiStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stateEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -136,6 +248,28 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
    * @generated
    */
   @Override
+  public EReference getstylesheet_CustomProperties()
+  {
+    return (EReference)stylesheetEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getXSelector()
+  {
+    return xSelectorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getGroupSelector()
   {
     return groupSelectorEClass;
@@ -180,9 +314,306 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
    * @generated
    */
   @Override
-  public EAttribute getSelector_Names()
+  public EAttribute getSelector_Name()
   {
     return (EAttribute)selectorEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getXProperty()
+  {
+    return xPropertyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getXProperty_Name()
+  {
+    return (EAttribute)xPropertyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCustomProperty()
+  {
+    return customPropertyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCustomProperty_SubRule()
+  {
+    return (EReference)customPropertyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSubRule()
+  {
+    return subRuleEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSubRule_Property()
+  {
+    return (EAttribute)subRuleEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSubRule_Expression()
+  {
+    return (EReference)subRuleEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExpression()
+  {
+    return expressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getExpression_Name()
+  {
+    return (EAttribute)expressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getGroupProperty()
+  {
+    return groupPropertyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGroupProperty_Statements()
+  {
+    return (EReference)groupPropertyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getXStatement()
+  {
+    return xStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getXSingleStatement()
+  {
+    return xSingleStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getXSingleStatement_Value()
+  {
+    return (EAttribute)xSingleStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSingleRefStatement()
+  {
+    return singleRefStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSingleRefStatement_Property()
+  {
+    return (EReference)singleRefStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSingleStatement()
+  {
+    return singleStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSingleStatement_Property()
+  {
+    return (EAttribute)singleStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getXMultiStatement()
+  {
+    return xMultiStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getXMultiStatement_States()
+  {
+    return (EReference)xMultiStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMultiRefStatement()
+  {
+    return multiRefStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMultiRefStatement_Property()
+  {
+    return (EReference)multiRefStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMultiStatement()
+  {
+    return multiStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMultiStatement_Property()
+  {
+    return (EAttribute)multiStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getState()
+  {
+    return stateEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getState_Modifier()
+  {
+    return (EReference)stateEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getState_Value()
+  {
+    return (EAttribute)stateEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -218,13 +649,56 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
     // Create classes and their features
     stylesheetEClass = createEClass(STYLESHEET);
     createEReference(stylesheetEClass, STYLESHEET__CUSTOM_SELECTORS);
+    createEReference(stylesheetEClass, STYLESHEET__CUSTOM_PROPERTIES);
+
+    xSelectorEClass = createEClass(XSELECTOR);
 
     groupSelectorEClass = createEClass(GROUP_SELECTOR);
     createEAttribute(groupSelectorEClass, GROUP_SELECTOR__NAME);
     createEReference(groupSelectorEClass, GROUP_SELECTOR__SUB_SELECTORS);
 
     selectorEClass = createEClass(SELECTOR);
-    createEAttribute(selectorEClass, SELECTOR__NAMES);
+    createEAttribute(selectorEClass, SELECTOR__NAME);
+
+    xPropertyEClass = createEClass(XPROPERTY);
+    createEAttribute(xPropertyEClass, XPROPERTY__NAME);
+
+    customPropertyEClass = createEClass(CUSTOM_PROPERTY);
+    createEReference(customPropertyEClass, CUSTOM_PROPERTY__SUB_RULE);
+
+    subRuleEClass = createEClass(SUB_RULE);
+    createEAttribute(subRuleEClass, SUB_RULE__PROPERTY);
+    createEReference(subRuleEClass, SUB_RULE__EXPRESSION);
+
+    expressionEClass = createEClass(EXPRESSION);
+    createEAttribute(expressionEClass, EXPRESSION__NAME);
+
+    groupPropertyEClass = createEClass(GROUP_PROPERTY);
+    createEReference(groupPropertyEClass, GROUP_PROPERTY__STATEMENTS);
+
+    xStatementEClass = createEClass(XSTATEMENT);
+
+    xSingleStatementEClass = createEClass(XSINGLE_STATEMENT);
+    createEAttribute(xSingleStatementEClass, XSINGLE_STATEMENT__VALUE);
+
+    singleRefStatementEClass = createEClass(SINGLE_REF_STATEMENT);
+    createEReference(singleRefStatementEClass, SINGLE_REF_STATEMENT__PROPERTY);
+
+    singleStatementEClass = createEClass(SINGLE_STATEMENT);
+    createEAttribute(singleStatementEClass, SINGLE_STATEMENT__PROPERTY);
+
+    xMultiStatementEClass = createEClass(XMULTI_STATEMENT);
+    createEReference(xMultiStatementEClass, XMULTI_STATEMENT__STATES);
+
+    multiRefStatementEClass = createEClass(MULTI_REF_STATEMENT);
+    createEReference(multiRefStatementEClass, MULTI_REF_STATEMENT__PROPERTY);
+
+    multiStatementEClass = createEClass(MULTI_STATEMENT);
+    createEAttribute(multiStatementEClass, MULTI_STATEMENT__PROPERTY);
+
+    stateEClass = createEClass(STATE);
+    createEReference(stateEClass, STATE__MODIFIER);
+    createEAttribute(stateEClass, STATE__VALUE);
   }
 
   /**
@@ -256,17 +730,68 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    groupSelectorEClass.getESuperTypes().add(this.getXSelector());
+    customPropertyEClass.getESuperTypes().add(this.getXProperty());
+    groupPropertyEClass.getESuperTypes().add(this.getXProperty());
+    xSingleStatementEClass.getESuperTypes().add(this.getXStatement());
+    singleRefStatementEClass.getESuperTypes().add(this.getXSingleStatement());
+    singleStatementEClass.getESuperTypes().add(this.getXSingleStatement());
+    multiRefStatementEClass.getESuperTypes().add(this.getXMultiStatement());
+    multiStatementEClass.getESuperTypes().add(this.getXMultiStatement());
 
     // Initialize classes and features; add operations and parameters
     initEClass(stylesheetEClass, stylesheet.class, "stylesheet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getstylesheet_CustomSelectors(), this.getGroupSelector(), null, "customSelectors", null, 0, -1, stylesheet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getstylesheet_CustomSelectors(), this.getXSelector(), null, "customSelectors", null, 0, -1, stylesheet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getstylesheet_CustomProperties(), this.getXProperty(), null, "customProperties", null, 0, -1, stylesheet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(xSelectorEClass, XSelector.class, "XSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(groupSelectorEClass, GroupSelector.class, "GroupSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGroupSelector_Name(), ecorePackage.getEString(), "name", null, 0, 1, GroupSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGroupSelector_SubSelectors(), this.getSelector(), null, "subSelectors", null, 0, -1, GroupSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(selectorEClass, Selector.class, "Selector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSelector_Names(), ecorePackage.getEString(), "names", null, 0, -1, Selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSelector_Name(), ecorePackage.getEString(), "name", null, 0, 1, Selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(xPropertyEClass, XProperty.class, "XProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getXProperty_Name(), ecorePackage.getEString(), "name", null, 0, 1, XProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(customPropertyEClass, CustomProperty.class, "CustomProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCustomProperty_SubRule(), this.getSubRule(), null, "subRule", null, 0, -1, CustomProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(subRuleEClass, SubRule.class, "SubRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSubRule_Property(), ecorePackage.getEString(), "property", null, 0, 1, SubRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSubRule_Expression(), this.getExpression(), null, "expression", null, 0, 1, SubRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getExpression_Name(), ecorePackage.getEString(), "name", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(groupPropertyEClass, GroupProperty.class, "GroupProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getGroupProperty_Statements(), this.getXStatement(), null, "statements", null, 0, -1, GroupProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(xStatementEClass, XStatement.class, "XStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(xSingleStatementEClass, XSingleStatement.class, "XSingleStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getXSingleStatement_Value(), ecorePackage.getEString(), "value", null, 0, 1, XSingleStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(singleRefStatementEClass, SingleRefStatement.class, "SingleRefStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSingleRefStatement_Property(), this.getCustomProperty(), null, "property", null, 0, 1, SingleRefStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(singleStatementEClass, SingleStatement.class, "SingleStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSingleStatement_Property(), ecorePackage.getEString(), "property", null, 0, 1, SingleStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(xMultiStatementEClass, XMultiStatement.class, "XMultiStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getXMultiStatement_States(), this.getState(), null, "states", null, 0, -1, XMultiStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(multiRefStatementEClass, MultiRefStatement.class, "MultiRefStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMultiRefStatement_Property(), this.getCustomProperty(), null, "property", null, 0, 1, MultiRefStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(multiStatementEClass, MultiStatement.class, "MultiStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMultiStatement_Property(), ecorePackage.getEString(), "property", null, 0, 1, MultiStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(stateEClass, State.class, "State", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getState_Modifier(), this.getSelector(), null, "modifier", null, 0, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getState_Value(), ecorePackage.getEString(), "value", null, 0, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

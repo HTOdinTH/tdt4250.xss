@@ -3,11 +3,11 @@ grammar tdt4250.xss.XSS with org.eclipse.xtext.common.Terminals
 generate xSS "tdt4250.xss.model" // this is the model
 
 Stylesheet returns stylesheet:
-	'XSelectors:' 
-		(customSelectors += GroupSelector)+ // ill make them ordered, then
+	('XSelectors:' 
+		(customSelectors += XSelector)+) // ill make them ordered, then
+	('XProperties:'
+		(customProperties += XProperty)+)? // ll make them mandatory, then
 	/*
-	'XProperties:'
-		(customProperties += XProperty)+ // ll make them mandatory, then
 	'Rules:'
 		(rules += Rule)+
 	*/
@@ -17,6 +17,9 @@ terminal NAME: (ID | '-')+;
 //PREFIX: ('::'|':'|'.'|'#');
 //COMBINER: ('>'|'+'|'~');
 terminal SEL: ('::'|':'|'.'|'#')? NAME ((('>'|'+'|'~') | ('::'|':'|'.'|'#') | (('>'|'+'|'~') ('::'|':'|'.'|'#'))) NAME)*;
+terminal VAL: ('a'..'z'|'A'..'Z'|'0'..'9'|'-'|'%'|'{'|'}')+;
+//terminal VAL: '=' -> ';';
+
 /*
 terminal fragment WORD: ('a'..'z'|'A'..'Z'|'-')+;
 terminal fragment PREFIX: '::'|':'|'.'|'#';
@@ -27,19 +30,25 @@ terminal SEL: PREFIX? WORD ((COMBINER | PREFIX | (COMBINER PREFIX)) WORD)*;
 terminal VAL: ('a'..'z'|'A'..'Z'|'0'..'9'|'-'|'%'|'{'|'}')+;
 */
 
-/*
+
 STRING_OR_NAME:
 	(STRING | NAME)
 ;
-*/
 
-/*	
+STRING_OR_SEL:
+	(STRING | SEL | NAME)
+;
+
+STRING_OR_VAL:
+	(STRING | VAL | NAME)
+;
+
+
 XSelector:
 	GroupSelector
-;*/
+;
 
 GroupSelector:
-	'sel'
 	name = NAME
 	'('
 		(subSelectors += Selector)
@@ -48,11 +57,11 @@ GroupSelector:
 ;
 
 Selector:
-	(names += (SEL | STRING))+
+	name = STRING_OR_SEL
 ;
-/*
+
 XProperty:
-	'prop' (CustomProperty | GroupProperty)
+	(('$' CustomProperty) | GroupProperty)
 ;
 
 CustomProperty:
@@ -63,7 +72,7 @@ CustomProperty:
 ;
 
 SubRule:
-	property = Property
+	property = PROPERTY
 	'='
 	expression = Expression
 ;
@@ -80,38 +89,38 @@ GroupProperty:
 ;
 
 XStatement:
-	XSingleStatement | XMultiStatement
+	XSingleStatement// | XMultiStatement
 ;
 
 XSingleStatement:
-	SingleRefStatement | SingleStatement 
+	('$' SingleRefStatement) | SingleStatement 
 ;
 
 SingleRefStatement:
-	property = [CustomProperty] // secretly means [CustomProperty | STRING]
+	property = [CustomProperty | NAME]
 	'='
-	value = STRING_OR_VAL
+	value = VALUE
 ;
 
 SingleStatement:
-	property = Property
+	property = PROPERTY
 	'='
-	value = STRING_OR_VAL
+	value = VALUE
 ;
 
 XMultiStatement:
-	MultiRefStatement | MultiStatement
+	('$' MultiRefStatement) | MultiStatement
 ;
 
 MultiRefStatement:
-	property = [CustomProperty]
+	property = [CustomProperty | NAME]
 	'('
 		(states += State ';')+
 	')'
 ;
 
 MultiStatement:
-	property = Property
+	property = PROPERTY
 	'('
 		(states += State ';')+
 	')'
@@ -120,13 +129,18 @@ MultiStatement:
 State:
 	modifier = Selector // TODO: might need separate class
 	'='
-	value = STRING_OR_VAL
+	value = VALUE
 ;
 
-Property:
-	name = NAME // WORD, really
+PROPERTY:
+	NAME
 ;
 
+VALUE:
+	STRING_OR_VAL
+;
+
+/*
 Rule:
 	(selectors += Selector) | (groupSelectors += [GroupSelector]) // at least one of either
 	(',' (selectors += Selector)? & (groupSelectors += [GroupSelector])?)* // then, any number of either, separated by comma

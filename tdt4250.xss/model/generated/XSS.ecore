@@ -3,15 +3,61 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="xSS" nsURI="tdt4250.xss.model" nsPrefix="xSS">
   <eClassifiers xsi:type="ecore:EClass" name="stylesheet">
     <eStructuralFeatures xsi:type="ecore:EReference" name="customSelectors" upperBound="-1"
-        eType="#//GroupSelector" containment="true"/>
+        eType="#//XSelector" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="customProperties" upperBound="-1"
+        eType="#//XProperty" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GroupSelector">
+  <eClassifiers xsi:type="ecore:EClass" name="XSelector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GroupSelector" eSuperTypes="#//XSelector">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subSelectors" upperBound="-1"
         eType="#//Selector" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Selector">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="names" unique="false" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomProperty" eSuperTypes="#//XProperty">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subRule" upperBound="-1"
+        eType="#//SubRule" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SubRule">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="property" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GroupProperty" eSuperTypes="#//XProperty">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
+        eType="#//XStatement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XStatement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="XSingleStatement" eSuperTypes="#//XStatement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SingleRefStatement" eSuperTypes="#//XSingleStatement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//CustomProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SingleStatement" eSuperTypes="#//XSingleStatement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="property" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XMultiStatement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
+        eType="#//State" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiRefStatement" eSuperTypes="#//XMultiStatement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//CustomProperty"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MultiStatement" eSuperTypes="#//XMultiStatement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="property" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="State">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" eType="#//Selector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

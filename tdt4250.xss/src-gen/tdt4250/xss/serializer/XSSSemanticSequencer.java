@@ -11,10 +11,21 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Parameter;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.serializer.ISerializationContext;
+import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
+import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import tdt4250.xss.services.XSSGrammarAccess;
+import tdt4250.xss.xSS.CustomProperty;
+import tdt4250.xss.xSS.Expression;
+import tdt4250.xss.xSS.GroupProperty;
 import tdt4250.xss.xSS.GroupSelector;
+import tdt4250.xss.xSS.MultiRefStatement;
+import tdt4250.xss.xSS.MultiStatement;
 import tdt4250.xss.xSS.Selector;
+import tdt4250.xss.xSS.SingleRefStatement;
+import tdt4250.xss.xSS.SingleStatement;
+import tdt4250.xss.xSS.State;
+import tdt4250.xss.xSS.SubRule;
 import tdt4250.xss.xSS.XSSPackage;
 import tdt4250.xss.xSS.stylesheet;
 
@@ -32,11 +43,38 @@ public class XSSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == XSSPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case XSSPackage.CUSTOM_PROPERTY:
+				sequence_CustomProperty(context, (CustomProperty) semanticObject); 
+				return; 
+			case XSSPackage.EXPRESSION:
+				sequence_Expression(context, (Expression) semanticObject); 
+				return; 
+			case XSSPackage.GROUP_PROPERTY:
+				sequence_GroupProperty(context, (GroupProperty) semanticObject); 
+				return; 
 			case XSSPackage.GROUP_SELECTOR:
 				sequence_GroupSelector(context, (GroupSelector) semanticObject); 
 				return; 
+			case XSSPackage.MULTI_REF_STATEMENT:
+				sequence_MultiRefStatement(context, (MultiRefStatement) semanticObject); 
+				return; 
+			case XSSPackage.MULTI_STATEMENT:
+				sequence_MultiStatement(context, (MultiStatement) semanticObject); 
+				return; 
 			case XSSPackage.SELECTOR:
 				sequence_Selector(context, (Selector) semanticObject); 
+				return; 
+			case XSSPackage.SINGLE_REF_STATEMENT:
+				sequence_SingleRefStatement(context, (SingleRefStatement) semanticObject); 
+				return; 
+			case XSSPackage.SINGLE_STATEMENT:
+				sequence_SingleStatement(context, (SingleStatement) semanticObject); 
+				return; 
+			case XSSPackage.STATE:
+				sequence_State(context, (State) semanticObject); 
+				return; 
+			case XSSPackage.SUB_RULE:
+				sequence_SubRule(context, (SubRule) semanticObject); 
 				return; 
 			case XSSPackage.STYLESHEET:
 				sequence_Stylesheet(context, (stylesheet) semanticObject); 
@@ -48,6 +86,51 @@ public class XSSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     XProperty returns CustomProperty
+	 *     CustomProperty returns CustomProperty
+	 *
+	 * Constraint:
+	 *     (name=NAME subRule+=SubRule+)
+	 */
+	protected void sequence_CustomProperty(ISerializationContext context, CustomProperty semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns Expression
+	 *
+	 * Constraint:
+	 *     name=STRING_OR_VAL
+	 */
+	protected void sequence_Expression(ISerializationContext context, Expression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XSSPackage.Literals.EXPRESSION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XSSPackage.Literals.EXPRESSION__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExpressionAccess().getNameSTRING_OR_VALParserRuleCall_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     XProperty returns GroupProperty
+	 *     GroupProperty returns GroupProperty
+	 *
+	 * Constraint:
+	 *     (name=NAME statements+=XStatement+)
+	 */
+	protected void sequence_GroupProperty(ISerializationContext context, GroupProperty semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     XSelector returns GroupSelector
 	 *     GroupSelector returns GroupSelector
 	 *
 	 * Constraint:
@@ -60,13 +143,112 @@ public class XSSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     XMultiStatement returns MultiRefStatement
+	 *     MultiRefStatement returns MultiRefStatement
+	 *
+	 * Constraint:
+	 *     (property=[CustomProperty|NAME] states+=State+)
+	 */
+	protected void sequence_MultiRefStatement(ISerializationContext context, MultiRefStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     XMultiStatement returns MultiStatement
+	 *     MultiStatement returns MultiStatement
+	 *
+	 * Constraint:
+	 *     (property=PROPERTY states+=State+)
+	 */
+	protected void sequence_MultiStatement(ISerializationContext context, MultiStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Selector returns Selector
 	 *
 	 * Constraint:
-	 *     (names+=SEL | names+=STRING)+
+	 *     name=STRING_OR_SEL
 	 */
 	protected void sequence_Selector(ISerializationContext context, Selector semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XSSPackage.Literals.SELECTOR__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XSSPackage.Literals.SELECTOR__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSelectorAccess().getNameSTRING_OR_SELParserRuleCall_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     XStatement returns SingleRefStatement
+	 *     XSingleStatement returns SingleRefStatement
+	 *     SingleRefStatement returns SingleRefStatement
+	 *
+	 * Constraint:
+	 *     (property=[CustomProperty|NAME] value=VALUE)
+	 */
+	protected void sequence_SingleRefStatement(ISerializationContext context, SingleRefStatement semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XSSPackage.Literals.SINGLE_REF_STATEMENT__PROPERTY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XSSPackage.Literals.SINGLE_REF_STATEMENT__PROPERTY));
+			if (transientValues.isValueTransient(semanticObject, XSSPackage.Literals.XSINGLE_STATEMENT__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XSSPackage.Literals.XSINGLE_STATEMENT__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSingleRefStatementAccess().getPropertyCustomPropertyNAMETerminalRuleCall_0_0_1(), semanticObject.eGet(XSSPackage.Literals.SINGLE_REF_STATEMENT__PROPERTY, false));
+		feeder.accept(grammarAccess.getSingleRefStatementAccess().getValueVALUEParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     XStatement returns SingleStatement
+	 *     XSingleStatement returns SingleStatement
+	 *     SingleStatement returns SingleStatement
+	 *
+	 * Constraint:
+	 *     (property=PROPERTY value=VALUE)
+	 */
+	protected void sequence_SingleStatement(ISerializationContext context, SingleStatement semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XSSPackage.Literals.SINGLE_STATEMENT__PROPERTY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XSSPackage.Literals.SINGLE_STATEMENT__PROPERTY));
+			if (transientValues.isValueTransient(semanticObject, XSSPackage.Literals.XSINGLE_STATEMENT__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XSSPackage.Literals.XSINGLE_STATEMENT__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSingleStatementAccess().getPropertyPROPERTYParserRuleCall_0_0(), semanticObject.getProperty());
+		feeder.accept(grammarAccess.getSingleStatementAccess().getValueVALUEParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     State returns State
+	 *
+	 * Constraint:
+	 *     (modifier=Selector value=VALUE)
+	 */
+	protected void sequence_State(ISerializationContext context, State semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XSSPackage.Literals.STATE__MODIFIER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XSSPackage.Literals.STATE__MODIFIER));
+			if (transientValues.isValueTransient(semanticObject, XSSPackage.Literals.STATE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XSSPackage.Literals.STATE__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getStateAccess().getModifierSelectorParserRuleCall_0_0(), semanticObject.getModifier());
+		feeder.accept(grammarAccess.getStateAccess().getValueVALUEParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	
@@ -75,10 +257,31 @@ public class XSSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Stylesheet returns stylesheet
 	 *
 	 * Constraint:
-	 *     customSelectors+=GroupSelector+
+	 *     (customSelectors+=XSelector+ customProperties+=XProperty*)
 	 */
 	protected void sequence_Stylesheet(ISerializationContext context, stylesheet semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     SubRule returns SubRule
+	 *
+	 * Constraint:
+	 *     (property=PROPERTY expression=Expression)
+	 */
+	protected void sequence_SubRule(ISerializationContext context, SubRule semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, XSSPackage.Literals.SUB_RULE__PROPERTY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XSSPackage.Literals.SUB_RULE__PROPERTY));
+			if (transientValues.isValueTransient(semanticObject, XSSPackage.Literals.SUB_RULE__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, XSSPackage.Literals.SUB_RULE__EXPRESSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSubRuleAccess().getPropertyPROPERTYParserRuleCall_0_0(), semanticObject.getProperty());
+		feeder.accept(grammarAccess.getSubRuleAccess().getExpressionExpressionParserRuleCall_2_0(), semanticObject.getExpression());
+		feeder.finish();
 	}
 	
 	

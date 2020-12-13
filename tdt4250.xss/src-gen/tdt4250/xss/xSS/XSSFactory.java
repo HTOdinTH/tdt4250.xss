@@ -33,6 +33,15 @@ public interface XSSFactory extends EFactory
   stylesheet createstylesheet();
 
   /**
+   * Returns a new object of class '<em>XSelector</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>XSelector</em>'.
+   * @generated
+   */
+  XSelector createXSelector();
+
+  /**
    * Returns a new object of class '<em>Group Selector</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -49,6 +58,123 @@ public interface XSSFactory extends EFactory
    * @generated
    */
   Selector createSelector();
+
+  /**
+   * Returns a new object of class '<em>XProperty</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>XProperty</em>'.
+   * @generated
+   */
+  XProperty createXProperty();
+
+  /**
+   * Returns a new object of class '<em>Custom Property</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Custom Property</em>'.
+   * @generated
+   */
+  CustomProperty createCustomProperty();
+
+  /**
+   * Returns a new object of class '<em>Sub Rule</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Sub Rule</em>'.
+   * @generated
+   */
+  SubRule createSubRule();
+
+  /**
+   * Returns a new object of class '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expression</em>'.
+   * @generated
+   */
+  Expression createExpression();
+
+  /**
+   * Returns a new object of class '<em>Group Property</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Group Property</em>'.
+   * @generated
+   */
+  GroupProperty createGroupProperty();
+
+  /**
+   * Returns a new object of class '<em>XStatement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>XStatement</em>'.
+   * @generated
+   */
+  XStatement createXStatement();
+
+  /**
+   * Returns a new object of class '<em>XSingle Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>XSingle Statement</em>'.
+   * @generated
+   */
+  XSingleStatement createXSingleStatement();
+
+  /**
+   * Returns a new object of class '<em>Single Ref Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Single Ref Statement</em>'.
+   * @generated
+   */
+  SingleRefStatement createSingleRefStatement();
+
+  /**
+   * Returns a new object of class '<em>Single Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Single Statement</em>'.
+   * @generated
+   */
+  SingleStatement createSingleStatement();
+
+  /**
+   * Returns a new object of class '<em>XMulti Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>XMulti Statement</em>'.
+   * @generated
+   */
+  XMultiStatement createXMultiStatement();
+
+  /**
+   * Returns a new object of class '<em>Multi Ref Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Multi Ref Statement</em>'.
+   * @generated
+   */
+  MultiRefStatement createMultiRefStatement();
+
+  /**
+   * Returns a new object of class '<em>Multi Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Multi Statement</em>'.
+   * @generated
+   */
+  MultiStatement createMultiStatement();
+
+  /**
+   * Returns a new object of class '<em>State</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>State</em>'.
+   * @generated
+   */
+  State createState();
 
   /**
    * Returns the package supported by this factory.

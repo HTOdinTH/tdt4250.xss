@@ -81,6 +81,11 @@ public class XSSAdapterFactory extends AdapterFactoryImpl
         return createstylesheetAdapter();
       }
       @Override
+      public Adapter caseXSelector(XSelector object)
+      {
+        return createXSelectorAdapter();
+      }
+      @Override
       public Adapter caseGroupSelector(GroupSelector object)
       {
         return createGroupSelectorAdapter();
@@ -89,6 +94,71 @@ public class XSSAdapterFactory extends AdapterFactoryImpl
       public Adapter caseSelector(Selector object)
       {
         return createSelectorAdapter();
+      }
+      @Override
+      public Adapter caseXProperty(XProperty object)
+      {
+        return createXPropertyAdapter();
+      }
+      @Override
+      public Adapter caseCustomProperty(CustomProperty object)
+      {
+        return createCustomPropertyAdapter();
+      }
+      @Override
+      public Adapter caseSubRule(SubRule object)
+      {
+        return createSubRuleAdapter();
+      }
+      @Override
+      public Adapter caseExpression(Expression object)
+      {
+        return createExpressionAdapter();
+      }
+      @Override
+      public Adapter caseGroupProperty(GroupProperty object)
+      {
+        return createGroupPropertyAdapter();
+      }
+      @Override
+      public Adapter caseXStatement(XStatement object)
+      {
+        return createXStatementAdapter();
+      }
+      @Override
+      public Adapter caseXSingleStatement(XSingleStatement object)
+      {
+        return createXSingleStatementAdapter();
+      }
+      @Override
+      public Adapter caseSingleRefStatement(SingleRefStatement object)
+      {
+        return createSingleRefStatementAdapter();
+      }
+      @Override
+      public Adapter caseSingleStatement(SingleStatement object)
+      {
+        return createSingleStatementAdapter();
+      }
+      @Override
+      public Adapter caseXMultiStatement(XMultiStatement object)
+      {
+        return createXMultiStatementAdapter();
+      }
+      @Override
+      public Adapter caseMultiRefStatement(MultiRefStatement object)
+      {
+        return createMultiRefStatementAdapter();
+      }
+      @Override
+      public Adapter caseMultiStatement(MultiStatement object)
+      {
+        return createMultiStatementAdapter();
+      }
+      @Override
+      public Adapter caseState(State object)
+      {
+        return createStateAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -128,6 +198,21 @@ public class XSSAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link tdt4250.xss.xSS.XSelector <em>XSelector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see tdt4250.xss.xSS.XSelector
+   * @generated
+   */
+  public Adapter createXSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link tdt4250.xss.xSS.GroupSelector <em>Group Selector</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -153,6 +238,201 @@ public class XSSAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link tdt4250.xss.xSS.XProperty <em>XProperty</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see tdt4250.xss.xSS.XProperty
+   * @generated
+   */
+  public Adapter createXPropertyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link tdt4250.xss.xSS.CustomProperty <em>Custom Property</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see tdt4250.xss.xSS.CustomProperty
+   * @generated
+   */
+  public Adapter createCustomPropertyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link tdt4250.xss.xSS.SubRule <em>Sub Rule</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see tdt4250.xss.xSS.SubRule
+   * @generated
+   */
+  public Adapter createSubRuleAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link tdt4250.xss.xSS.Expression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see tdt4250.xss.xSS.Expression
+   * @generated
+   */
+  public Adapter createExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link tdt4250.xss.xSS.GroupProperty <em>Group Property</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see tdt4250.xss.xSS.GroupProperty
+   * @generated
+   */
+  public Adapter createGroupPropertyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link tdt4250.xss.xSS.XStatement <em>XStatement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see tdt4250.xss.xSS.XStatement
+   * @generated
+   */
+  public Adapter createXStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link tdt4250.xss.xSS.XSingleStatement <em>XSingle Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see tdt4250.xss.xSS.XSingleStatement
+   * @generated
+   */
+  public Adapter createXSingleStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link tdt4250.xss.xSS.SingleRefStatement <em>Single Ref Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see tdt4250.xss.xSS.SingleRefStatement
+   * @generated
+   */
+  public Adapter createSingleRefStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link tdt4250.xss.xSS.SingleStatement <em>Single Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see tdt4250.xss.xSS.SingleStatement
+   * @generated
+   */
+  public Adapter createSingleStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link tdt4250.xss.xSS.XMultiStatement <em>XMulti Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see tdt4250.xss.xSS.XMultiStatement
+   * @generated
+   */
+  public Adapter createXMultiStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link tdt4250.xss.xSS.MultiRefStatement <em>Multi Ref Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see tdt4250.xss.xSS.MultiRefStatement
+   * @generated
+   */
+  public Adapter createMultiRefStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link tdt4250.xss.xSS.MultiStatement <em>Multi Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see tdt4250.xss.xSS.MultiStatement
+   * @generated
+   */
+  public Adapter createMultiStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link tdt4250.xss.xSS.State <em>State</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see tdt4250.xss.xSS.State
+   * @generated
+   */
+  public Adapter createStateAdapter()
   {
     return null;
   }

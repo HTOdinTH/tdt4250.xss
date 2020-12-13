@@ -8,13 +8,54 @@
       fileExtensions="xss" ecorePackage="XSS.ecore#/">
     <genClasses ecoreClass="XSS.ecore#//stylesheet">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//stylesheet/customSelectors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//stylesheet/customProperties"/>
     </genClasses>
+    <genClasses ecoreClass="XSS.ecore#//XSelector"/>
     <genClasses ecoreClass="XSS.ecore#//GroupSelector">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XSS.ecore#//GroupSelector/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//GroupSelector/subSelectors"/>
     </genClasses>
     <genClasses ecoreClass="XSS.ecore#//Selector">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XSS.ecore#//Selector/names"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XSS.ecore#//Selector/name"/>
+    </genClasses>
+    <genClasses ecoreClass="XSS.ecore#//XProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XSS.ecore#//XProperty/name"/>
+    </genClasses>
+    <genClasses ecoreClass="XSS.ecore#//CustomProperty">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//CustomProperty/subRule"/>
+    </genClasses>
+    <genClasses ecoreClass="XSS.ecore#//SubRule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XSS.ecore#//SubRule/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//SubRule/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="XSS.ecore#//Expression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XSS.ecore#//Expression/name"/>
+    </genClasses>
+    <genClasses ecoreClass="XSS.ecore#//GroupProperty">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//GroupProperty/statements"/>
+    </genClasses>
+    <genClasses ecoreClass="XSS.ecore#//XStatement"/>
+    <genClasses ecoreClass="XSS.ecore#//XSingleStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XSS.ecore#//XSingleStatement/value"/>
+    </genClasses>
+    <genClasses ecoreClass="XSS.ecore#//SingleRefStatement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XSS.ecore#//SingleRefStatement/property"/>
+    </genClasses>
+    <genClasses ecoreClass="XSS.ecore#//SingleStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XSS.ecore#//SingleStatement/property"/>
+    </genClasses>
+    <genClasses ecoreClass="XSS.ecore#//XMultiStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//XMultiStatement/states"/>
+    </genClasses>
+    <genClasses ecoreClass="XSS.ecore#//MultiRefStatement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XSS.ecore#//MultiRefStatement/property"/>
+    </genClasses>
+    <genClasses ecoreClass="XSS.ecore#//MultiStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XSS.ecore#//MultiStatement/property"/>
+    </genClasses>
+    <genClasses ecoreClass="XSS.ecore#//State">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//State/modifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XSS.ecore#//State/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

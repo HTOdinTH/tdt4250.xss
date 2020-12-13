@@ -31,15 +31,55 @@ public class XSSParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, XSSGrammarAccess grammarAccess) {
-			builder.put(grammarAccess.getSelectorAccess().getNamesAlternatives_0(), "rule__Selector__NamesAlternatives_0");
+			builder.put(grammarAccess.getSTRING_OR_NAMEAccess().getAlternatives(), "rule__STRING_OR_NAME__Alternatives");
+			builder.put(grammarAccess.getSTRING_OR_SELAccess().getAlternatives(), "rule__STRING_OR_SEL__Alternatives");
+			builder.put(grammarAccess.getSTRING_OR_VALAccess().getAlternatives(), "rule__STRING_OR_VAL__Alternatives");
+			builder.put(grammarAccess.getXPropertyAccess().getAlternatives(), "rule__XProperty__Alternatives");
+			builder.put(grammarAccess.getXSingleStatementAccess().getAlternatives(), "rule__XSingleStatement__Alternatives");
+			builder.put(grammarAccess.getXMultiStatementAccess().getAlternatives(), "rule__XMultiStatement__Alternatives");
 			builder.put(grammarAccess.getStylesheetAccess().getGroup(), "rule__Stylesheet__Group__0");
+			builder.put(grammarAccess.getStylesheetAccess().getGroup_0(), "rule__Stylesheet__Group_0__0");
+			builder.put(grammarAccess.getStylesheetAccess().getGroup_1(), "rule__Stylesheet__Group_1__0");
 			builder.put(grammarAccess.getGroupSelectorAccess().getGroup(), "rule__GroupSelector__Group__0");
-			builder.put(grammarAccess.getGroupSelectorAccess().getGroup_4(), "rule__GroupSelector__Group_4__0");
-			builder.put(grammarAccess.getStylesheetAccess().getCustomSelectorsAssignment_1(), "rule__Stylesheet__CustomSelectorsAssignment_1");
-			builder.put(grammarAccess.getGroupSelectorAccess().getNameAssignment_1(), "rule__GroupSelector__NameAssignment_1");
-			builder.put(grammarAccess.getGroupSelectorAccess().getSubSelectorsAssignment_3(), "rule__GroupSelector__SubSelectorsAssignment_3");
-			builder.put(grammarAccess.getGroupSelectorAccess().getSubSelectorsAssignment_4_1(), "rule__GroupSelector__SubSelectorsAssignment_4_1");
-			builder.put(grammarAccess.getSelectorAccess().getNamesAssignment(), "rule__Selector__NamesAssignment");
+			builder.put(grammarAccess.getGroupSelectorAccess().getGroup_3(), "rule__GroupSelector__Group_3__0");
+			builder.put(grammarAccess.getXPropertyAccess().getGroup_0(), "rule__XProperty__Group_0__0");
+			builder.put(grammarAccess.getCustomPropertyAccess().getGroup(), "rule__CustomProperty__Group__0");
+			builder.put(grammarAccess.getCustomPropertyAccess().getGroup_2(), "rule__CustomProperty__Group_2__0");
+			builder.put(grammarAccess.getSubRuleAccess().getGroup(), "rule__SubRule__Group__0");
+			builder.put(grammarAccess.getGroupPropertyAccess().getGroup(), "rule__GroupProperty__Group__0");
+			builder.put(grammarAccess.getGroupPropertyAccess().getGroup_2(), "rule__GroupProperty__Group_2__0");
+			builder.put(grammarAccess.getXSingleStatementAccess().getGroup_0(), "rule__XSingleStatement__Group_0__0");
+			builder.put(grammarAccess.getSingleRefStatementAccess().getGroup(), "rule__SingleRefStatement__Group__0");
+			builder.put(grammarAccess.getSingleStatementAccess().getGroup(), "rule__SingleStatement__Group__0");
+			builder.put(grammarAccess.getXMultiStatementAccess().getGroup_0(), "rule__XMultiStatement__Group_0__0");
+			builder.put(grammarAccess.getMultiRefStatementAccess().getGroup(), "rule__MultiRefStatement__Group__0");
+			builder.put(grammarAccess.getMultiRefStatementAccess().getGroup_2(), "rule__MultiRefStatement__Group_2__0");
+			builder.put(grammarAccess.getMultiStatementAccess().getGroup(), "rule__MultiStatement__Group__0");
+			builder.put(grammarAccess.getMultiStatementAccess().getGroup_2(), "rule__MultiStatement__Group_2__0");
+			builder.put(grammarAccess.getStateAccess().getGroup(), "rule__State__Group__0");
+			builder.put(grammarAccess.getStylesheetAccess().getCustomSelectorsAssignment_0_1(), "rule__Stylesheet__CustomSelectorsAssignment_0_1");
+			builder.put(grammarAccess.getStylesheetAccess().getCustomPropertiesAssignment_1_1(), "rule__Stylesheet__CustomPropertiesAssignment_1_1");
+			builder.put(grammarAccess.getGroupSelectorAccess().getNameAssignment_0(), "rule__GroupSelector__NameAssignment_0");
+			builder.put(grammarAccess.getGroupSelectorAccess().getSubSelectorsAssignment_2(), "rule__GroupSelector__SubSelectorsAssignment_2");
+			builder.put(grammarAccess.getGroupSelectorAccess().getSubSelectorsAssignment_3_1(), "rule__GroupSelector__SubSelectorsAssignment_3_1");
+			builder.put(grammarAccess.getSelectorAccess().getNameAssignment(), "rule__Selector__NameAssignment");
+			builder.put(grammarAccess.getCustomPropertyAccess().getNameAssignment_0(), "rule__CustomProperty__NameAssignment_0");
+			builder.put(grammarAccess.getCustomPropertyAccess().getSubRuleAssignment_2_0(), "rule__CustomProperty__SubRuleAssignment_2_0");
+			builder.put(grammarAccess.getSubRuleAccess().getPropertyAssignment_0(), "rule__SubRule__PropertyAssignment_0");
+			builder.put(grammarAccess.getSubRuleAccess().getExpressionAssignment_2(), "rule__SubRule__ExpressionAssignment_2");
+			builder.put(grammarAccess.getExpressionAccess().getNameAssignment(), "rule__Expression__NameAssignment");
+			builder.put(grammarAccess.getGroupPropertyAccess().getNameAssignment_0(), "rule__GroupProperty__NameAssignment_0");
+			builder.put(grammarAccess.getGroupPropertyAccess().getStatementsAssignment_2_0(), "rule__GroupProperty__StatementsAssignment_2_0");
+			builder.put(grammarAccess.getSingleRefStatementAccess().getPropertyAssignment_0(), "rule__SingleRefStatement__PropertyAssignment_0");
+			builder.put(grammarAccess.getSingleRefStatementAccess().getValueAssignment_2(), "rule__SingleRefStatement__ValueAssignment_2");
+			builder.put(grammarAccess.getSingleStatementAccess().getPropertyAssignment_0(), "rule__SingleStatement__PropertyAssignment_0");
+			builder.put(grammarAccess.getSingleStatementAccess().getValueAssignment_2(), "rule__SingleStatement__ValueAssignment_2");
+			builder.put(grammarAccess.getMultiRefStatementAccess().getPropertyAssignment_0(), "rule__MultiRefStatement__PropertyAssignment_0");
+			builder.put(grammarAccess.getMultiRefStatementAccess().getStatesAssignment_2_0(), "rule__MultiRefStatement__StatesAssignment_2_0");
+			builder.put(grammarAccess.getMultiStatementAccess().getPropertyAssignment_0(), "rule__MultiStatement__PropertyAssignment_0");
+			builder.put(grammarAccess.getMultiStatementAccess().getStatesAssignment_2_0(), "rule__MultiStatement__StatesAssignment_2_0");
+			builder.put(grammarAccess.getStateAccess().getModifierAssignment_0(), "rule__State__ModifierAssignment_0");
+			builder.put(grammarAccess.getStateAccess().getValueAssignment_2(), "rule__State__ValueAssignment_2");
 		}
 	}
 	

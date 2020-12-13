@@ -3,8 +3,6 @@
  */
 package tdt4250.xss.xSS;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link tdt4250.xss.xSS.Selector#getNames <em>Names</em>}</li>
+ *   <li>{@link tdt4250.xss.xSS.Selector#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see tdt4250.xss.xSS.XSSPackage#getSelector()
@@ -26,15 +24,25 @@ import org.eclipse.emf.ecore.EObject;
 public interface Selector extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Names</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Names</em>' attribute list.
-   * @see tdt4250.xss.xSS.XSSPackage#getSelector_Names()
-   * @model unique="false"
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see tdt4250.xss.xSS.XSSPackage#getSelector_Name()
+   * @model
    * @generated
    */
-  EList<String> getNames();
+  String getName();
+
+  /**
+   * Sets the value of the '{@link tdt4250.xss.xSS.Selector#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
 
 } // Selector

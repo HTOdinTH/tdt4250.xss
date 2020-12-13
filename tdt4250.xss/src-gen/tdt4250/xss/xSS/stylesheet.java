@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link tdt4250.xss.xSS.stylesheet#getCustomSelectors <em>Custom Selectors</em>}</li>
+ *   <li>{@link tdt4250.xss.xSS.stylesheet#getCustomProperties <em>Custom Properties</em>}</li>
  * </ul>
  *
  * @see tdt4250.xss.xSS.XSSPackage#getstylesheet()
@@ -27,7 +28,7 @@ public interface stylesheet extends EObject
 {
   /**
    * Returns the value of the '<em><b>Custom Selectors</b></em>' containment reference list.
-   * The list contents are of type {@link tdt4250.xss.xSS.GroupSelector}.
+   * The list contents are of type {@link tdt4250.xss.xSS.XSelector}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Custom Selectors</em>' containment reference list.
@@ -35,6 +36,18 @@ public interface stylesheet extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<GroupSelector> getCustomSelectors();
+  EList<XSelector> getCustomSelectors();
+
+  /**
+   * Returns the value of the '<em><b>Custom Properties</b></em>' containment reference list.
+   * The list contents are of type {@link tdt4250.xss.xSS.XProperty}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Custom Properties</em>' containment reference list.
+   * @see tdt4250.xss.xSS.XSSPackage#getstylesheet_CustomProperties()
+   * @model containment="true"
+   * @generated
+   */
+  EList<XProperty> getCustomProperties();
 
 } // stylesheet
