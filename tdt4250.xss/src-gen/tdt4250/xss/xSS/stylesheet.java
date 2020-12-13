@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link tdt4250.xss.xSS.stylesheet#getCustomSelectors <em>Custom Selectors</em>}</li>
  *   <li>{@link tdt4250.xss.xSS.stylesheet#getCustomProperties <em>Custom Properties</em>}</li>
+ *   <li>{@link tdt4250.xss.xSS.stylesheet#getRules <em>Rules</em>}</li>
  * </ul>
  *
  * @see tdt4250.xss.xSS.XSSPackage#getstylesheet()
@@ -49,5 +50,17 @@ public interface stylesheet extends EObject
    * @generated
    */
   EList<XProperty> getCustomProperties();
+
+  /**
+   * Returns the value of the '<em><b>Rules</b></em>' containment reference list.
+   * The list contents are of type {@link tdt4250.xss.xSS.Rule}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Rules</em>' containment reference list.
+   * @see tdt4250.xss.xSS.XSSPackage#getstylesheet_Rules()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Rule> getRules();
 
 } // stylesheet

@@ -9,6 +9,7 @@
     <genClasses ecoreClass="XSS.ecore#//stylesheet">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//stylesheet/customSelectors"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//stylesheet/customProperties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//stylesheet/rules"/>
     </genClasses>
     <genClasses ecoreClass="XSS.ecore#//XSelector"/>
     <genClasses ecoreClass="XSS.ecore#//GroupSelector">
@@ -56,6 +57,12 @@
     <genClasses ecoreClass="XSS.ecore#//State">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//State/modifier"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XSS.ecore#//State/value"/>
+    </genClasses>
+    <genClasses ecoreClass="XSS.ecore#//Rule">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//Rule/selectors"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XSS.ecore#//Rule/groupSelectors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//Rule/xStatements"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference XSS.ecore#//Rule/groupStatements"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

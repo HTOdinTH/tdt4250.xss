@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import tdt4250.xss.xSS.Rule;
 import tdt4250.xss.xSS.XProperty;
 import tdt4250.xss.xSS.XSSPackage;
 import tdt4250.xss.xSS.XSelector;
@@ -32,6 +33,7 @@ import tdt4250.xss.xSS.stylesheet;
  * <ul>
  *   <li>{@link tdt4250.xss.xSS.impl.stylesheetImpl#getCustomSelectors <em>Custom Selectors</em>}</li>
  *   <li>{@link tdt4250.xss.xSS.impl.stylesheetImpl#getCustomProperties <em>Custom Properties</em>}</li>
+ *   <li>{@link tdt4250.xss.xSS.impl.stylesheetImpl#getRules <em>Rules</em>}</li>
  * </ul>
  *
  * @generated
@@ -57,6 +59,16 @@ public class stylesheetImpl extends MinimalEObjectImpl.Container implements styl
    * @ordered
    */
   protected EList<XProperty> customProperties;
+
+  /**
+   * The cached value of the '{@link #getRules() <em>Rules</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRules()
+   * @generated
+   * @ordered
+   */
+  protected EList<Rule> rules;
 
   /**
    * <!-- begin-user-doc -->
@@ -115,6 +127,21 @@ public class stylesheetImpl extends MinimalEObjectImpl.Container implements styl
    * @generated
    */
   @Override
+  public EList<Rule> getRules()
+  {
+    if (rules == null)
+    {
+      rules = new EObjectContainmentEList<Rule>(Rule.class, this, XSSPackage.STYLESHEET__RULES);
+    }
+    return rules;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -123,6 +150,8 @@ public class stylesheetImpl extends MinimalEObjectImpl.Container implements styl
         return ((InternalEList<?>)getCustomSelectors()).basicRemove(otherEnd, msgs);
       case XSSPackage.STYLESHEET__CUSTOM_PROPERTIES:
         return ((InternalEList<?>)getCustomProperties()).basicRemove(otherEnd, msgs);
+      case XSSPackage.STYLESHEET__RULES:
+        return ((InternalEList<?>)getRules()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -141,6 +170,8 @@ public class stylesheetImpl extends MinimalEObjectImpl.Container implements styl
         return getCustomSelectors();
       case XSSPackage.STYLESHEET__CUSTOM_PROPERTIES:
         return getCustomProperties();
+      case XSSPackage.STYLESHEET__RULES:
+        return getRules();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -164,6 +195,10 @@ public class stylesheetImpl extends MinimalEObjectImpl.Container implements styl
         getCustomProperties().clear();
         getCustomProperties().addAll((Collection<? extends XProperty>)newValue);
         return;
+      case XSSPackage.STYLESHEET__RULES:
+        getRules().clear();
+        getRules().addAll((Collection<? extends Rule>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -184,6 +219,9 @@ public class stylesheetImpl extends MinimalEObjectImpl.Container implements styl
       case XSSPackage.STYLESHEET__CUSTOM_PROPERTIES:
         getCustomProperties().clear();
         return;
+      case XSSPackage.STYLESHEET__RULES:
+        getRules().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -202,6 +240,8 @@ public class stylesheetImpl extends MinimalEObjectImpl.Container implements styl
         return customSelectors != null && !customSelectors.isEmpty();
       case XSSPackage.STYLESHEET__CUSTOM_PROPERTIES:
         return customProperties != null && !customProperties.isEmpty();
+      case XSSPackage.STYLESHEET__RULES:
+        return rules != null && !rules.isEmpty();
     }
     return super.eIsSet(featureID);
   }

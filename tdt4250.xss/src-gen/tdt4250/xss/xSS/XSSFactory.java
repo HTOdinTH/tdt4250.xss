@@ -177,6 +177,15 @@ public interface XSSFactory extends EFactory
   State createState();
 
   /**
+   * Returns a new object of class '<em>Rule</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Rule</em>'.
+   * @generated
+   */
+  Rule createRule();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

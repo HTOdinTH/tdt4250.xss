@@ -161,6 +161,11 @@ public class XSSAdapterFactory extends AdapterFactoryImpl
         return createStateAdapter();
       }
       @Override
+      public Adapter caseRule(Rule object)
+      {
+        return createRuleAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -433,6 +438,21 @@ public class XSSAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createStateAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link tdt4250.xss.xSS.Rule <em>Rule</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see tdt4250.xss.xSS.Rule
+   * @generated
+   */
+  public Adapter createRuleAdapter()
   {
     return null;
   }

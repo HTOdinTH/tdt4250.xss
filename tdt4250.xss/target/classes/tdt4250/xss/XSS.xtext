@@ -4,36 +4,18 @@ generate xSS "tdt4250.xss.model" // this is the model
 
 Stylesheet returns stylesheet:
 	('XSelectors:' 
-		(customSelectors += XSelector)+) // ill make them ordered, then
+		(customSelectors += XSelector)+)? 
 	('XProperties:'
-		(customProperties += XProperty)+)? // ll make them mandatory, then
-	/*
+		(customProperties += XProperty)+)?
 	'Rules:'
 		(rules += Rule)+
-	*/
 ;
 
 terminal NAME: (ID | '-')+;
 //PREFIX: ('::'|':'|'.'|'#');
 //COMBINER: ('>'|'+'|'~');
 terminal SEL: ('::'|':'|'.'|'#')? NAME ((('>'|'+'|'~') | ('::'|':'|'.'|'#') | (('>'|'+'|'~') ('::'|':'|'.'|'#'))) NAME)*;
-terminal VAL: ('a'..'z'|'A'..'Z'|'0'..'9'|'-'|'%'|'{'|'}')+;
-//terminal VAL: '=' -> ';';
-
-/*
-terminal fragment WORD: ('a'..'z'|'A'..'Z'|'-')+;
-terminal fragment PREFIX: '::'|':'|'.'|'#';
-terminal fragment COMBINER: ' '|'>'|'+'|'~';
-terminal LB: '\r'?'\n';
-terminal NAME: WORD;
-terminal SEL: PREFIX? WORD ((COMBINER | PREFIX | (COMBINER PREFIX)) WORD)*;
-terminal VAL: ('a'..'z'|'A'..'Z'|'0'..'9'|'-'|'%'|'{'|'}')+;
-*/
-
-
-STRING_OR_NAME:
-	(STRING | NAME)
-;
+terminal VAL: ('a'..'z'|'A'..'Z'|'-'|'0'..'9'|'.'|'%'|'{'|'}'|'*'|'+')+;
 
 STRING_OR_SEL:
 	(STRING | SEL | NAME)
@@ -49,6 +31,7 @@ XSelector:
 ;
 
 GroupSelector:
+	'@'?
 	name = NAME
 	'('
 		(subSelectors += Selector)
@@ -61,7 +44,7 @@ Selector:
 ;
 
 XProperty:
-	(('$' CustomProperty) | GroupProperty)
+	(('$' CustomProperty) | ('@'? GroupProperty))
 ;
 
 CustomProperty:
@@ -89,7 +72,7 @@ GroupProperty:
 ;
 
 XStatement:
-	XSingleStatement// | XMultiStatement
+	XSingleStatement | XMultiStatement
 ;
 
 XSingleStatement:
@@ -127,7 +110,7 @@ MultiStatement:
 ;
 
 State:
-	modifier = Selector // TODO: might need separate class
+	modifier = Selector // ':default' = ''
 	'='
 	value = VALUE
 ;
@@ -140,11 +123,10 @@ VALUE:
 	STRING_OR_VAL
 ;
 
-/*
+
 Rule:
-	(selectors += Selector) | (groupSelectors += [GroupSelector]) // at least one of either
-	(',' (selectors += Selector)? & (groupSelectors += [GroupSelector])?)* // then, any number of either, separated by comma
+	((selectors += Selector) | ('@' groupSelectors += [GroupSelector | NAME])) // at least one of either
+	(',' ((selectors += Selector) | ('@' groupSelectors += [GroupSelector | NAME])))* // then, any number of either, separated by comma
 	':'
-	(((xStatements += XStatement) | (groupStatements += [GroupProperty])) ';')+ // either kind of statement, then semicolon, at least one time
+	(((xStatements += XStatement) | ('@' groupStatements += [GroupProperty | NAME])) ';')+ // either kind of statement, then semicolon, at least one time
 ;
-*/

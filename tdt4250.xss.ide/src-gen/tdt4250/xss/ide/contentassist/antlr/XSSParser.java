@@ -35,14 +35,19 @@ public class XSSParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSTRING_OR_SELAccess().getAlternatives(), "rule__STRING_OR_SEL__Alternatives");
 			builder.put(grammarAccess.getSTRING_OR_VALAccess().getAlternatives(), "rule__STRING_OR_VAL__Alternatives");
 			builder.put(grammarAccess.getXPropertyAccess().getAlternatives(), "rule__XProperty__Alternatives");
+			builder.put(grammarAccess.getXStatementAccess().getAlternatives(), "rule__XStatement__Alternatives");
 			builder.put(grammarAccess.getXSingleStatementAccess().getAlternatives(), "rule__XSingleStatement__Alternatives");
 			builder.put(grammarAccess.getXMultiStatementAccess().getAlternatives(), "rule__XMultiStatement__Alternatives");
+			builder.put(grammarAccess.getRuleAccess().getAlternatives_0(), "rule__Rule__Alternatives_0");
+			builder.put(grammarAccess.getRuleAccess().getAlternatives_1_1(), "rule__Rule__Alternatives_1_1");
+			builder.put(grammarAccess.getRuleAccess().getAlternatives_3_0(), "rule__Rule__Alternatives_3_0");
 			builder.put(grammarAccess.getStylesheetAccess().getGroup(), "rule__Stylesheet__Group__0");
 			builder.put(grammarAccess.getStylesheetAccess().getGroup_0(), "rule__Stylesheet__Group_0__0");
 			builder.put(grammarAccess.getStylesheetAccess().getGroup_1(), "rule__Stylesheet__Group_1__0");
 			builder.put(grammarAccess.getGroupSelectorAccess().getGroup(), "rule__GroupSelector__Group__0");
-			builder.put(grammarAccess.getGroupSelectorAccess().getGroup_3(), "rule__GroupSelector__Group_3__0");
+			builder.put(grammarAccess.getGroupSelectorAccess().getGroup_4(), "rule__GroupSelector__Group_4__0");
 			builder.put(grammarAccess.getXPropertyAccess().getGroup_0(), "rule__XProperty__Group_0__0");
+			builder.put(grammarAccess.getXPropertyAccess().getGroup_1(), "rule__XProperty__Group_1__0");
 			builder.put(grammarAccess.getCustomPropertyAccess().getGroup(), "rule__CustomProperty__Group__0");
 			builder.put(grammarAccess.getCustomPropertyAccess().getGroup_2(), "rule__CustomProperty__Group_2__0");
 			builder.put(grammarAccess.getSubRuleAccess().getGroup(), "rule__SubRule__Group__0");
@@ -57,11 +62,18 @@ public class XSSParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMultiStatementAccess().getGroup(), "rule__MultiStatement__Group__0");
 			builder.put(grammarAccess.getMultiStatementAccess().getGroup_2(), "rule__MultiStatement__Group_2__0");
 			builder.put(grammarAccess.getStateAccess().getGroup(), "rule__State__Group__0");
+			builder.put(grammarAccess.getRuleAccess().getGroup(), "rule__Rule__Group__0");
+			builder.put(grammarAccess.getRuleAccess().getGroup_0_1(), "rule__Rule__Group_0_1__0");
+			builder.put(grammarAccess.getRuleAccess().getGroup_1(), "rule__Rule__Group_1__0");
+			builder.put(grammarAccess.getRuleAccess().getGroup_1_1_1(), "rule__Rule__Group_1_1_1__0");
+			builder.put(grammarAccess.getRuleAccess().getGroup_3(), "rule__Rule__Group_3__0");
+			builder.put(grammarAccess.getRuleAccess().getGroup_3_0_1(), "rule__Rule__Group_3_0_1__0");
 			builder.put(grammarAccess.getStylesheetAccess().getCustomSelectorsAssignment_0_1(), "rule__Stylesheet__CustomSelectorsAssignment_0_1");
 			builder.put(grammarAccess.getStylesheetAccess().getCustomPropertiesAssignment_1_1(), "rule__Stylesheet__CustomPropertiesAssignment_1_1");
-			builder.put(grammarAccess.getGroupSelectorAccess().getNameAssignment_0(), "rule__GroupSelector__NameAssignment_0");
-			builder.put(grammarAccess.getGroupSelectorAccess().getSubSelectorsAssignment_2(), "rule__GroupSelector__SubSelectorsAssignment_2");
-			builder.put(grammarAccess.getGroupSelectorAccess().getSubSelectorsAssignment_3_1(), "rule__GroupSelector__SubSelectorsAssignment_3_1");
+			builder.put(grammarAccess.getStylesheetAccess().getRulesAssignment_3(), "rule__Stylesheet__RulesAssignment_3");
+			builder.put(grammarAccess.getGroupSelectorAccess().getNameAssignment_1(), "rule__GroupSelector__NameAssignment_1");
+			builder.put(grammarAccess.getGroupSelectorAccess().getSubSelectorsAssignment_3(), "rule__GroupSelector__SubSelectorsAssignment_3");
+			builder.put(grammarAccess.getGroupSelectorAccess().getSubSelectorsAssignment_4_1(), "rule__GroupSelector__SubSelectorsAssignment_4_1");
 			builder.put(grammarAccess.getSelectorAccess().getNameAssignment(), "rule__Selector__NameAssignment");
 			builder.put(grammarAccess.getCustomPropertyAccess().getNameAssignment_0(), "rule__CustomProperty__NameAssignment_0");
 			builder.put(grammarAccess.getCustomPropertyAccess().getSubRuleAssignment_2_0(), "rule__CustomProperty__SubRuleAssignment_2_0");
@@ -80,6 +92,12 @@ public class XSSParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMultiStatementAccess().getStatesAssignment_2_0(), "rule__MultiStatement__StatesAssignment_2_0");
 			builder.put(grammarAccess.getStateAccess().getModifierAssignment_0(), "rule__State__ModifierAssignment_0");
 			builder.put(grammarAccess.getStateAccess().getValueAssignment_2(), "rule__State__ValueAssignment_2");
+			builder.put(grammarAccess.getRuleAccess().getSelectorsAssignment_0_0(), "rule__Rule__SelectorsAssignment_0_0");
+			builder.put(grammarAccess.getRuleAccess().getGroupSelectorsAssignment_0_1_1(), "rule__Rule__GroupSelectorsAssignment_0_1_1");
+			builder.put(grammarAccess.getRuleAccess().getSelectorsAssignment_1_1_0(), "rule__Rule__SelectorsAssignment_1_1_0");
+			builder.put(grammarAccess.getRuleAccess().getGroupSelectorsAssignment_1_1_1_1(), "rule__Rule__GroupSelectorsAssignment_1_1_1_1");
+			builder.put(grammarAccess.getRuleAccess().getXStatementsAssignment_3_0_0(), "rule__Rule__XStatementsAssignment_3_0_0");
+			builder.put(grammarAccess.getRuleAccess().getGroupStatementsAssignment_3_0_1_1(), "rule__Rule__GroupStatementsAssignment_3_0_1_1");
 		}
 	}
 	

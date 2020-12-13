@@ -86,13 +86,22 @@ public interface XSSPackage extends EPackage
   int STYLESHEET__CUSTOM_PROPERTIES = 1;
 
   /**
+   * The feature id for the '<em><b>Rules</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STYLESHEET__RULES = 2;
+
+  /**
    * The number of structural features of the '<em>stylesheet</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STYLESHEET_FEATURE_COUNT = 2;
+  int STYLESHEET_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link tdt4250.xss.xSS.impl.XSelectorImpl <em>XSelector</em>}' class.
@@ -483,7 +492,7 @@ public interface XSSPackage extends EPackage
    * @generated
    * @ordered
    */
-  int XMULTI_STATEMENT__STATES = 0;
+  int XMULTI_STATEMENT__STATES = XSTATEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>XMulti Statement</em>' class.
@@ -492,7 +501,7 @@ public interface XSSPackage extends EPackage
    * @generated
    * @ordered
    */
-  int XMULTI_STATEMENT_FEATURE_COUNT = 1;
+  int XMULTI_STATEMENT_FEATURE_COUNT = XSTATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link tdt4250.xss.xSS.impl.MultiRefStatementImpl <em>Multi Ref Statement</em>}' class.
@@ -605,6 +614,61 @@ public interface XSSPackage extends EPackage
    */
   int STATE_FEATURE_COUNT = 2;
 
+  /**
+   * The meta object id for the '{@link tdt4250.xss.xSS.impl.RuleImpl <em>Rule</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see tdt4250.xss.xSS.impl.RuleImpl
+   * @see tdt4250.xss.xSS.impl.XSSPackageImpl#getRule()
+   * @generated
+   */
+  int RULE = 17;
+
+  /**
+   * The feature id for the '<em><b>Selectors</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULE__SELECTORS = 0;
+
+  /**
+   * The feature id for the '<em><b>Group Selectors</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULE__GROUP_SELECTORS = 1;
+
+  /**
+   * The feature id for the '<em><b>XStatements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULE__XSTATEMENTS = 2;
+
+  /**
+   * The feature id for the '<em><b>Group Statements</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULE__GROUP_STATEMENTS = 3;
+
+  /**
+   * The number of structural features of the '<em>Rule</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RULE_FEATURE_COUNT = 4;
+
 
   /**
    * Returns the meta object for class '{@link tdt4250.xss.xSS.stylesheet <em>stylesheet</em>}'.
@@ -637,6 +701,17 @@ public interface XSSPackage extends EPackage
    * @generated
    */
   EReference getstylesheet_CustomProperties();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link tdt4250.xss.xSS.stylesheet#getRules <em>Rules</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Rules</em>'.
+   * @see tdt4250.xss.xSS.stylesheet#getRules()
+   * @see #getstylesheet()
+   * @generated
+   */
+  EReference getstylesheet_Rules();
 
   /**
    * Returns the meta object for class '{@link tdt4250.xss.xSS.XSelector <em>XSelector</em>}'.
@@ -986,6 +1061,60 @@ public interface XSSPackage extends EPackage
   EAttribute getState_Value();
 
   /**
+   * Returns the meta object for class '{@link tdt4250.xss.xSS.Rule <em>Rule</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Rule</em>'.
+   * @see tdt4250.xss.xSS.Rule
+   * @generated
+   */
+  EClass getRule();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link tdt4250.xss.xSS.Rule#getSelectors <em>Selectors</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Selectors</em>'.
+   * @see tdt4250.xss.xSS.Rule#getSelectors()
+   * @see #getRule()
+   * @generated
+   */
+  EReference getRule_Selectors();
+
+  /**
+   * Returns the meta object for the reference list '{@link tdt4250.xss.xSS.Rule#getGroupSelectors <em>Group Selectors</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Group Selectors</em>'.
+   * @see tdt4250.xss.xSS.Rule#getGroupSelectors()
+   * @see #getRule()
+   * @generated
+   */
+  EReference getRule_GroupSelectors();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link tdt4250.xss.xSS.Rule#getXStatements <em>XStatements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>XStatements</em>'.
+   * @see tdt4250.xss.xSS.Rule#getXStatements()
+   * @see #getRule()
+   * @generated
+   */
+  EReference getRule_XStatements();
+
+  /**
+   * Returns the meta object for the reference list '{@link tdt4250.xss.xSS.Rule#getGroupStatements <em>Group Statements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Group Statements</em>'.
+   * @see tdt4250.xss.xSS.Rule#getGroupStatements()
+   * @see #getRule()
+   * @generated
+   */
+  EReference getRule_GroupStatements();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1033,6 +1162,14 @@ public interface XSSPackage extends EPackage
      * @generated
      */
     EReference STYLESHEET__CUSTOM_PROPERTIES = eINSTANCE.getstylesheet_CustomProperties();
+
+    /**
+     * The meta object literal for the '<em><b>Rules</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference STYLESHEET__RULES = eINSTANCE.getstylesheet_Rules();
 
     /**
      * The meta object literal for the '{@link tdt4250.xss.xSS.impl.XSelectorImpl <em>XSelector</em>}' class.
@@ -1329,6 +1466,48 @@ public interface XSSPackage extends EPackage
      * @generated
      */
     EAttribute STATE__VALUE = eINSTANCE.getState_Value();
+
+    /**
+     * The meta object literal for the '{@link tdt4250.xss.xSS.impl.RuleImpl <em>Rule</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see tdt4250.xss.xSS.impl.RuleImpl
+     * @see tdt4250.xss.xSS.impl.XSSPackageImpl#getRule()
+     * @generated
+     */
+    EClass RULE = eINSTANCE.getRule();
+
+    /**
+     * The meta object literal for the '<em><b>Selectors</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RULE__SELECTORS = eINSTANCE.getRule_Selectors();
+
+    /**
+     * The meta object literal for the '<em><b>Group Selectors</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RULE__GROUP_SELECTORS = eINSTANCE.getRule_GroupSelectors();
+
+    /**
+     * The meta object literal for the '<em><b>XStatements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RULE__XSTATEMENTS = eINSTANCE.getRule_XStatements();
+
+    /**
+     * The meta object literal for the '<em><b>Group Statements</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference RULE__GROUP_STATEMENTS = eINSTANCE.getRule_GroupStatements();
 
   }
 

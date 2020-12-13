@@ -82,6 +82,7 @@ public class XSSFactoryImpl extends EFactoryImpl implements XSSFactory
       case XSSPackage.MULTI_REF_STATEMENT: return createMultiRefStatement();
       case XSSPackage.MULTI_STATEMENT: return createMultiStatement();
       case XSSPackage.STATE: return createState();
+      case XSSPackage.RULE: return createRule();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -289,6 +290,18 @@ public class XSSFactoryImpl extends EFactoryImpl implements XSSFactory
   {
     StateImpl state = new StateImpl();
     return state;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Rule createRule()
+  {
+    RuleImpl rule = new RuleImpl();
+    return rule;
   }
 
   /**

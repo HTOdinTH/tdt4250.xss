@@ -16,6 +16,7 @@ import tdt4250.xss.xSS.GroupProperty;
 import tdt4250.xss.xSS.GroupSelector;
 import tdt4250.xss.xSS.MultiRefStatement;
 import tdt4250.xss.xSS.MultiStatement;
+import tdt4250.xss.xSS.Rule;
 import tdt4250.xss.xSS.Selector;
 import tdt4250.xss.xSS.SingleRefStatement;
 import tdt4250.xss.xSS.SingleStatement;
@@ -158,6 +159,13 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
   private EClass stateEClass = null;
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass ruleEClass = null;
+
+  /**
    * Creates an instance of the model <b>Package</b>, registered with
    * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
    * package URI value.
@@ -251,6 +259,17 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
   public EReference getstylesheet_CustomProperties()
   {
     return (EReference)stylesheetEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getstylesheet_Rules()
+  {
+    return (EReference)stylesheetEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -622,6 +641,61 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
    * @generated
    */
   @Override
+  public EClass getRule()
+  {
+    return ruleEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRule_Selectors()
+  {
+    return (EReference)ruleEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRule_GroupSelectors()
+  {
+    return (EReference)ruleEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRule_XStatements()
+  {
+    return (EReference)ruleEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRule_GroupStatements()
+  {
+    return (EReference)ruleEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public XSSFactory getXSSFactory()
   {
     return (XSSFactory)getEFactoryInstance();
@@ -650,6 +724,7 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
     stylesheetEClass = createEClass(STYLESHEET);
     createEReference(stylesheetEClass, STYLESHEET__CUSTOM_SELECTORS);
     createEReference(stylesheetEClass, STYLESHEET__CUSTOM_PROPERTIES);
+    createEReference(stylesheetEClass, STYLESHEET__RULES);
 
     xSelectorEClass = createEClass(XSELECTOR);
 
@@ -699,6 +774,12 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
     stateEClass = createEClass(STATE);
     createEReference(stateEClass, STATE__MODIFIER);
     createEAttribute(stateEClass, STATE__VALUE);
+
+    ruleEClass = createEClass(RULE);
+    createEReference(ruleEClass, RULE__SELECTORS);
+    createEReference(ruleEClass, RULE__GROUP_SELECTORS);
+    createEReference(ruleEClass, RULE__XSTATEMENTS);
+    createEReference(ruleEClass, RULE__GROUP_STATEMENTS);
   }
 
   /**
@@ -736,6 +817,7 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
     xSingleStatementEClass.getESuperTypes().add(this.getXStatement());
     singleRefStatementEClass.getESuperTypes().add(this.getXSingleStatement());
     singleStatementEClass.getESuperTypes().add(this.getXSingleStatement());
+    xMultiStatementEClass.getESuperTypes().add(this.getXStatement());
     multiRefStatementEClass.getESuperTypes().add(this.getXMultiStatement());
     multiStatementEClass.getESuperTypes().add(this.getXMultiStatement());
 
@@ -743,6 +825,7 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
     initEClass(stylesheetEClass, stylesheet.class, "stylesheet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getstylesheet_CustomSelectors(), this.getXSelector(), null, "customSelectors", null, 0, -1, stylesheet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getstylesheet_CustomProperties(), this.getXProperty(), null, "customProperties", null, 0, -1, stylesheet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getstylesheet_Rules(), this.getRule(), null, "rules", null, 0, -1, stylesheet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(xSelectorEClass, XSelector.class, "XSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -792,6 +875,12 @@ public class XSSPackageImpl extends EPackageImpl implements XSSPackage
     initEClass(stateEClass, State.class, "State", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getState_Modifier(), this.getSelector(), null, "modifier", null, 0, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getState_Value(), ecorePackage.getEString(), "value", null, 0, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(ruleEClass, Rule.class, "Rule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getRule_Selectors(), this.getSelector(), null, "selectors", null, 0, -1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRule_GroupSelectors(), this.getGroupSelector(), null, "groupSelectors", null, 0, -1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRule_XStatements(), this.getXStatement(), null, "xStatements", null, 0, -1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRule_GroupStatements(), this.getGroupProperty(), null, "groupStatements", null, 0, -1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

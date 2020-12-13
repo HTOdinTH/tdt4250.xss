@@ -34,22 +34,24 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final Keyword cXPropertiesKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Assignment cCustomPropertiesAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cCustomPropertiesXPropertyParserRuleCall_1_1_0 = (RuleCall)cCustomPropertiesAssignment_1_1.eContents().get(0);
+		private final Keyword cRulesKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cRulesAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cRulesRuleParserRuleCall_3_0 = (RuleCall)cRulesAssignment_3.eContents().get(0);
 		
 		//// this is the model
 		//Stylesheet stylesheet:
 		//	('XSelectors:'
-		//	customSelectors+=XSelector+) ('XProperties:'
+		//	customSelectors+=XSelector+)? ('XProperties:'
 		//	customProperties+=XProperty+)? // ll make them mandatory, then
-		//	/*
 		//	'Rules:'
-		//		(rules += Rule)+
-		//	*/;
+		//	rules+=Rule+;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('XSelectors:' customSelectors+=XSelector+) ('XProperties:' customProperties+=XProperty+)?
+		//('XSelectors:' customSelectors+=XSelector+)? ('XProperties:' customProperties+=XProperty+)? // ll make them mandatory, then
+		//'Rules:' rules+=Rule+
 		public Group getGroup() { return cGroup; }
 		
-		//('XSelectors:' customSelectors+=XSelector+)
+		//('XSelectors:' customSelectors+=XSelector+)?
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//'XSelectors:'
@@ -72,6 +74,16 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		
 		//XProperty
 		public RuleCall getCustomPropertiesXPropertyParserRuleCall_1_1_0() { return cCustomPropertiesXPropertyParserRuleCall_1_1_0; }
+		
+		//// ll make them mandatory, then
+		//'Rules:'
+		public Keyword getRulesKeyword_2() { return cRulesKeyword_2; }
+		
+		//rules+=Rule+
+		public Assignment getRulesAssignment_3() { return cRulesAssignment_3; }
+		
+		//Rule
+		public RuleCall getRulesRuleParserRuleCall_3_0() { return cRulesRuleParserRuleCall_3_0; }
 	}
 	public class STRING_OR_NAMEElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.xss.XSS.STRING_OR_NAME");
@@ -161,56 +173,61 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	public class GroupSelectorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.xss.XSS.GroupSelector");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameNAMETerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cSubSelectorsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cSubSelectorsSelectorParserRuleCall_2_0 = (RuleCall)cSubSelectorsAssignment_2.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cSubSelectorsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cSubSelectorsSelectorParserRuleCall_3_1_0 = (RuleCall)cSubSelectorsAssignment_3_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cCommercialAtKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameNAMETerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cSubSelectorsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cSubSelectorsSelectorParserRuleCall_3_0 = (RuleCall)cSubSelectorsAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cSubSelectorsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cSubSelectorsSelectorParserRuleCall_4_1_0 = (RuleCall)cSubSelectorsAssignment_4_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//GroupSelector:
+		//	'@'?
 		//	name=NAME
 		//	'('
 		//	subSelectors+=Selector (',' subSelectors+=Selector)*
 		//	')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=NAME '(' subSelectors+=Selector (',' subSelectors+=Selector)* ')'
+		//'@'? name=NAME '(' subSelectors+=Selector (',' subSelectors+=Selector)* ')'
 		public Group getGroup() { return cGroup; }
 		
+		//'@'?
+		public Keyword getCommercialAtKeyword_0() { return cCommercialAtKeyword_0; }
+		
 		//name=NAME
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
 		//NAME
-		public RuleCall getNameNAMETerminalRuleCall_0_0() { return cNameNAMETerminalRuleCall_0_0; }
+		public RuleCall getNameNAMETerminalRuleCall_1_0() { return cNameNAMETerminalRuleCall_1_0; }
 		
 		//'('
-		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 		
 		//subSelectors+=Selector
-		public Assignment getSubSelectorsAssignment_2() { return cSubSelectorsAssignment_2; }
+		public Assignment getSubSelectorsAssignment_3() { return cSubSelectorsAssignment_3; }
 		
 		//Selector
-		public RuleCall getSubSelectorsSelectorParserRuleCall_2_0() { return cSubSelectorsSelectorParserRuleCall_2_0; }
+		public RuleCall getSubSelectorsSelectorParserRuleCall_3_0() { return cSubSelectorsSelectorParserRuleCall_3_0; }
 		
 		//(',' subSelectors+=Selector)*
-		public Group getGroup_3() { return cGroup_3; }
+		public Group getGroup_4() { return cGroup_4; }
 		
 		//','
-		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
+		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 		
 		//subSelectors+=Selector
-		public Assignment getSubSelectorsAssignment_3_1() { return cSubSelectorsAssignment_3_1; }
+		public Assignment getSubSelectorsAssignment_4_1() { return cSubSelectorsAssignment_4_1; }
 		
 		//Selector
-		public RuleCall getSubSelectorsSelectorParserRuleCall_3_1_0() { return cSubSelectorsSelectorParserRuleCall_3_1_0; }
+		public RuleCall getSubSelectorsSelectorParserRuleCall_4_1_0() { return cSubSelectorsSelectorParserRuleCall_4_1_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
 	}
 	public class SelectorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.xss.XSS.Selector");
@@ -233,13 +250,15 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Keyword cDollarSignKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
 		private final RuleCall cCustomPropertyParserRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
-		private final RuleCall cGroupPropertyParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Keyword cCommercialAtKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cGroupPropertyParserRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		
 		//XProperty:
-		//	'$' CustomProperty | GroupProperty;
+		//	'$' CustomProperty | '@'? GroupProperty;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'$' CustomProperty | GroupProperty
+		//'$' CustomProperty | '@'? GroupProperty
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//'$' CustomProperty
@@ -251,8 +270,14 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//CustomProperty
 		public RuleCall getCustomPropertyParserRuleCall_0_1() { return cCustomPropertyParserRuleCall_0_1; }
 		
+		//'@'? GroupProperty
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'@'?
+		public Keyword getCommercialAtKeyword_1_0() { return cCommercialAtKeyword_1_0; }
+		
 		//GroupProperty
-		public RuleCall getGroupPropertyParserRuleCall_1() { return cGroupPropertyParserRuleCall_1; }
+		public RuleCall getGroupPropertyParserRuleCall_1_1() { return cGroupPropertyParserRuleCall_1_1; }
 	}
 	public class CustomPropertyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.xss.XSS.CustomProperty");
@@ -394,15 +419,22 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	public class XStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.xss.XSS.XStatement");
-		private final RuleCall cXSingleStatementParserRuleCall = (RuleCall)rule.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cXSingleStatementParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cXMultiStatementParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//XStatement:
-		//	XSingleStatement // | XMultiStatement
-		//;
+		//	XSingleStatement | XMultiStatement;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//XSingleStatement | XMultiStatement
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
 		//XSingleStatement
-		public RuleCall getXSingleStatementParserRuleCall() { return cXSingleStatementParserRuleCall; }
+		public RuleCall getXSingleStatementParserRuleCall_0() { return cXSingleStatementParserRuleCall_0; }
+		
+		//XMultiStatement
+		public RuleCall getXMultiStatementParserRuleCall_1() { return cXMultiStatementParserRuleCall_1; }
 	}
 	public class XSingleStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.xss.XSS.XSingleStatement");
@@ -632,12 +664,12 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final RuleCall cValueVALUEParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
 		//State:
-		//	modifier=Selector // TODO: might need separate class
+		//	modifier=Selector // TODO: might need separate class // :default = ''
 		//	'='
 		//	value=VALUE;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//modifier=Selector // TODO: might need separate class
+		//modifier=Selector // TODO: might need separate class // :default = ''
 		//'=' value=VALUE
 		public Group getGroup() { return cGroup; }
 		
@@ -647,7 +679,7 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//Selector
 		public RuleCall getModifierSelectorParserRuleCall_0_0() { return cModifierSelectorParserRuleCall_0_0; }
 		
-		//// TODO: might need separate class
+		//// TODO: might need separate class // :default = ''
 		//'='
 		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
 		
@@ -679,6 +711,139 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//STRING_OR_VAL
 		public RuleCall getSTRING_OR_VALParserRuleCall() { return cSTRING_OR_VALParserRuleCall; }
 	}
+	public class RuleElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.xss.XSS.Rule");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Assignment cSelectorsAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
+		private final RuleCall cSelectorsSelectorParserRuleCall_0_0_0 = (RuleCall)cSelectorsAssignment_0_0.eContents().get(0);
+		private final Group cGroup_0_1 = (Group)cAlternatives_0.eContents().get(1);
+		private final Keyword cCommercialAtKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
+		private final Assignment cGroupSelectorsAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
+		private final CrossReference cGroupSelectorsGroupSelectorCrossReference_0_1_1_0 = (CrossReference)cGroupSelectorsAssignment_0_1_1.eContents().get(0);
+		private final RuleCall cGroupSelectorsGroupSelectorNAMETerminalRuleCall_0_1_1_0_1 = (RuleCall)cGroupSelectorsGroupSelectorCrossReference_0_1_1_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cCommaKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
+		private final Assignment cSelectorsAssignment_1_1_0 = (Assignment)cAlternatives_1_1.eContents().get(0);
+		private final RuleCall cSelectorsSelectorParserRuleCall_1_1_0_0 = (RuleCall)cSelectorsAssignment_1_1_0.eContents().get(0);
+		private final Group cGroup_1_1_1 = (Group)cAlternatives_1_1.eContents().get(1);
+		private final Keyword cCommercialAtKeyword_1_1_1_0 = (Keyword)cGroup_1_1_1.eContents().get(0);
+		private final Assignment cGroupSelectorsAssignment_1_1_1_1 = (Assignment)cGroup_1_1_1.eContents().get(1);
+		private final CrossReference cGroupSelectorsGroupSelectorCrossReference_1_1_1_1_0 = (CrossReference)cGroupSelectorsAssignment_1_1_1_1.eContents().get(0);
+		private final RuleCall cGroupSelectorsGroupSelectorNAMETerminalRuleCall_1_1_1_1_0_1 = (RuleCall)cGroupSelectorsGroupSelectorCrossReference_1_1_1_1_0.eContents().get(1);
+		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Alternatives cAlternatives_3_0 = (Alternatives)cGroup_3.eContents().get(0);
+		private final Assignment cXStatementsAssignment_3_0_0 = (Assignment)cAlternatives_3_0.eContents().get(0);
+		private final RuleCall cXStatementsXStatementParserRuleCall_3_0_0_0 = (RuleCall)cXStatementsAssignment_3_0_0.eContents().get(0);
+		private final Group cGroup_3_0_1 = (Group)cAlternatives_3_0.eContents().get(1);
+		private final Keyword cCommercialAtKeyword_3_0_1_0 = (Keyword)cGroup_3_0_1.eContents().get(0);
+		private final Assignment cGroupStatementsAssignment_3_0_1_1 = (Assignment)cGroup_3_0_1.eContents().get(1);
+		private final CrossReference cGroupStatementsGroupPropertyCrossReference_3_0_1_1_0 = (CrossReference)cGroupStatementsAssignment_3_0_1_1.eContents().get(0);
+		private final RuleCall cGroupStatementsGroupPropertyNAMETerminalRuleCall_3_0_1_1_0_1 = (RuleCall)cGroupStatementsGroupPropertyCrossReference_3_0_1_1_0.eContents().get(1);
+		private final Keyword cSemicolonKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
+		
+		//Rule:
+		//	(selectors+=Selector | '@' groupSelectors+=[GroupSelector|NAME]) (',' (selectors+=Selector | '@'
+		//	groupSelectors+=[GroupSelector|NAME]))* // then, any number of either, separated by comma
+		//	':' ((xStatements+=XStatement | '@' groupStatements+=[GroupProperty|NAME]) ';')+ // either kind of statement, then semicolon, at least one time
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//(selectors+=Selector | '@' groupSelectors+=[GroupSelector|NAME]) (',' (selectors+=Selector | '@'
+		//groupSelectors+=[GroupSelector|NAME]))* // then, any number of either, separated by comma
+		//':' ((xStatements+=XStatement | '@' groupStatements+=[GroupProperty|NAME]) ';')+
+		public Group getGroup() { return cGroup; }
+		
+		//(selectors+=Selector | '@' groupSelectors+=[GroupSelector|NAME])
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+		
+		//selectors+=Selector
+		public Assignment getSelectorsAssignment_0_0() { return cSelectorsAssignment_0_0; }
+		
+		//Selector
+		public RuleCall getSelectorsSelectorParserRuleCall_0_0_0() { return cSelectorsSelectorParserRuleCall_0_0_0; }
+		
+		//'@' groupSelectors+=[GroupSelector|NAME]
+		public Group getGroup_0_1() { return cGroup_0_1; }
+		
+		//'@'
+		public Keyword getCommercialAtKeyword_0_1_0() { return cCommercialAtKeyword_0_1_0; }
+		
+		//groupSelectors+=[GroupSelector|NAME]
+		public Assignment getGroupSelectorsAssignment_0_1_1() { return cGroupSelectorsAssignment_0_1_1; }
+		
+		//[GroupSelector|NAME]
+		public CrossReference getGroupSelectorsGroupSelectorCrossReference_0_1_1_0() { return cGroupSelectorsGroupSelectorCrossReference_0_1_1_0; }
+		
+		//NAME
+		public RuleCall getGroupSelectorsGroupSelectorNAMETerminalRuleCall_0_1_1_0_1() { return cGroupSelectorsGroupSelectorNAMETerminalRuleCall_0_1_1_0_1; }
+		
+		//(',' (selectors+=Selector | '@' groupSelectors+=[GroupSelector|NAME]))*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//','
+		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
+		
+		//(selectors+=Selector | '@' groupSelectors+=[GroupSelector|NAME])
+		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
+		
+		//selectors+=Selector
+		public Assignment getSelectorsAssignment_1_1_0() { return cSelectorsAssignment_1_1_0; }
+		
+		//Selector
+		public RuleCall getSelectorsSelectorParserRuleCall_1_1_0_0() { return cSelectorsSelectorParserRuleCall_1_1_0_0; }
+		
+		//'@' groupSelectors+=[GroupSelector|NAME]
+		public Group getGroup_1_1_1() { return cGroup_1_1_1; }
+		
+		//'@'
+		public Keyword getCommercialAtKeyword_1_1_1_0() { return cCommercialAtKeyword_1_1_1_0; }
+		
+		//groupSelectors+=[GroupSelector|NAME]
+		public Assignment getGroupSelectorsAssignment_1_1_1_1() { return cGroupSelectorsAssignment_1_1_1_1; }
+		
+		//[GroupSelector|NAME]
+		public CrossReference getGroupSelectorsGroupSelectorCrossReference_1_1_1_1_0() { return cGroupSelectorsGroupSelectorCrossReference_1_1_1_1_0; }
+		
+		//NAME
+		public RuleCall getGroupSelectorsGroupSelectorNAMETerminalRuleCall_1_1_1_1_0_1() { return cGroupSelectorsGroupSelectorNAMETerminalRuleCall_1_1_1_1_0_1; }
+		
+		//// then, any number of either, separated by comma
+		//':'
+		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
+		
+		//((xStatements+=XStatement | '@' groupStatements+=[GroupProperty|NAME]) ';')+
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//(xStatements+=XStatement | '@' groupStatements+=[GroupProperty|NAME])
+		public Alternatives getAlternatives_3_0() { return cAlternatives_3_0; }
+		
+		//xStatements+=XStatement
+		public Assignment getXStatementsAssignment_3_0_0() { return cXStatementsAssignment_3_0_0; }
+		
+		//XStatement
+		public RuleCall getXStatementsXStatementParserRuleCall_3_0_0_0() { return cXStatementsXStatementParserRuleCall_3_0_0_0; }
+		
+		//'@' groupStatements+=[GroupProperty|NAME]
+		public Group getGroup_3_0_1() { return cGroup_3_0_1; }
+		
+		//'@'
+		public Keyword getCommercialAtKeyword_3_0_1_0() { return cCommercialAtKeyword_3_0_1_0; }
+		
+		//groupStatements+=[GroupProperty|NAME]
+		public Assignment getGroupStatementsAssignment_3_0_1_1() { return cGroupStatementsAssignment_3_0_1_1; }
+		
+		//[GroupProperty|NAME]
+		public CrossReference getGroupStatementsGroupPropertyCrossReference_3_0_1_1_0() { return cGroupStatementsGroupPropertyCrossReference_3_0_1_1_0; }
+		
+		//NAME
+		public RuleCall getGroupStatementsGroupPropertyNAMETerminalRuleCall_3_0_1_1_0_1() { return cGroupStatementsGroupPropertyNAMETerminalRuleCall_3_0_1_1_0_1; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_3_1() { return cSemicolonKeyword_3_1; }
+	}
 	
 	
 	private final StylesheetElements pStylesheet;
@@ -706,6 +871,7 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	private final StateElements pState;
 	private final PROPERTYElements pPROPERTY;
 	private final VALUEElements pVALUE;
+	private final RuleElements pRule;
 	
 	private final Grammar grammar;
 	
@@ -741,6 +907,7 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		this.pState = new StateElements();
 		this.pPROPERTY = new PROPERTYElements();
 		this.pVALUE = new VALUEElements();
+		this.pRule = new RuleElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -773,12 +940,10 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	//// this is the model
 	//Stylesheet stylesheet:
 	//	('XSelectors:'
-	//	customSelectors+=XSelector+) ('XProperties:'
+	//	customSelectors+=XSelector+)? ('XProperties:'
 	//	customProperties+=XProperty+)? // ll make them mandatory, then
-	//	/*
 	//	'Rules:'
-	//		(rules += Rule)+
-	//	*/;
+	//	rules+=Rule+;
 	public StylesheetElements getStylesheetAccess() {
 		return pStylesheet;
 	}
@@ -801,7 +966,7 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//terminal VAL:
-	//	'a'..'z' | 'A'..'Z' | '0'..'9' | '-' | '%' | '{' | '}'+;
+	//	'a'..'z' | 'A'..'Z' | '-' | '0'..'9' | '.' | '%' | '{' | '}' | '*' | '+'+;
 	public TerminalRule getVALRule() {
 		return tVAL;
 	}
@@ -856,6 +1021,7 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//GroupSelector:
+	//	'@'?
 	//	name=NAME
 	//	'('
 	//	subSelectors+=Selector (',' subSelectors+=Selector)*
@@ -879,7 +1045,7 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//XProperty:
-	//	'$' CustomProperty | GroupProperty;
+	//	'$' CustomProperty | '@'? GroupProperty;
 	public XPropertyElements getXPropertyAccess() {
 		return pXProperty;
 	}
@@ -935,8 +1101,7 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//XStatement:
-	//	XSingleStatement // | XMultiStatement
-	//;
+	//	XSingleStatement | XMultiStatement;
 	public XStatementElements getXStatementAccess() {
 		return pXStatement;
 	}
@@ -1014,7 +1179,7 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//State:
-	//	modifier=Selector // TODO: might need separate class
+	//	modifier=Selector // TODO: might need separate class // :default = ''
 	//	'='
 	//	value=VALUE;
 	public StateElements getStateAccess() {
@@ -1043,6 +1208,19 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	
 	public ParserRule getVALUERule() {
 		return getVALUEAccess().getRule();
+	}
+	
+	//Rule:
+	//	(selectors+=Selector | '@' groupSelectors+=[GroupSelector|NAME]) (',' (selectors+=Selector | '@'
+	//	groupSelectors+=[GroupSelector|NAME]))* // then, any number of either, separated by comma
+	//	':' ((xStatements+=XStatement | '@' groupStatements+=[GroupProperty|NAME]) ';')+ // either kind of statement, then semicolon, at least one time
+	//;
+	public RuleElements getRuleAccess() {
+		return pRule;
+	}
+	
+	public ParserRule getRuleRule() {
+		return getRuleAccess().getRule();
 	}
 	
 	//terminal ID:

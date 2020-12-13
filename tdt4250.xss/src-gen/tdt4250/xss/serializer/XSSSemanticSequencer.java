@@ -21,6 +21,7 @@ import tdt4250.xss.xSS.GroupProperty;
 import tdt4250.xss.xSS.GroupSelector;
 import tdt4250.xss.xSS.MultiRefStatement;
 import tdt4250.xss.xSS.MultiStatement;
+import tdt4250.xss.xSS.Rule;
 import tdt4250.xss.xSS.Selector;
 import tdt4250.xss.xSS.SingleRefStatement;
 import tdt4250.xss.xSS.SingleStatement;
@@ -60,6 +61,9 @@ public class XSSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case XSSPackage.MULTI_STATEMENT:
 				sequence_MultiStatement(context, (MultiStatement) semanticObject); 
+				return; 
+			case XSSPackage.RULE:
+				sequence_Rule(context, (Rule) semanticObject); 
 				return; 
 			case XSSPackage.SELECTOR:
 				sequence_Selector(context, (Selector) semanticObject); 
@@ -143,6 +147,7 @@ public class XSSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     XStatement returns MultiRefStatement
 	 *     XMultiStatement returns MultiRefStatement
 	 *     MultiRefStatement returns MultiRefStatement
 	 *
@@ -156,6 +161,7 @@ public class XSSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     XStatement returns MultiStatement
 	 *     XMultiStatement returns MultiStatement
 	 *     MultiStatement returns MultiStatement
 	 *
@@ -163,6 +169,23 @@ public class XSSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (property=PROPERTY states+=State+)
 	 */
 	protected void sequence_MultiStatement(ISerializationContext context, MultiStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Rule returns Rule
+	 *
+	 * Constraint:
+	 *     (
+	 *         (selectors+=Selector | groupSelectors+=[GroupSelector|NAME]) 
+	 *         selectors+=Selector? 
+	 *         (groupSelectors+=[GroupSelector|NAME]? selectors+=Selector?)* 
+	 *         (xStatements+=XStatement | groupStatements+=[GroupProperty|NAME])+
+	 *     )
+	 */
+	protected void sequence_Rule(ISerializationContext context, Rule semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -257,7 +280,7 @@ public class XSSSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Stylesheet returns stylesheet
 	 *
 	 * Constraint:
-	 *     (customSelectors+=XSelector+ customProperties+=XProperty*)
+	 *     (customSelectors+=XSelector* customProperties+=XProperty* rules+=Rule+)
 	 */
 	protected void sequence_Stylesheet(ISerializationContext context, stylesheet semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

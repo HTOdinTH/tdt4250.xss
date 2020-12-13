@@ -100,7 +100,7 @@ ruleStylesheet returns [EObject current=null]
 					}
 				)
 			)+
-		)
+		)?
 		(
 			otherlv_2='XProperties:'
 			{
@@ -126,6 +126,29 @@ ruleStylesheet returns [EObject current=null]
 				)
 			)+
 		)?
+		otherlv_4='Rules:'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getStylesheetAccess().getRulesKeyword_2());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getStylesheetAccess().getRulesRuleParserRuleCall_3_0());
+				}
+				lv_rules_5_0=ruleRule
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getStylesheetRule());
+					}
+					add(
+						$current,
+						"rules",
+						lv_rules_5_0,
+						"tdt4250.xss.XSS.Rule");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)+
 	)
 ;
 
@@ -255,10 +278,16 @@ ruleGroupSelector returns [EObject current=null]
 }:
 	(
 		(
+			otherlv_0='@'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getGroupSelectorAccess().getCommercialAtKeyword_0());
+			}
+		)?
+		(
 			(
-				lv_name_0_0=RULE_NAME
+				lv_name_1_0=RULE_NAME
 				{
-					newLeafNode(lv_name_0_0, grammarAccess.getGroupSelectorAccess().getNameNAMETerminalRuleCall_0_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getGroupSelectorAccess().getNameNAMETerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
@@ -267,21 +296,21 @@ ruleGroupSelector returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_0_0,
+						lv_name_1_0,
 						"tdt4250.xss.XSS.NAME");
 				}
 			)
 		)
-		otherlv_1='('
+		otherlv_2='('
 		{
-			newLeafNode(otherlv_1, grammarAccess.getGroupSelectorAccess().getLeftParenthesisKeyword_1());
+			newLeafNode(otherlv_2, grammarAccess.getGroupSelectorAccess().getLeftParenthesisKeyword_2());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getGroupSelectorAccess().getSubSelectorsSelectorParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getGroupSelectorAccess().getSubSelectorsSelectorParserRuleCall_3_0());
 				}
-				lv_subSelectors_2_0=ruleSelector
+				lv_subSelectors_3_0=ruleSelector
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getGroupSelectorRule());
@@ -289,23 +318,23 @@ ruleGroupSelector returns [EObject current=null]
 					add(
 						$current,
 						"subSelectors",
-						lv_subSelectors_2_0,
+						lv_subSelectors_3_0,
 						"tdt4250.xss.XSS.Selector");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
 		(
-			otherlv_3=','
+			otherlv_4=','
 			{
-				newLeafNode(otherlv_3, grammarAccess.getGroupSelectorAccess().getCommaKeyword_3_0());
+				newLeafNode(otherlv_4, grammarAccess.getGroupSelectorAccess().getCommaKeyword_4_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getGroupSelectorAccess().getSubSelectorsSelectorParserRuleCall_3_1_0());
+						newCompositeNode(grammarAccess.getGroupSelectorAccess().getSubSelectorsSelectorParserRuleCall_4_1_0());
 					}
-					lv_subSelectors_4_0=ruleSelector
+					lv_subSelectors_5_0=ruleSelector
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getGroupSelectorRule());
@@ -313,16 +342,16 @@ ruleGroupSelector returns [EObject current=null]
 						add(
 							$current,
 							"subSelectors",
-							lv_subSelectors_4_0,
+							lv_subSelectors_5_0,
 							"tdt4250.xss.XSS.Selector");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)*
-		otherlv_5=')'
+		otherlv_6=')'
 		{
-			newLeafNode(otherlv_5, grammarAccess.getGroupSelectorAccess().getRightParenthesisKeyword_4());
+			newLeafNode(otherlv_6, grammarAccess.getGroupSelectorAccess().getRightParenthesisKeyword_5());
 		}
 	)
 ;
@@ -394,14 +423,22 @@ ruleXProperty returns [EObject current=null]
 			}
 		)
 		    |
-		{
-			newCompositeNode(grammarAccess.getXPropertyAccess().getGroupPropertyParserRuleCall_1());
-		}
-		this_GroupProperty_2=ruleGroupProperty
-		{
-			$current = $this_GroupProperty_2.current;
-			afterParserOrEnumRuleCall();
-		}
+		(
+			(
+				otherlv_2='@'
+				{
+					newLeafNode(otherlv_2, grammarAccess.getXPropertyAccess().getCommercialAtKeyword_1_0());
+				}
+			)?
+			{
+				newCompositeNode(grammarAccess.getXPropertyAccess().getGroupPropertyParserRuleCall_1_1());
+			}
+			this_GroupProperty_3=ruleGroupProperty
+			{
+				$current = $this_GroupProperty_3.current;
+				afterParserOrEnumRuleCall();
+			}
+		)
 	)
 ;
 
@@ -657,14 +694,25 @@ ruleXStatement returns [EObject current=null]
 @after {
 	leaveRule();
 }:
-	{
-		newCompositeNode(grammarAccess.getXStatementAccess().getXSingleStatementParserRuleCall());
-	}
-	this_XSingleStatement_0=ruleXSingleStatement
-	{
-		$current = $this_XSingleStatement_0.current;
-		afterParserOrEnumRuleCall();
-	}
+	(
+		{
+			newCompositeNode(grammarAccess.getXStatementAccess().getXSingleStatementParserRuleCall_0());
+		}
+		this_XSingleStatement_0=ruleXSingleStatement
+		{
+			$current = $this_XSingleStatement_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getXStatementAccess().getXMultiStatementParserRuleCall_1());
+		}
+		this_XMultiStatement_1=ruleXMultiStatement
+		{
+			$current = $this_XMultiStatement_1.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
 ;
 
 // Entry rule entryRuleXSingleStatement
@@ -822,6 +870,48 @@ ruleSingleStatement returns [EObject current=null]
 				}
 			)
 		)
+	)
+;
+
+// Entry rule entryRuleXMultiStatement
+entryRuleXMultiStatement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getXMultiStatementRule()); }
+	iv_ruleXMultiStatement=ruleXMultiStatement
+	{ $current=$iv_ruleXMultiStatement.current; }
+	EOF;
+
+// Rule XMultiStatement
+ruleXMultiStatement returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			otherlv_0='$'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getXMultiStatementAccess().getDollarSignKeyword_0_0());
+			}
+			{
+				newCompositeNode(grammarAccess.getXMultiStatementAccess().getMultiRefStatementParserRuleCall_0_1());
+			}
+			this_MultiRefStatement_1=ruleMultiRefStatement
+			{
+				$current = $this_MultiRefStatement_1.current;
+				afterParserOrEnumRuleCall();
+			}
+		)
+		    |
+		{
+			newCompositeNode(grammarAccess.getXMultiStatementAccess().getMultiStatementParserRuleCall_1());
+		}
+		this_MultiStatement_2=ruleMultiStatement
+		{
+			$current = $this_MultiStatement_2.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -1073,11 +1163,169 @@ ruleVALUE returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 	}
 ;
 
+// Entry rule entryRuleRule
+entryRuleRule returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getRuleRule()); }
+	iv_ruleRule=ruleRule
+	{ $current=$iv_ruleRule.current; }
+	EOF;
+
+// Rule Rule
+ruleRule returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getRuleAccess().getSelectorsSelectorParserRuleCall_0_0_0());
+					}
+					lv_selectors_0_0=ruleSelector
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getRuleRule());
+						}
+						add(
+							$current,
+							"selectors",
+							lv_selectors_0_0,
+							"tdt4250.xss.XSS.Selector");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			    |
+			(
+				otherlv_1='@'
+				{
+					newLeafNode(otherlv_1, grammarAccess.getRuleAccess().getCommercialAtKeyword_0_1_0());
+				}
+				(
+					(
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getRuleRule());
+							}
+						}
+						otherlv_2=RULE_NAME
+						{
+							newLeafNode(otherlv_2, grammarAccess.getRuleAccess().getGroupSelectorsGroupSelectorCrossReference_0_1_1_0());
+						}
+					)
+				)
+			)
+		)
+		(
+			otherlv_3=','
+			{
+				newLeafNode(otherlv_3, grammarAccess.getRuleAccess().getCommaKeyword_1_0());
+			}
+			(
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getRuleAccess().getSelectorsSelectorParserRuleCall_1_1_0_0());
+						}
+						lv_selectors_4_0=ruleSelector
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getRuleRule());
+							}
+							add(
+								$current,
+								"selectors",
+								lv_selectors_4_0,
+								"tdt4250.xss.XSS.Selector");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				    |
+				(
+					otherlv_5='@'
+					{
+						newLeafNode(otherlv_5, grammarAccess.getRuleAccess().getCommercialAtKeyword_1_1_1_0());
+					}
+					(
+						(
+							{
+								if ($current==null) {
+									$current = createModelElement(grammarAccess.getRuleRule());
+								}
+							}
+							otherlv_6=RULE_NAME
+							{
+								newLeafNode(otherlv_6, grammarAccess.getRuleAccess().getGroupSelectorsGroupSelectorCrossReference_1_1_1_1_0());
+							}
+						)
+					)
+				)
+			)
+		)*
+		otherlv_7=':'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getRuleAccess().getColonKeyword_2());
+		}
+		(
+			(
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getRuleAccess().getXStatementsXStatementParserRuleCall_3_0_0_0());
+						}
+						lv_xStatements_8_0=ruleXStatement
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getRuleRule());
+							}
+							add(
+								$current,
+								"xStatements",
+								lv_xStatements_8_0,
+								"tdt4250.xss.XSS.XStatement");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				    |
+				(
+					otherlv_9='@'
+					{
+						newLeafNode(otherlv_9, grammarAccess.getRuleAccess().getCommercialAtKeyword_3_0_1_0());
+					}
+					(
+						(
+							{
+								if ($current==null) {
+									$current = createModelElement(grammarAccess.getRuleRule());
+								}
+							}
+							otherlv_10=RULE_NAME
+							{
+								newLeafNode(otherlv_10, grammarAccess.getRuleAccess().getGroupStatementsGroupPropertyCrossReference_3_0_1_1_0());
+							}
+						)
+					)
+				)
+			)
+			otherlv_11=';'
+			{
+				newLeafNode(otherlv_11, grammarAccess.getRuleAccess().getSemicolonKeyword_3_1());
+			}
+		)+
+	)
+;
+
 RULE_NAME : (RULE_ID|'-')+;
 
 RULE_SEL : ('::'|':'|'.'|'#')? RULE_NAME ((('>'|'+'|'~')|('::'|':'|'.'|'#')|('>'|'+'|'~') ('::'|':'|'.'|'#')) RULE_NAME)*;
 
-RULE_VAL : ('a'..'z'|'A'..'Z'|'0'..'9'|'-'|'%'|'{'|'}')+;
+RULE_VAL : ('a'..'z'|'A'..'Z'|'-'|'0'..'9'|'.'|'%'|'{'|'}'|'*'|'+')+;
 
 fragment RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

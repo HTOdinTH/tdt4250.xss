@@ -10,6 +10,8 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
+import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 import tdt4250.xss.services.XSSGrammarAccess;
@@ -18,10 +20,14 @@ import tdt4250.xss.services.XSSGrammarAccess;
 public class XSSSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected XSSGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_GroupSelector_CommercialAtKeyword_0_q;
+	protected AbstractElementAlias match_XProperty_CommercialAtKeyword_1_0_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (XSSGrammarAccess) access;
+		match_GroupSelector_CommercialAtKeyword_0_q = new TokenAlias(false, true, grammarAccess.getGroupSelectorAccess().getCommercialAtKeyword_0());
+		match_XProperty_CommercialAtKeyword_1_0_q = new TokenAlias(false, true, grammarAccess.getXPropertyAccess().getCommercialAtKeyword_1_0());
 	}
 	
 	@Override
@@ -36,8 +42,34 @@ public class XSSSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			acceptNodes(getLastNavigableState(), syntaxNodes);
+			if (match_GroupSelector_CommercialAtKeyword_0_q.equals(syntax))
+				emit_GroupSelector_CommercialAtKeyword_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_XProperty_CommercialAtKeyword_1_0_q.equals(syntax))
+				emit_XProperty_CommercialAtKeyword_1_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     '@'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) name=NAME
+	 */
+	protected void emit_GroupSelector_CommercialAtKeyword_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     '@'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) name=NAME
+	 */
+	protected void emit_XProperty_CommercialAtKeyword_1_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 }

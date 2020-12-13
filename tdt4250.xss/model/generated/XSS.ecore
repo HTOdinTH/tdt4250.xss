@@ -6,6 +6,8 @@
         eType="#//XSelector" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="customProperties" upperBound="-1"
         eType="#//XProperty" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rules" upperBound="-1"
+        eType="#//Rule" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="XSelector"/>
   <eClassifiers xsi:type="ecore:EClass" name="GroupSelector" eSuperTypes="#//XSelector">
@@ -45,7 +47,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="SingleStatement" eSuperTypes="#//XSingleStatement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="property" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="XMultiStatement">
+  <eClassifiers xsi:type="ecore:EClass" name="XMultiStatement" eSuperTypes="#//XStatement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
         eType="#//State" containment="true"/>
   </eClassifiers>
@@ -59,5 +61,15 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" eType="#//Selector"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Rule">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selectors" upperBound="-1"
+        eType="#//Selector" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groupSelectors" unique="false"
+        upperBound="-1" eType="#//GroupSelector"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="xStatements" upperBound="-1"
+        eType="#//XStatement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groupStatements" unique="false"
+        upperBound="-1" eType="#//GroupProperty"/>
   </eClassifiers>
 </ecore:EPackage>

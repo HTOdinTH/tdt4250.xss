@@ -176,6 +176,7 @@ public class XSSSwitch<T> extends Switch<T>
       {
         XMultiStatement xMultiStatement = (XMultiStatement)theEObject;
         T result = caseXMultiStatement(xMultiStatement);
+        if (result == null) result = caseXStatement(xMultiStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -184,6 +185,7 @@ public class XSSSwitch<T> extends Switch<T>
         MultiRefStatement multiRefStatement = (MultiRefStatement)theEObject;
         T result = caseMultiRefStatement(multiRefStatement);
         if (result == null) result = caseXMultiStatement(multiRefStatement);
+        if (result == null) result = caseXStatement(multiRefStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -192,6 +194,7 @@ public class XSSSwitch<T> extends Switch<T>
         MultiStatement multiStatement = (MultiStatement)theEObject;
         T result = caseMultiStatement(multiStatement);
         if (result == null) result = caseXMultiStatement(multiStatement);
+        if (result == null) result = caseXStatement(multiStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -199,6 +202,13 @@ public class XSSSwitch<T> extends Switch<T>
       {
         State state = (State)theEObject;
         T result = caseState(state);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case XSSPackage.RULE:
+      {
+        Rule rule = (Rule)theEObject;
+        T result = caseRule(rule);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -474,6 +484,22 @@ public class XSSSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseState(State object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Rule</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Rule</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRule(Rule object)
   {
     return null;
   }

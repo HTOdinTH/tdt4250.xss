@@ -5,8 +5,6 @@ package tdt4250.xss.xSS;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>XMulti Statement</b></em>'.
@@ -23,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface XMultiStatement extends EObject
+public interface XMultiStatement extends XStatement
 {
   /**
    * Returns the value of the '<em><b>States</b></em>' containment reference list.
