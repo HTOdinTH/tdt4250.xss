@@ -1,6 +1,6 @@
 # tdt4250.xss
 
-By Odin Johan Vatne (HTOdinTH) and Joakim Danielsen Petersen (joakimdp)
+By Odin Johan Vatne (HTOdinTH) and Joakim Danielsen Petersen (joakimdp).
 
 ## Description
 
@@ -13,7 +13,7 @@ XSS (Xtended Style Sheet) is a DSL built with Xtext that transpiles to CSS. XSS 
  * tdt4250.xss.m2t/src/tdt4250/xss/m2t/main.mtl specifies a model-to-text transformation using Acceleo.
  * tdt4250.xss.m2t/src/twt4250/xss/m2t/util/Util.java contains the code used to evaluate the mathematical expressions XSS allows for as part of custom property definitions.
  * tdt4250.xss.m2t/libs/exp4j-0.4.8.jar is a library for evaluating mathematical expressions from strings, used by the Util class.
- * tdt4250.xss.ui/src/tdt4250/xss/ui/plantuml/XSSDiagramTextProvider is a (failed) attempt at creating a plugin to generate PlantUML diagrams from the underlying Ecore instance model created from XSS files.
+ * tdt4250.xss.ui/src/tdt4250/xss/ui/plantuml/XSSDiagramTextProvider on the branch "visual" is a (failed) attempt at creating a plugin to generate PlantUML diagrams from the underlying Ecore instance model created from XSS files.
 
 ## Running the project
 
@@ -25,10 +25,12 @@ The necessary Eclipse software to run this project is:
  * EMF - Eclipse Modeling Framework Xcore SDK
  * EMF Forms SDK
  * MWE2 Language SDK
+ * Xtext Complete SDK
+
+Additionally, if using the "visual" branch, additional software is needed:
  * PlantUML Ecore Feature
  * PlantUML Feature
  * PlantUML Library Feature
- * Xtext Complete SDK
 
 In order to work with XSS files the projects in this repo have to be opened in Eclipse. After all the projects have been opened a new runtime Eclipse instance has to be started. This can be done by right-clicking on the tdt4250.xss project in the package explorer, selecting Run As > Eclipse Application. Now an XSS file can be created or opened and you can start working. A CSS file corresponding to your XSS file will be generated in a folder called src-gen in the root of your project.
 
