@@ -1494,9 +1494,9 @@ rule__CustomProperty__Group_2__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getCustomPropertyAccess().getSubRuleAssignment_2_0()); }
-	(rule__CustomProperty__SubRuleAssignment_2_0)
-	{ after(grammarAccess.getCustomPropertyAccess().getSubRuleAssignment_2_0()); }
+	{ before(grammarAccess.getCustomPropertyAccess().getSubRulesAssignment_2_0()); }
+	(rule__CustomProperty__SubRulesAssignment_2_0)
+	{ after(grammarAccess.getCustomPropertyAccess().getSubRulesAssignment_2_0()); }
 )
 ;
 finally {
@@ -2974,15 +2974,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__CustomProperty__SubRuleAssignment_2_0
+rule__CustomProperty__SubRulesAssignment_2_0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getCustomPropertyAccess().getSubRuleSubRuleParserRuleCall_2_0_0()); }
+		{ before(grammarAccess.getCustomPropertyAccess().getSubRulesSubRuleParserRuleCall_2_0_0()); }
 		ruleSubRule
-		{ after(grammarAccess.getCustomPropertyAccess().getSubRuleSubRuleParserRuleCall_2_0_0()); }
+		{ after(grammarAccess.getCustomPropertyAccess().getSubRulesSubRuleParserRuleCall_2_0_0()); }
 	)
 ;
 finally {
@@ -3328,7 +3328,7 @@ RULE_NAME : (RULE_ID|'-')+;
 
 RULE_SEL : ('::'|':'|'.'|'#')? RULE_NAME ((('>'|'+'|'~')|('::'|':'|'.'|'#')|('>'|'+'|'~') ('::'|':'|'.'|'#')) RULE_NAME)*;
 
-RULE_VAL : ('a'..'z'|'A'..'Z'|'-'|'0'..'9'|'.'|'%'|'{'|'}'|'*'|'+')+;
+RULE_VAL : ('a'..'z'|'A'..'Z'|'-'|'0'..'9'|'.'|'%'|'#'|'{'|'}'|'*'|'+')+;
 
 fragment RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

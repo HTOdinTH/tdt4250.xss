@@ -6,10 +6,10 @@
     copyrightFields="false" runtimeVersion="2.20">
   <genPackages prefix="XSS" basePackage="tdt4250.xss" disposableProviderFactory="true"
       fileExtensions="xss" ecorePackage="XSS.ecore#/">
-    <genClasses ecoreClass="XSS.ecore#//stylesheet">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//stylesheet/customSelectors"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//stylesheet/customProperties"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//stylesheet/rules"/>
+    <genClasses ecoreClass="XSS.ecore#//Stylesheet">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//Stylesheet/customSelectors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//Stylesheet/customProperties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//Stylesheet/rules"/>
     </genClasses>
     <genClasses ecoreClass="XSS.ecore#//XSelector"/>
     <genClasses ecoreClass="XSS.ecore#//GroupSelector">
@@ -23,7 +23,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XSS.ecore#//XProperty/name"/>
     </genClasses>
     <genClasses ecoreClass="XSS.ecore#//CustomProperty">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//CustomProperty/subRule"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference XSS.ecore#//CustomProperty/subRules"/>
     </genClasses>
     <genClasses ecoreClass="XSS.ecore#//SubRule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute XSS.ecore#//SubRule/property"/>

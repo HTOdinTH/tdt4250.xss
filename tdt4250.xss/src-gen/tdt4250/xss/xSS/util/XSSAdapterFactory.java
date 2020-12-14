@@ -76,9 +76,9 @@ public class XSSAdapterFactory extends AdapterFactoryImpl
     new XSSSwitch<Adapter>()
     {
       @Override
-      public Adapter casestylesheet(stylesheet object)
+      public Adapter caseStylesheet(Stylesheet object)
       {
-        return createstylesheetAdapter();
+        return createStylesheetAdapter();
       }
       @Override
       public Adapter caseXSelector(XSelector object)
@@ -188,16 +188,16 @@ public class XSSAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link tdt4250.xss.xSS.stylesheet <em>stylesheet</em>}'.
+   * Creates a new adapter for an object of class '{@link tdt4250.xss.xSS.Stylesheet <em>Stylesheet</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see tdt4250.xss.xSS.stylesheet
+   * @see tdt4250.xss.xSS.Stylesheet
    * @generated
    */
-  public Adapter createstylesheetAdapter()
+  public Adapter createStylesheetAdapter()
   {
     return null;
   }

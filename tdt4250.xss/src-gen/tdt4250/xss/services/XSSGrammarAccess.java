@@ -39,16 +39,15 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final RuleCall cRulesRuleParserRuleCall_3_0 = (RuleCall)cRulesAssignment_3.eContents().get(0);
 		
 		//// this is the model
-		//Stylesheet stylesheet:
+		//Stylesheet:
 		//	('XSelectors:'
 		//	customSelectors+=XSelector+)? ('XProperties:'
-		//	customProperties+=XProperty+)? // ll make them mandatory, then
+		//	customProperties+=XProperty+)?
 		//	'Rules:'
 		//	rules+=Rule+;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('XSelectors:' customSelectors+=XSelector+)? ('XProperties:' customProperties+=XProperty+)? // ll make them mandatory, then
-		//'Rules:' rules+=Rule+
+		//('XSelectors:' customSelectors+=XSelector+)? ('XProperties:' customProperties+=XProperty+)? 'Rules:' rules+=Rule+
 		public Group getGroup() { return cGroup; }
 		
 		//('XSelectors:' customSelectors+=XSelector+)?
@@ -75,7 +74,6 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//XProperty
 		public RuleCall getCustomPropertiesXPropertyParserRuleCall_1_1_0() { return cCustomPropertiesXPropertyParserRuleCall_1_1_0; }
 		
-		//// ll make them mandatory, then
 		//'Rules:'
 		public Keyword getRulesKeyword_2() { return cRulesKeyword_2; }
 		
@@ -84,34 +82,6 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		
 		//Rule
 		public RuleCall getRulesRuleParserRuleCall_3_0() { return cRulesRuleParserRuleCall_3_0; }
-	}
-	public class STRING_OR_NAMEElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.xss.XSS.STRING_OR_NAME");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cSTRINGTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cNAMETerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		
-		////terminal VAL: '=' -> ';';
-		///*
-		//terminal fragment WORD: ('a'..'z'|'A'..'Z'|'-')+;
-		//terminal fragment PREFIX: '::'|':'|'.'|'#';
-		//terminal fragment COMBINER: ' '|'>'|'+'|'~';
-		//terminal LB: '\r'?'\n';
-		//terminal NAME: WORD;
-		//terminal SEL: PREFIX? WORD ((COMBINER | PREFIX | (COMBINER PREFIX)) WORD)*;
-		//terminal VAL: ('a'..'z'|'A'..'Z'|'0'..'9'|'-'|'%'|'{'|'}')+;
-		//*/ STRING_OR_NAME:
-		//	STRING | NAME;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//STRING | NAME
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//STRING
-		public RuleCall getSTRINGTerminalRuleCall_0() { return cSTRINGTerminalRuleCall_0; }
-		
-		//NAME
-		public RuleCall getNAMETerminalRuleCall_1() { return cNAMETerminalRuleCall_1; }
 	}
 	public class STRING_OR_SELElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.xss.XSS.STRING_OR_SEL");
@@ -286,18 +256,18 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final RuleCall cNameNAMETerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Assignment cSubRuleAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
-		private final RuleCall cSubRuleSubRuleParserRuleCall_2_0_0 = (RuleCall)cSubRuleAssignment_2_0.eContents().get(0);
+		private final Assignment cSubRulesAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
+		private final RuleCall cSubRulesSubRuleParserRuleCall_2_0_0 = (RuleCall)cSubRulesAssignment_2_0.eContents().get(0);
 		private final Keyword cSemicolonKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//CustomProperty:
 		//	name=NAME
-		//	'(' (subRule+=SubRule ';')+
+		//	'(' (subRules+=SubRule ';')+
 		//	')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=NAME '(' (subRule+=SubRule ';')+ ')'
+		//name=NAME '(' (subRules+=SubRule ';')+ ')'
 		public Group getGroup() { return cGroup; }
 		
 		//name=NAME
@@ -309,14 +279,14 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//(subRule+=SubRule ';')+
+		//(subRules+=SubRule ';')+
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//subRule+=SubRule
-		public Assignment getSubRuleAssignment_2_0() { return cSubRuleAssignment_2_0; }
+		//subRules+=SubRule
+		public Assignment getSubRulesAssignment_2_0() { return cSubRulesAssignment_2_0; }
 		
 		//SubRule
-		public RuleCall getSubRuleSubRuleParserRuleCall_2_0_0() { return cSubRuleSubRuleParserRuleCall_2_0_0; }
+		public RuleCall getSubRulesSubRuleParserRuleCall_2_0_0() { return cSubRulesSubRuleParserRuleCall_2_0_0; }
 		
 		//';'
 		public Keyword getSemicolonKeyword_2_1() { return cSemicolonKeyword_2_1; }
@@ -664,12 +634,12 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		private final RuleCall cValueVALUEParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
 		//State:
-		//	modifier=Selector // TODO: might need separate class // :default = ''
+		//	modifier=Selector // ':default' = ''
 		//	'='
 		//	value=VALUE;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//modifier=Selector // TODO: might need separate class // :default = ''
+		//modifier=Selector // ':default' = ''
 		//'=' value=VALUE
 		public Group getGroup() { return cGroup; }
 		
@@ -679,7 +649,7 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		//Selector
 		public RuleCall getModifierSelectorParserRuleCall_0_0() { return cModifierSelectorParserRuleCall_0_0; }
 		
-		//// TODO: might need separate class // :default = ''
+		//// ':default' = ''
 		//'='
 		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
 		
@@ -850,7 +820,6 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	private final TerminalRule tNAME;
 	private final TerminalRule tSEL;
 	private final TerminalRule tVAL;
-	private final STRING_OR_NAMEElements pSTRING_OR_NAME;
 	private final STRING_OR_SELElements pSTRING_OR_SEL;
 	private final STRING_OR_VALElements pSTRING_OR_VAL;
 	private final XSelectorElements pXSelector;
@@ -886,7 +855,6 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 		this.tNAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.xss.XSS.NAME");
 		this.tSEL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.xss.XSS.SEL");
 		this.tVAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "tdt4250.xss.XSS.VAL");
-		this.pSTRING_OR_NAME = new STRING_OR_NAMEElements();
 		this.pSTRING_OR_SEL = new STRING_OR_SELElements();
 		this.pSTRING_OR_VAL = new STRING_OR_VALElements();
 		this.pXSelector = new XSelectorElements();
@@ -938,10 +906,10 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 
 	
 	//// this is the model
-	//Stylesheet stylesheet:
+	//Stylesheet:
 	//	('XSelectors:'
 	//	customSelectors+=XSelector+)? ('XProperties:'
-	//	customProperties+=XProperty+)? // ll make them mandatory, then
+	//	customProperties+=XProperty+)?
 	//	'Rules:'
 	//	rules+=Rule+;
 	public StylesheetElements getStylesheetAccess() {
@@ -966,28 +934,9 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//terminal VAL:
-	//	'a'..'z' | 'A'..'Z' | '-' | '0'..'9' | '.' | '%' | '{' | '}' | '*' | '+'+;
+	//	'a'..'z' | 'A'..'Z' | '-' | '0'..'9' | '.' | '%' | '#' | '{' | '}' | '*' | '+'+;
 	public TerminalRule getVALRule() {
 		return tVAL;
-	}
-	
-	////terminal VAL: '=' -> ';';
-	///*
-	//terminal fragment WORD: ('a'..'z'|'A'..'Z'|'-')+;
-	//terminal fragment PREFIX: '::'|':'|'.'|'#';
-	//terminal fragment COMBINER: ' '|'>'|'+'|'~';
-	//terminal LB: '\r'?'\n';
-	//terminal NAME: WORD;
-	//terminal SEL: PREFIX? WORD ((COMBINER | PREFIX | (COMBINER PREFIX)) WORD)*;
-	//terminal VAL: ('a'..'z'|'A'..'Z'|'0'..'9'|'-'|'%'|'{'|'}')+;
-	//*/ STRING_OR_NAME:
-	//	STRING | NAME;
-	public STRING_OR_NAMEElements getSTRING_OR_NAMEAccess() {
-		return pSTRING_OR_NAME;
-	}
-	
-	public ParserRule getSTRING_OR_NAMERule() {
-		return getSTRING_OR_NAMEAccess().getRule();
 	}
 	
 	//STRING_OR_SEL:
@@ -1056,7 +1005,7 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	
 	//CustomProperty:
 	//	name=NAME
-	//	'(' (subRule+=SubRule ';')+
+	//	'(' (subRules+=SubRule ';')+
 	//	')';
 	public CustomPropertyElements getCustomPropertyAccess() {
 		return pCustomProperty;
@@ -1179,7 +1128,7 @@ public class XSSGrammarAccess extends AbstractElementFinder.AbstractGrammarEleme
 	}
 	
 	//State:
-	//	modifier=Selector // TODO: might need separate class // :default = ''
+	//	modifier=Selector // ':default' = ''
 	//	'='
 	//	value=VALUE;
 	public StateElements getStateAccess() {

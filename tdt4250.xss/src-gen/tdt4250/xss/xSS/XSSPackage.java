@@ -58,11 +58,11 @@ public interface XSSPackage extends EPackage
   XSSPackage eINSTANCE = tdt4250.xss.xSS.impl.XSSPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link tdt4250.xss.xSS.impl.stylesheetImpl <em>stylesheet</em>}' class.
+   * The meta object id for the '{@link tdt4250.xss.xSS.impl.StylesheetImpl <em>Stylesheet</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see tdt4250.xss.xSS.impl.stylesheetImpl
-   * @see tdt4250.xss.xSS.impl.XSSPackageImpl#getstylesheet()
+   * @see tdt4250.xss.xSS.impl.StylesheetImpl
+   * @see tdt4250.xss.xSS.impl.XSSPackageImpl#getStylesheet()
    * @generated
    */
   int STYLESHEET = 0;
@@ -95,7 +95,7 @@ public interface XSSPackage extends EPackage
   int STYLESHEET__RULES = 2;
 
   /**
-   * The number of structural features of the '<em>stylesheet</em>' class.
+   * The number of structural features of the '<em>Stylesheet</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -235,13 +235,13 @@ public interface XSSPackage extends EPackage
   int CUSTOM_PROPERTY__NAME = XPROPERTY__NAME;
 
   /**
-   * The feature id for the '<em><b>Sub Rule</b></em>' containment reference list.
+   * The feature id for the '<em><b>Sub Rules</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CUSTOM_PROPERTY__SUB_RULE = XPROPERTY_FEATURE_COUNT + 0;
+  int CUSTOM_PROPERTY__SUB_RULES = XPROPERTY_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Custom Property</em>' class.
@@ -671,47 +671,47 @@ public interface XSSPackage extends EPackage
 
 
   /**
-   * Returns the meta object for class '{@link tdt4250.xss.xSS.stylesheet <em>stylesheet</em>}'.
+   * Returns the meta object for class '{@link tdt4250.xss.xSS.Stylesheet <em>Stylesheet</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>stylesheet</em>'.
-   * @see tdt4250.xss.xSS.stylesheet
+   * @return the meta object for class '<em>Stylesheet</em>'.
+   * @see tdt4250.xss.xSS.Stylesheet
    * @generated
    */
-  EClass getstylesheet();
+  EClass getStylesheet();
 
   /**
-   * Returns the meta object for the containment reference list '{@link tdt4250.xss.xSS.stylesheet#getCustomSelectors <em>Custom Selectors</em>}'.
+   * Returns the meta object for the containment reference list '{@link tdt4250.xss.xSS.Stylesheet#getCustomSelectors <em>Custom Selectors</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Custom Selectors</em>'.
-   * @see tdt4250.xss.xSS.stylesheet#getCustomSelectors()
-   * @see #getstylesheet()
+   * @see tdt4250.xss.xSS.Stylesheet#getCustomSelectors()
+   * @see #getStylesheet()
    * @generated
    */
-  EReference getstylesheet_CustomSelectors();
+  EReference getStylesheet_CustomSelectors();
 
   /**
-   * Returns the meta object for the containment reference list '{@link tdt4250.xss.xSS.stylesheet#getCustomProperties <em>Custom Properties</em>}'.
+   * Returns the meta object for the containment reference list '{@link tdt4250.xss.xSS.Stylesheet#getCustomProperties <em>Custom Properties</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Custom Properties</em>'.
-   * @see tdt4250.xss.xSS.stylesheet#getCustomProperties()
-   * @see #getstylesheet()
+   * @see tdt4250.xss.xSS.Stylesheet#getCustomProperties()
+   * @see #getStylesheet()
    * @generated
    */
-  EReference getstylesheet_CustomProperties();
+  EReference getStylesheet_CustomProperties();
 
   /**
-   * Returns the meta object for the containment reference list '{@link tdt4250.xss.xSS.stylesheet#getRules <em>Rules</em>}'.
+   * Returns the meta object for the containment reference list '{@link tdt4250.xss.xSS.Stylesheet#getRules <em>Rules</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Rules</em>'.
-   * @see tdt4250.xss.xSS.stylesheet#getRules()
-   * @see #getstylesheet()
+   * @see tdt4250.xss.xSS.Stylesheet#getRules()
+   * @see #getStylesheet()
    * @generated
    */
-  EReference getstylesheet_Rules();
+  EReference getStylesheet_Rules();
 
   /**
    * Returns the meta object for class '{@link tdt4250.xss.xSS.XSelector <em>XSelector</em>}'.
@@ -808,15 +808,15 @@ public interface XSSPackage extends EPackage
   EClass getCustomProperty();
 
   /**
-   * Returns the meta object for the containment reference list '{@link tdt4250.xss.xSS.CustomProperty#getSubRule <em>Sub Rule</em>}'.
+   * Returns the meta object for the containment reference list '{@link tdt4250.xss.xSS.CustomProperty#getSubRules <em>Sub Rules</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Sub Rule</em>'.
-   * @see tdt4250.xss.xSS.CustomProperty#getSubRule()
+   * @return the meta object for the containment reference list '<em>Sub Rules</em>'.
+   * @see tdt4250.xss.xSS.CustomProperty#getSubRules()
    * @see #getCustomProperty()
    * @generated
    */
-  EReference getCustomProperty_SubRule();
+  EReference getCustomProperty_SubRules();
 
   /**
    * Returns the meta object for class '{@link tdt4250.xss.xSS.SubRule <em>Sub Rule</em>}'.
@@ -1138,14 +1138,14 @@ public interface XSSPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link tdt4250.xss.xSS.impl.stylesheetImpl <em>stylesheet</em>}' class.
+     * The meta object literal for the '{@link tdt4250.xss.xSS.impl.StylesheetImpl <em>Stylesheet</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see tdt4250.xss.xSS.impl.stylesheetImpl
-     * @see tdt4250.xss.xSS.impl.XSSPackageImpl#getstylesheet()
+     * @see tdt4250.xss.xSS.impl.StylesheetImpl
+     * @see tdt4250.xss.xSS.impl.XSSPackageImpl#getStylesheet()
      * @generated
      */
-    EClass STYLESHEET = eINSTANCE.getstylesheet();
+    EClass STYLESHEET = eINSTANCE.getStylesheet();
 
     /**
      * The meta object literal for the '<em><b>Custom Selectors</b></em>' containment reference list feature.
@@ -1153,7 +1153,7 @@ public interface XSSPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference STYLESHEET__CUSTOM_SELECTORS = eINSTANCE.getstylesheet_CustomSelectors();
+    EReference STYLESHEET__CUSTOM_SELECTORS = eINSTANCE.getStylesheet_CustomSelectors();
 
     /**
      * The meta object literal for the '<em><b>Custom Properties</b></em>' containment reference list feature.
@@ -1161,7 +1161,7 @@ public interface XSSPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference STYLESHEET__CUSTOM_PROPERTIES = eINSTANCE.getstylesheet_CustomProperties();
+    EReference STYLESHEET__CUSTOM_PROPERTIES = eINSTANCE.getStylesheet_CustomProperties();
 
     /**
      * The meta object literal for the '<em><b>Rules</b></em>' containment reference list feature.
@@ -1169,7 +1169,7 @@ public interface XSSPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference STYLESHEET__RULES = eINSTANCE.getstylesheet_Rules();
+    EReference STYLESHEET__RULES = eINSTANCE.getStylesheet_Rules();
 
     /**
      * The meta object literal for the '{@link tdt4250.xss.xSS.impl.XSelectorImpl <em>XSelector</em>}' class.
@@ -1254,12 +1254,12 @@ public interface XSSPackage extends EPackage
     EClass CUSTOM_PROPERTY = eINSTANCE.getCustomProperty();
 
     /**
-     * The meta object literal for the '<em><b>Sub Rule</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Sub Rules</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CUSTOM_PROPERTY__SUB_RULE = eINSTANCE.getCustomProperty_SubRule();
+    EReference CUSTOM_PROPERTY__SUB_RULES = eINSTANCE.getCustomProperty_SubRules();
 
     /**
      * The meta object literal for the '{@link tdt4250.xss.xSS.impl.SubRuleImpl <em>Sub Rule</em>}' class.

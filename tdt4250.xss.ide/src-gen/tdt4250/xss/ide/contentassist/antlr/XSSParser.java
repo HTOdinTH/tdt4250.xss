@@ -31,7 +31,6 @@ public class XSSParser extends AbstractContentAssistParser {
 		}
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, XSSGrammarAccess grammarAccess) {
-			builder.put(grammarAccess.getSTRING_OR_NAMEAccess().getAlternatives(), "rule__STRING_OR_NAME__Alternatives");
 			builder.put(grammarAccess.getSTRING_OR_SELAccess().getAlternatives(), "rule__STRING_OR_SEL__Alternatives");
 			builder.put(grammarAccess.getSTRING_OR_VALAccess().getAlternatives(), "rule__STRING_OR_VAL__Alternatives");
 			builder.put(grammarAccess.getXPropertyAccess().getAlternatives(), "rule__XProperty__Alternatives");
@@ -76,7 +75,7 @@ public class XSSParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getGroupSelectorAccess().getSubSelectorsAssignment_4_1(), "rule__GroupSelector__SubSelectorsAssignment_4_1");
 			builder.put(grammarAccess.getSelectorAccess().getNameAssignment(), "rule__Selector__NameAssignment");
 			builder.put(grammarAccess.getCustomPropertyAccess().getNameAssignment_0(), "rule__CustomProperty__NameAssignment_0");
-			builder.put(grammarAccess.getCustomPropertyAccess().getSubRuleAssignment_2_0(), "rule__CustomProperty__SubRuleAssignment_2_0");
+			builder.put(grammarAccess.getCustomPropertyAccess().getSubRulesAssignment_2_0(), "rule__CustomProperty__SubRulesAssignment_2_0");
 			builder.put(grammarAccess.getSubRuleAccess().getPropertyAssignment_0(), "rule__SubRule__PropertyAssignment_0");
 			builder.put(grammarAccess.getSubRuleAccess().getExpressionAssignment_2(), "rule__SubRule__ExpressionAssignment_2");
 			builder.put(grammarAccess.getExpressionAccess().getNameAssignment(), "rule__Expression__NameAssignment");

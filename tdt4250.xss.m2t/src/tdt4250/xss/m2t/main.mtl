@@ -1,0 +1,133 @@
+[comment encoding = UTF-8 /]
+[module main('/tdt4250.xss/model/generated/XSS.ecore', 'http://www.eclipse.org/emf/2002/Ecore')]
+
+[template public generateStylesheet(stylesheet : Stylesheet)]
+[comment @main /]
+[file ('generated.css', false, 'UTF-8')]
+@charset "utf-8";
+/* CSS Document */
+
+[for (rule : Rule | stylesheet.rules)]
+  [generate(rule) /]
+[/for]
+[/file]
+[/template]
+
+
+
+[template public generate(rule : Rule)]
+[let multistatements : Set(State) = rule.xStatements->union(rule.groupStatements.statements->asSet())->selectByKind(XMultiStatement).states]
+[let simple : Boolean = multistatements->isEmpty()]
+[if (simple)]
+	[plainGenerate(rule) /]
+[/if]
+[if (not simple)]
+	[for (mod : Selector | multistatements.modifier)]
+		[modGenerate(rule, mod) /]
+	[/for]
+[/if]
+[/let]
+[/let]
+[/template]
+
+[template public plainGenerate(rule : Rule)]
+[generateSelectors(rule.selectors, rule.groupSelectors) /] {
+	[for (statement : GroupProperty | rule.groupStatements)]
+		[generate(statement) /]
+	[/for]
+	[for (statement : XStatement | rule.xStatements)] [comment Never multistatements /]
+		[generate(statement) /]
+	[/for]
+}
+
+[/template]
+
+[template public modGenerate(rule : Rule, mod : Selector)]
+[generateSelectors(rule.selectors, rule.groupSelectors, mod) /] {
+	[for (statement : GroupProperty | rule.groupStatements)]
+		[generate(statement) /]
+	[/for]
+	[for (statement : XStatement | rule.xStatements)] [comment Can be multistatements /]
+		[if (statement.oclIsTypeOf(XMultiStatement))]
+			[modGenerate(statement.oclAsType(XMultiStatement), mod) /] 
+		[/if]
+		[if (statement.oclIsTypeOf(XSingleStatement))]
+			[generate(statement) /]
+		[/if]
+		[generate(statement) /]
+	[/for]
+}
+[/template]
+
+[template public generate(group : GroupProperty)]
+[for (statement : XStatement | group.statements)]
+	[generate(statement) /] 
+[/for]
+[/template]
+
+[template public generate(statement : XStatement)][/template]
+[template public generate(statement : XMultiStatement)][/template]
+[template public generate(statement : XSingleStatement)][/template]
+
+[template public generate(statement : SingleStatement)]
+[statement.property /]: [statement.value /];
+[/template]
+
+[template public generate(statement : SingleRefStatement)]
+[refGenerate(statement.property, statement.value) /]
+[/template]
+
+[template public modGenerate(statement : XMultiStatement, mod : Selector)][/template]
+[template public modGenerate(statement : MultiStatement, mod : Selector) post (trim())]
+	[for (state : State | statement.states)]
+		[if (state.modifier.name = mod.name)]
+			[statement.property /]: [state.value /];
+		[/if]
+	[/for]
+[/template]
+
+[template public generate(statement : MultiRefStatement, mod : Selector)]
+	[for (state : State | statement.states)]
+		[if (state.modifier.name = mod.name)]
+			[refGenerate(statement.property, state.value) /]
+		[/if]
+	[/for]
+[/template]
+
+[template public refGenerate(prop : CustomProperty, value : String) post (trim())]
+[for (rule : SubRule | prop.subRules)]
+	[rule.property /]: [invoke('tdt4250.xss.acceleo.util.Util',
+		'evaluate(java.lang.String, java.lang.String)',
+		Sequence{rule.expression.name, value}) /];
+[/for]
+[/template]
+
+[template public generateSelectors(selectors : OrderedSet(Selector), groups : Sequence(GroupSelector), mod : Selector)]
+[for (selector : Selector | selectors) separator (', ')]
+	[selector.name /][mod.name /] 
+[/for] [if not (selectors->isEmpty() or groups->isEmpty())], [/if] [for 
+(selector : GroupSelector | groups) separator (', ')]
+	[modGenerate(selector, mod) /] 
+[/for] [comment TODO: ENSURE NO WHITESPACE /] 
+[/template]
+
+[template public generateSelectors(selectors : OrderedSet(Selector), groups : Sequence(GroupSelector))]
+[for (selector : Selector | selectors) separator (', ')]
+	[selector.name /] 
+[/for] [if not (selectors->isEmpty() or groups->isEmpty())], [/if] [for 
+(selector : GroupSelector | groups) separator (', ')]
+	[generate(selector) /] 
+[/for]
+[/template]
+
+[template public modGenerate(group : GroupSelector, mod : Selector) post (trim())]
+[for (selector : Selector | group.subSelectors) separator (', ')]
+	[selector.name /][mod.name /] 
+[/for]
+[/template]
+
+[template public generate(group : GroupSelector) post (trim())]
+[for (selector : Selector | group.subSelectors) separator (', ')]
+	[selector.name /] 
+[/for]
+[/template]

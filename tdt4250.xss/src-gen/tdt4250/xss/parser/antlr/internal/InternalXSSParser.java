@@ -1269,7 +1269,7 @@ public class InternalXSSParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCustomProperty"
-    // InternalXSS.g:453:1: ruleCustomProperty returns [EObject current=null] : ( ( (lv_name_0_0= RULE_NAME ) ) otherlv_1= '(' ( ( (lv_subRule_2_0= ruleSubRule ) ) otherlv_3= ';' )+ otherlv_4= ')' ) ;
+    // InternalXSS.g:453:1: ruleCustomProperty returns [EObject current=null] : ( ( (lv_name_0_0= RULE_NAME ) ) otherlv_1= '(' ( ( (lv_subRules_2_0= ruleSubRule ) ) otherlv_3= ';' )+ otherlv_4= ')' ) ;
     public final EObject ruleCustomProperty() throws RecognitionException {
         EObject current = null;
 
@@ -1277,18 +1277,18 @@ public class InternalXSSParser extends AbstractInternalAntlrParser {
         Token otherlv_1=null;
         Token otherlv_3=null;
         Token otherlv_4=null;
-        EObject lv_subRule_2_0 = null;
+        EObject lv_subRules_2_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalXSS.g:459:2: ( ( ( (lv_name_0_0= RULE_NAME ) ) otherlv_1= '(' ( ( (lv_subRule_2_0= ruleSubRule ) ) otherlv_3= ';' )+ otherlv_4= ')' ) )
-            // InternalXSS.g:460:2: ( ( (lv_name_0_0= RULE_NAME ) ) otherlv_1= '(' ( ( (lv_subRule_2_0= ruleSubRule ) ) otherlv_3= ';' )+ otherlv_4= ')' )
+            // InternalXSS.g:459:2: ( ( ( (lv_name_0_0= RULE_NAME ) ) otherlv_1= '(' ( ( (lv_subRules_2_0= ruleSubRule ) ) otherlv_3= ';' )+ otherlv_4= ')' ) )
+            // InternalXSS.g:460:2: ( ( (lv_name_0_0= RULE_NAME ) ) otherlv_1= '(' ( ( (lv_subRules_2_0= ruleSubRule ) ) otherlv_3= ';' )+ otherlv_4= ')' )
             {
-            // InternalXSS.g:460:2: ( ( (lv_name_0_0= RULE_NAME ) ) otherlv_1= '(' ( ( (lv_subRule_2_0= ruleSubRule ) ) otherlv_3= ';' )+ otherlv_4= ')' )
-            // InternalXSS.g:461:3: ( (lv_name_0_0= RULE_NAME ) ) otherlv_1= '(' ( ( (lv_subRule_2_0= ruleSubRule ) ) otherlv_3= ';' )+ otherlv_4= ')'
+            // InternalXSS.g:460:2: ( ( (lv_name_0_0= RULE_NAME ) ) otherlv_1= '(' ( ( (lv_subRules_2_0= ruleSubRule ) ) otherlv_3= ';' )+ otherlv_4= ')' )
+            // InternalXSS.g:461:3: ( (lv_name_0_0= RULE_NAME ) ) otherlv_1= '(' ( ( (lv_subRules_2_0= ruleSubRule ) ) otherlv_3= ';' )+ otherlv_4= ')'
             {
             // InternalXSS.g:461:3: ( (lv_name_0_0= RULE_NAME ) )
             // InternalXSS.g:462:4: (lv_name_0_0= RULE_NAME )
@@ -1320,7 +1320,7 @@ public class InternalXSSParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getCustomPropertyAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalXSS.g:483:3: ( ( (lv_subRule_2_0= ruleSubRule ) ) otherlv_3= ';' )+
+            // InternalXSS.g:483:3: ( ( (lv_subRules_2_0= ruleSubRule ) ) otherlv_3= ';' )+
             int cnt12=0;
             loop12:
             do {
@@ -1334,19 +1334,19 @@ public class InternalXSSParser extends AbstractInternalAntlrParser {
 
                 switch (alt12) {
             	case 1 :
-            	    // InternalXSS.g:484:4: ( (lv_subRule_2_0= ruleSubRule ) ) otherlv_3= ';'
+            	    // InternalXSS.g:484:4: ( (lv_subRules_2_0= ruleSubRule ) ) otherlv_3= ';'
             	    {
-            	    // InternalXSS.g:484:4: ( (lv_subRule_2_0= ruleSubRule ) )
-            	    // InternalXSS.g:485:5: (lv_subRule_2_0= ruleSubRule )
+            	    // InternalXSS.g:484:4: ( (lv_subRules_2_0= ruleSubRule ) )
+            	    // InternalXSS.g:485:5: (lv_subRules_2_0= ruleSubRule )
             	    {
-            	    // InternalXSS.g:485:5: (lv_subRule_2_0= ruleSubRule )
-            	    // InternalXSS.g:486:6: lv_subRule_2_0= ruleSubRule
+            	    // InternalXSS.g:485:5: (lv_subRules_2_0= ruleSubRule )
+            	    // InternalXSS.g:486:6: lv_subRules_2_0= ruleSubRule
             	    {
 
-            	    						newCompositeNode(grammarAccess.getCustomPropertyAccess().getSubRuleSubRuleParserRuleCall_2_0_0());
+            	    						newCompositeNode(grammarAccess.getCustomPropertyAccess().getSubRulesSubRuleParserRuleCall_2_0_0());
             	    					
             	    pushFollow(FOLLOW_13);
-            	    lv_subRule_2_0=ruleSubRule();
+            	    lv_subRules_2_0=ruleSubRule();
 
             	    state._fsp--;
 
@@ -1356,8 +1356,8 @@ public class InternalXSSParser extends AbstractInternalAntlrParser {
             	    						}
             	    						add(
             	    							current,
-            	    							"subRule",
-            	    							lv_subRule_2_0,
+            	    							"subRules",
+            	    							lv_subRules_2_0,
             	    							"tdt4250.xss.XSS.SubRule");
             	    						afterParserOrEnumRuleCall();
             	    					

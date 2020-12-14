@@ -4756,31 +4756,31 @@ public class InternalXSSParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__CustomProperty__Group_2__0__Impl"
-    // InternalXSS.g:1491:1: rule__CustomProperty__Group_2__0__Impl : ( ( rule__CustomProperty__SubRuleAssignment_2_0 ) ) ;
+    // InternalXSS.g:1491:1: rule__CustomProperty__Group_2__0__Impl : ( ( rule__CustomProperty__SubRulesAssignment_2_0 ) ) ;
     public final void rule__CustomProperty__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXSS.g:1495:1: ( ( ( rule__CustomProperty__SubRuleAssignment_2_0 ) ) )
-            // InternalXSS.g:1496:1: ( ( rule__CustomProperty__SubRuleAssignment_2_0 ) )
+            // InternalXSS.g:1495:1: ( ( ( rule__CustomProperty__SubRulesAssignment_2_0 ) ) )
+            // InternalXSS.g:1496:1: ( ( rule__CustomProperty__SubRulesAssignment_2_0 ) )
             {
-            // InternalXSS.g:1496:1: ( ( rule__CustomProperty__SubRuleAssignment_2_0 ) )
-            // InternalXSS.g:1497:2: ( rule__CustomProperty__SubRuleAssignment_2_0 )
+            // InternalXSS.g:1496:1: ( ( rule__CustomProperty__SubRulesAssignment_2_0 ) )
+            // InternalXSS.g:1497:2: ( rule__CustomProperty__SubRulesAssignment_2_0 )
             {
-             before(grammarAccess.getCustomPropertyAccess().getSubRuleAssignment_2_0()); 
-            // InternalXSS.g:1498:2: ( rule__CustomProperty__SubRuleAssignment_2_0 )
-            // InternalXSS.g:1498:3: rule__CustomProperty__SubRuleAssignment_2_0
+             before(grammarAccess.getCustomPropertyAccess().getSubRulesAssignment_2_0()); 
+            // InternalXSS.g:1498:2: ( rule__CustomProperty__SubRulesAssignment_2_0 )
+            // InternalXSS.g:1498:3: rule__CustomProperty__SubRulesAssignment_2_0
             {
             pushFollow(FOLLOW_2);
-            rule__CustomProperty__SubRuleAssignment_2_0();
+            rule__CustomProperty__SubRulesAssignment_2_0();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getCustomPropertyAccess().getSubRuleAssignment_2_0()); 
+             after(grammarAccess.getCustomPropertyAccess().getSubRulesAssignment_2_0()); 
 
             }
 
@@ -9180,9 +9180,9 @@ public class InternalXSSParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__CustomProperty__NameAssignment_0"
 
 
-    // $ANTLR start "rule__CustomProperty__SubRuleAssignment_2_0"
-    // InternalXSS.g:2977:1: rule__CustomProperty__SubRuleAssignment_2_0 : ( ruleSubRule ) ;
-    public final void rule__CustomProperty__SubRuleAssignment_2_0() throws RecognitionException {
+    // $ANTLR start "rule__CustomProperty__SubRulesAssignment_2_0"
+    // InternalXSS.g:2977:1: rule__CustomProperty__SubRulesAssignment_2_0 : ( ruleSubRule ) ;
+    public final void rule__CustomProperty__SubRulesAssignment_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -9193,13 +9193,13 @@ public class InternalXSSParser extends AbstractInternalContentAssistParser {
             // InternalXSS.g:2982:2: ( ruleSubRule )
             // InternalXSS.g:2983:3: ruleSubRule
             {
-             before(grammarAccess.getCustomPropertyAccess().getSubRuleSubRuleParserRuleCall_2_0_0()); 
+             before(grammarAccess.getCustomPropertyAccess().getSubRulesSubRuleParserRuleCall_2_0_0()); 
             pushFollow(FOLLOW_2);
             ruleSubRule();
 
             state._fsp--;
 
-             after(grammarAccess.getCustomPropertyAccess().getSubRuleSubRuleParserRuleCall_2_0_0()); 
+             after(grammarAccess.getCustomPropertyAccess().getSubRulesSubRuleParserRuleCall_2_0_0()); 
 
             }
 
@@ -9218,7 +9218,7 @@ public class InternalXSSParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__CustomProperty__SubRuleAssignment_2_0"
+    // $ANTLR end "rule__CustomProperty__SubRulesAssignment_2_0"
 
 
     // $ANTLR start "rule__SubRule__PropertyAssignment_0"
