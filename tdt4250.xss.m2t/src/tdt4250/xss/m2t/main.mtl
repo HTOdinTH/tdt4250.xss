@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module main('/tdt4250.xss/model/generated/XSS.ecore', 'http://www.eclipse.org/emf/2002/Ecore')]
+[module main('tdt4250.xss.model', 'http://www.eclipse.org/emf/2002/Ecore')]
 
 [template public generateStylesheet(stylesheet : Stylesheet)]
 [comment @main /]

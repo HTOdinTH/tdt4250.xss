@@ -19,4 +19,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
 Import-Package: net.objecthunter.exp4j
+Export-Package: tdt4250.xss.m2t
 

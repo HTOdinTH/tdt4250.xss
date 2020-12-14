@@ -1,17 +1,17 @@
-XSelectors: 
+XSelectors:
   @boxes (
   	"div a",
   	p+a,
   	span,
   	"ol li"
-  	) 
+  	)
   @tabs (.tab, p+a, body)
 
-XProperties:
+XProperties: 
   $depth-shadow (
     box-shadow="{5 * x}px {10 * x}px black";
     --webkit-blur=1px;
-	display=block;
+	display=block; 
   )
   @popup (
     z-index=10;
