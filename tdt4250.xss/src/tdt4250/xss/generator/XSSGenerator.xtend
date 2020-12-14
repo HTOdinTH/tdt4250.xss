@@ -3,14 +3,16 @@
  */
 package tdt4250.xss.generator
 
+import java.io.File
+import java.util.ArrayList
+import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.emf.common.util.BasicMonitor
+import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import tdt4250.xss.m2t.Main
-import java.io.File
-import org.eclipse.emf.common.util.BasicMonitor
-import java.util.ArrayList
 
 /**
  * Generates code from your model files on save.
@@ -26,7 +28,7 @@ class XSSGenerator extends AbstractGenerator {
 		for (e : root.eAllContents.toList) {
 			 println(e)
 		}
-		val main = new Main(resource.URI, new File(file.parent), new ArrayList<String>());
+		val main = new Main(URI.createURI(ResourcesPlugin.workspace.root.rawLocationURI.toString), new File(file.parent), new ArrayList<String>());
 		main.doGenerate(new BasicMonitor());
 	}
 }
