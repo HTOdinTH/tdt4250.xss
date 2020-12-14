@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 /**
@@ -109,6 +110,14 @@ public class Main extends AbstractAcceleoGenerator {
     public Main(EObject model, File targetFolder,
             List<? extends Object> arguments) throws IOException {
         initialize(model, targetFolder, arguments);
+    }
+    
+    /**
+     * @not generated
+     */
+    public Main(Resource resource, File targetFolder,
+            List<? extends Object> arguments) throws IOException {
+        initialize(resource.getContents().get(0), targetFolder, arguments);
     }
     
     /**

@@ -3,10 +3,15 @@
  */
 package tdt4250.xss.generator;
 
+import java.io.File;
+import java.util.ArrayList;
+import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import tdt4250.xss.m2t.Main;
 
 /**
  * Generates code from your model files on save.
@@ -17,6 +22,18 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 public class XSSGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    fsa.generateFile("oopsie.txt", "heehee");
+    try {
+      fsa.generateFile("generated.css", resource.getContents().toString());
+      String _devicePath = fsa.getURI("generated.css").devicePath();
+      final File file = new File(_devicePath);
+      String _parent = file.getParent();
+      File _file = new File(_parent);
+      ArrayList<String> _arrayList = new ArrayList<String>();
+      final Main main = new Main(resource, _file, _arrayList);
+      BasicMonitor _basicMonitor = new BasicMonitor();
+      main.doGenerate(_basicMonitor);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
 }

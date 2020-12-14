@@ -7,6 +7,10 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import tdt4250.xss.m2t.Main
+import java.io.File
+import org.eclipse.emf.common.util.BasicMonitor
+import java.util.ArrayList
 
 /**
  * Generates code from your model files on save.
@@ -16,10 +20,13 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class XSSGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		fsa.generateFile('oopsie.txt', 'heehee'); 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
+		fsa.generateFile("generated.css", resource.contents.toString); 
+		val file = new File(fsa.getURI("generated.css").devicePath);
+//		val root = resource.contents.get(0);
+//		for (e : root.eAllContents.toList) {
+//			 println(e)
+//		}
+		val main = new Main(resource, new File(file.parent), new ArrayList<String>());
+		main.doGenerate(new BasicMonitor());
 	}
 }
