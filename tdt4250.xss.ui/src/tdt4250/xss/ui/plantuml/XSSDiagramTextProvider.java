@@ -10,9 +10,13 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.XtextDocument;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 
-import net.sourceforge.plantuml.ecore.EcoreObjectDiagramTextProvider;
+import net.sourceforge.plantuml.ecore.AbstractEcoreObjectDiagramTextProvider;
 
-public class XSSDiagramTextProvider extends EcoreObjectDiagramTextProvider {
+public class XSSDiagramTextProvider extends AbstractEcoreObjectDiagramTextProvider {
+	public XSSDiagramTextProvider() {
+		super();
+	}
+	
 	@Override
 	protected String getDiagramText(final IEditorPart editorPart, final IEditorInput editorInput, final ISelection selection, final Map<String, Object> markerAttributes) {
 		XSSLogger.log("Loaded");
