@@ -113,14 +113,6 @@ public class Main extends AbstractAcceleoGenerator {
     }
     
     /**
-     * @not generated
-     */
-    public Main(Resource resource, File targetFolder,
-            List<? extends Object> arguments) throws IOException {
-        initialize(resource.getContents().get(0), targetFolder, arguments);
-    }
-    
-    /**
      * This can be used to launch the generation from a standalone application.
      * 
      * @param args

@@ -22,11 +22,11 @@ class XSSGenerator extends AbstractGenerator {
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		fsa.generateFile("generated.css", resource.contents.toString); 
 		val file = new File(fsa.getURI("generated.css").devicePath);
-//		val root = resource.contents.get(0);
-//		for (e : root.eAllContents.toList) {
-//			 println(e)
-//		}
-		val main = new Main(resource, new File(file.parent), new ArrayList<String>());
+		val root = resource.contents.get(0);
+		for (e : root.eAllContents.toList) {
+			 println(e)
+		}
+		val main = new Main(resource.URI, new File(file.parent), new ArrayList<String>());
 		main.doGenerate(new BasicMonitor());
 	}
 }

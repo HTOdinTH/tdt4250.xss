@@ -5,12 +5,17 @@ package tdt4250.xss.generator;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import org.eclipse.emf.common.util.BasicMonitor;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import tdt4250.xss.m2t.Main;
 
 /**
@@ -26,10 +31,16 @@ public class XSSGenerator extends AbstractGenerator {
       fsa.generateFile("generated.css", resource.getContents().toString());
       String _devicePath = fsa.getURI("generated.css").devicePath();
       final File file = new File(_devicePath);
+      final EObject root = resource.getContents().get(0);
+      List<EObject> _list = IteratorExtensions.<EObject>toList(root.eAllContents());
+      for (final EObject e : _list) {
+        InputOutput.<EObject>println(e);
+      }
+      URI _uRI = resource.getURI();
       String _parent = file.getParent();
       File _file = new File(_parent);
       ArrayList<String> _arrayList = new ArrayList<String>();
-      final Main main = new Main(resource, _file, _arrayList);
+      final Main main = new Main(_uRI, _file, _arrayList);
       BasicMonitor _basicMonitor = new BasicMonitor();
       main.doGenerate(_basicMonitor);
     } catch (Throwable _e) {
