@@ -17,7 +17,7 @@ XSS (Xtended Style Sheet) is a DSL built with Xtext that transpiles to CSS. XSS 
 
 ## Running the project
 
-In order to work with XSS files the projects in this repo have to be opened in Eclipse. The neccessary Eclipse software to run this project is:
+In order to work with XSS files the projects in this repo have to be opened in Eclipse. The necessary Eclipse software to run this project is:
  * Acceleo
  * Acceleo Query SDK
  * Eclipse DSL tools
