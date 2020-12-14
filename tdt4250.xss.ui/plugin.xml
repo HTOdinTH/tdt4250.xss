@@ -436,7 +436,7 @@
     <diagramTextProvider
           id="tdt4250.xss.ui.plantuml.XSSDiagramTextProvider"
           label="PlantUML provider for underlying instance models of XSS files"
-          priority="default"
+          priority="custom"
           providerClass="tdt4250.xss.ui.plantuml.XSSDiagramTextProvider">
     </diagramTextProvider>
  </extension>
