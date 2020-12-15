@@ -3,33 +3,27 @@
  */
 package tdt4250.xss.generator
 
-import java.io.File
-import java.util.ArrayList
-import org.eclipse.core.resources.ResourcesPlugin
-import org.eclipse.emf.common.util.BasicMonitor
-import org.eclipse.emf.common.util.URI
+import java.util.List
+import java.util.Set
+import java.util.StringJoiner
+import java.util.regex.Pattern
+import net.objecthunter.exp4j.ExpressionBuilder
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import tdt4250.xss.m2t.Main
-import tdt4250.xss.xSS.Stylesheet
-import tdt4250.xss.xSS.Rule
-import tdt4250.xss.xSS.XMultiStatement
-import tdt4250.xss.xSS.Selector
-import tdt4250.xss.xSS.MultiStatement
-import tdt4250.xss.xSS.SingleStatement
-import tdt4250.xss.xSS.SingleRefStatement
-import tdt4250.xss.xSS.MultiRefStatement
 import tdt4250.xss.xSS.CustomProperty
-import java.util.Set
-import java.util.List
-import tdt4250.xss.xSS.GroupSelector
-import java.util.StringJoiner
-import net.objecthunter.exp4j.ExpressionBuilder
 import tdt4250.xss.xSS.GroupProperty
+import tdt4250.xss.xSS.GroupSelector
+import tdt4250.xss.xSS.MultiRefStatement
+import tdt4250.xss.xSS.MultiStatement
+import tdt4250.xss.xSS.Rule
+import tdt4250.xss.xSS.Selector
+import tdt4250.xss.xSS.SingleRefStatement
+import tdt4250.xss.xSS.SingleStatement
+import tdt4250.xss.xSS.Stylesheet
+import tdt4250.xss.xSS.XMultiStatement
 import tdt4250.xss.xSS.XStatement
-import java.util.regex.Pattern
 
 /**
  * Generates code from your model files on save.
