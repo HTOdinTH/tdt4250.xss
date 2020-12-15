@@ -3,6 +3,9 @@
  */
 package tdt4250.xss.validation;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.eclipse.xtext.validation.Check;
 
 import net.objecthunter.exp4j.ExpressionBuilder;
@@ -31,7 +34,17 @@ public class XSSValidator extends AbstractXSSValidator {
 	public void checkExpressionValid(Expression expression) {
 		if (expression.getName().contains("{")) {
 			try {
-				new ExpressionBuilder(expression.getName()).build();
+				String result = expression.getName().replace("\"", "");
+				Pattern pattern = Pattern.compile("(\\{.*?\\})");
+				Matcher matcher = pattern.matcher(result);
+
+				while (matcher.find()) {
+					String group = matcher.group();
+					String expr = group.replace("{", "").replace("}", "");
+					new ExpressionBuilder(expr)
+			    		.variable("x")
+			    		.build();
+				}
 			} catch (IllegalArgumentException iae) {
 				error("Invalid mathematical expression", XSSPackage.Literals.EXPRESSION__NAME);
 			}
