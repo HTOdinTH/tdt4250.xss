@@ -13,6 +13,7 @@ XSS (Xtended Style Sheet) is a DSL built with Xtext that transpiles to CSS. XSS 
  * example/src/example1.xss is an example of an XSS-file, showcasing most of the features of XSS.
  * tdt4250.xss/src/tdt4250/xss/generator/XSSGenerator.xtend contains code for auto-generating the css output whenever a file is saved.
  This contains the entire m2t transformation.
+ * tdt4250.xss/src/tdt4250/xss/validation/XSSValidator.xtend contains code for ensuring mathematical expressions can be evaluated.
  * exp4j/exp4j-0.4.8.jar is a library for evaluating mathematical expressions from strings, used by the xtend transformation.
  * In the branch `acceleo`, tdt4250.xss.m2t/src/tdt4250/xss/m2t/main.mtl specifies a model-to-text transformation using Acceleo.
  This was scrapped as we could not get Xtext and Acceleo to cooperate, and had to switch to xtend towards the end of the project.
