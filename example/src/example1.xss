@@ -7,13 +7,13 @@ XSelectors:
   	)
   @tabs (.tab, p+a, body)
 
-XProperties: 
+XProperties:
   $depth-shadow (
     box-shadow="{5 * x}px {10 * x}px black";
     --webkit-blur=1px;
 	display=block; 
   )
-  @popup (
+  @popup ( 
     z-index=10;
     border-radius=10%; 
     $depth-shadow (:default=3; :hover=4;);
@@ -21,4 +21,4 @@ XProperties:
 Rules:
   @boxes, @tabs : border=black; $depth-shadow=1;
   .popup : @popup; background-color=blue;
-  @boxes : background-color (:default=black; :hover=blue; :active=red;); font-size (:default=10pt; :hover=12pt;);
+  @boxes : color=black; background-color (:default=black; :hover=blue; :active=red;); font-size (:default=10pt; :hover=12pt;); font-family=arial;

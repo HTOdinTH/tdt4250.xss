@@ -3,14 +3,27 @@
  */
 package tdt4250.xss.generator
 
+import java.util.List
+import java.util.Set
+import java.util.StringJoiner
+import java.util.regex.Pattern
+import net.objecthunter.exp4j.ExpressionBuilder
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import tdt4250.xss.m2t.Main
-import java.io.File
-import org.eclipse.emf.common.util.BasicMonitor
-import java.util.ArrayList
+import tdt4250.xss.xSS.CustomProperty
+import tdt4250.xss.xSS.GroupProperty
+import tdt4250.xss.xSS.GroupSelector
+import tdt4250.xss.xSS.MultiRefStatement
+import tdt4250.xss.xSS.MultiStatement
+import tdt4250.xss.xSS.Rule
+import tdt4250.xss.xSS.Selector
+import tdt4250.xss.xSS.SingleRefStatement
+import tdt4250.xss.xSS.SingleStatement
+import tdt4250.xss.xSS.Stylesheet
+import tdt4250.xss.xSS.XMultiStatement
+import tdt4250.xss.xSS.XStatement
 
 /**
  * Generates code from your model files on save.
@@ -20,13 +33,137 @@ import java.util.ArrayList
 class XSSGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		fsa.generateFile("generated.css", resource.contents.toString); 
-		val file = new File(fsa.getURI("generated.css").devicePath);
-		val root = resource.contents.get(0);
-		for (e : root.eAllContents.toList) {
-			 println(e)
+		fsa.generateFile("generated.css", generateCSS(resource.contents.get(0) as Stylesheet));
+	}
+	
+	def String generateCSS(Stylesheet stylesheet) {
+		generateCSS(stylesheet, new StringBuilder).toString.replace(":default", "").replace("\"", "")
+	}
+	
+	def CharSequence generateCSS(Stylesheet stylesheet, StringBuilder stringBuilder) {
+		stylesheet.rules.forEach[generate(it, stringBuilder)]
+		
+		stringBuilder
+	}
+	
+	def CharSequence generate(Rule rule, StringBuilder stringBuilder) {
+		val multiStatementModifiers = (rule.XStatements + rule.groupStatements.flatMap[it.statements])
+			.filter(XMultiStatement).flatMap[it.states].map[it.modifier.name].toSet
+		if (multiStatementModifiers.isEmpty) {
+			modGenerate(rule, ":default", stringBuilder)
+		} else {
+			multiStatementModifiers.add(":default")
+			multiStatementModifiers.forEach[modGenerate(rule, it, stringBuilder)]
 		}
-		val main = new Main(resource.URI, new File(file.parent), new ArrayList<String>());
-		main.doGenerate(new BasicMonitor());
+		
+		stringBuilder
+	}
+	
+	def CharSequence modGenerate(Rule rule, String mod, StringBuilder stringBuilder) {
+		generateSelectors(rule.selectors.toSet, rule.groupSelectors, mod, stringBuilder)
+		stringBuilder.append(" {\n")
+		val statements = rule.groupStatements.flatMap[it.statements] + rule.XStatements
+		statements.forEach[
+			if (it instanceof MultiStatement) {
+				modGenerate(it as MultiStatement, mod, stringBuilder)
+			} else if (it instanceof MultiRefStatement) {
+				modRefGenerate(it as MultiRefStatement, mod, stringBuilder)
+			} else if (mod.equals(":default")) {
+				if (it instanceof SingleStatement) {
+					generate(it as SingleStatement, stringBuilder)
+				} else if (it instanceof SingleRefStatement) {
+					generate(it as SingleRefStatement, stringBuilder)
+				}
+			}
+		]
+		stringBuilder.append("}\n\n")
+	}
+	
+	def CharSequence generate(GroupProperty group, StringBuilder stringBuilder) {
+		group.statements.forEach[
+			generate(it, stringBuilder)
+		]
+		
+		stringBuilder
+	}
+	
+	def CharSequence generate(XStatement statement, StringBuilder stringBuilder) {
+		if (statement instanceof SingleStatement) {
+			generate(statement as SingleStatement, stringBuilder)
+		} else if (statement instanceof SingleRefStatement) {
+			generate(statement as SingleRefStatement, stringBuilder)
+		}
+		
+		stringBuilder
+	}
+	
+	def CharSequence generate(SingleStatement statement, StringBuilder stringBuilder) {
+		stringBuilder.append("    " + statement.property + ": " + statement.value + ";\n")
+	}
+	
+	def CharSequence generate(SingleRefStatement statement, StringBuilder stringBuilder) {
+		refGenerate(statement.property, statement.value, stringBuilder)
+	}
+	
+	def CharSequence modGenerate(MultiStatement statement, String mod, StringBuilder stringBuilder) {
+		statement.states.forEach[
+			if (it.modifier.name.equals(mod)) {
+				stringBuilder.append("    " + statement.property + ": " + it.value + ";\n")
+			}
+		]
+		
+		stringBuilder
+	}
+	
+	def CharSequence modRefGenerate(MultiRefStatement statement, String mod, StringBuilder stringBuilder) {
+		statement.states.forEach[
+			if (it.modifier.name.equals(mod)) {
+				refGenerate(statement.property, it.value, stringBuilder)
+			}
+		]
+		
+		stringBuilder
+	}
+	
+	def CharSequence refGenerate(CustomProperty property, String value, StringBuilder stringBuilder) {
+		property.subRules.forEach[stringBuilder.append("    " + it.property + ": " + evaluateExpression(it.expression.name.replace("\"", ""), value).toString + ";\n")]
+		
+		stringBuilder
+	}
+	
+	def CharSequence generateSelectors(Set<Selector> selectors, List<GroupSelector> groups, String mod, StringBuilder stringBuilder) {
+		val stringJoiner = new StringJoiner(", ")
+		
+		val sels = (selectors + groups.flatMap[it.subSelectors]).map[it.name].toSet
+		sels.forEach[stringJoiner.add(it + mod)]
+		
+		stringBuilder.append(stringJoiner.toString)
+		
+
+	}
+	
+	def String evaluateExpression(String expression, String value) {
+		var x = try {
+			Double.parseDouble(value);
+		} catch (NumberFormatException e) {
+			1.0;
+		}
+		
+		var result = expression
+		val pattern = Pattern.compile("(\\{.*?\\})");
+		val matcher = pattern.matcher(result)
+
+		while (matcher.find()) {
+			val group = matcher.group()
+			val expr = group.replace("{", "").replace("}", "")
+			val res = new ExpressionBuilder(expr)
+	    		.variable("x")
+	    		.build()
+	    		.setVariable("x", x)
+	    		.evaluate
+			result = result.replace(group, res.toString)
+		}
+		
+		result
 	}
 }

@@ -27,5 +27,6 @@ Export-Package: tdt4250.xss.generator,
  tdt4250.xss.parser.antlr.internal,
  tdt4250.xss.xSS.impl,
  tdt4250.xss.services
-Import-Package: org.apache.log4j,
- tdt4250.xss.m2t
+Import-Package: net.objecthunter.exp4j,
+ org.apache.log4j,
+ org.eclipse.core.resources

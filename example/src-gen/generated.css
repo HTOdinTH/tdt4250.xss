@@ -1,1 +1,38 @@
-[tdt4250.xss.xSS.impl.StylesheetImpl@13594c0f]
+div a, p+a, span, ol li, .tab, body {
+    border: black;
+    box-shadow: 5.0px 10.0px black;
+    --webkit-blur: 1px;
+    display: block;
+}
+
+.popup {
+    z-index: 10;
+    border-radius: 10%;
+    box-shadow: 15.0px 30.0px black;
+    --webkit-blur: 1px;
+    display: block;
+    background-color: blue;
+}
+
+.popup:hover {
+    box-shadow: 20.0px 40.0px black;
+    --webkit-blur: 1px;
+    display: block;
+}
+
+div a, p+a, span, ol li {
+    color: black;
+    background-color: black;
+    font-size: 10pt;
+    font-family: arial;
+}
+
+div a:hover, p+a:hover, span:hover, ol li:hover {
+    background-color: blue;
+    font-size: 12pt;
+}
+
+div a:active, p+a:active, span:active, ol li:active {
+    background-color: red;
+}
+
