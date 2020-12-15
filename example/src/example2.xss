@@ -5,11 +5,11 @@ XSelectors:
   	span,
   	"ol li"
   	)
-  @tabs (.tab, p+a, body) 
+  @tabs (.tab, p+a, body)
 
 XProperties:
-  $depth-shadow (
-    box-shadow="{8 * x}px {10 * x}px black";
+  $depth-shadow ( 
+    box-shadow="{8 * / x}px {10 * x}px black";
     --webkit-blur=1px;
 	display=block; 
   )
