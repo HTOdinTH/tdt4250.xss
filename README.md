@@ -1,4 +1,4 @@
-# tdt4250.xss
+# TDT4250 - Xtended Style Sheet
 
 By Odin Johan Vatne (HTOdinTH) and Joakim Danielsen Petersen (joakimdp).
 
