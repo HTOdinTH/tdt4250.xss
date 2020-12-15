@@ -33,7 +33,8 @@ import tdt4250.xss.xSS.XStatement
 class XSSGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		fsa.generateFile("generated.css", generateCSS(resource.contents.get(0) as Stylesheet));
+		var filename = resource.URI.lastSegment.replace(".xss", "");
+		fsa.generateFile(filename + ".css", generateCSS(resource.contents.get(0) as Stylesheet));
 	}
 	
 	def String generateCSS(Stylesheet stylesheet) {
