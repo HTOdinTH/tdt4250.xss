@@ -19,7 +19,6 @@ import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import tdt4250.xss.xSS.CustomProperty;
 import tdt4250.xss.xSS.GroupProperty;
@@ -51,7 +50,7 @@ public class XSSGenerator extends AbstractGenerator {
   
   public String generateCSS(final Stylesheet stylesheet) {
     StringBuilder _stringBuilder = new StringBuilder();
-    return this.generateCSS(stylesheet, _stringBuilder).toString();
+    return this.generateCSS(stylesheet, _stringBuilder).toString().replace(":default", "").replace("\"", "");
   }
   
   public CharSequence generateCSS(final Stylesheet stylesheet, final StringBuilder stringBuilder) {
@@ -80,8 +79,7 @@ public class XSSGenerator extends AbstractGenerator {
       final Function1<State, String> _function_2 = (State it) -> {
         return it.getModifier().getName();
       };
-      final Set<String> multiStatementModifiers = IterableExtensions.<String>toSet(IterableExtensions.<State, String>map(IterableExtensions.<XMultiStatement, State>flatMap(Iterables.<XMultiStatement>filter(IterableExtensions.<XStatement>toSet(Iterables.<XStatement>concat(_xStatements, _flatMap)), XMultiStatement.class), _function_1), _function_2));
-      InputOutput.<Set<String>>println(multiStatementModifiers);
+      final Set<String> multiStatementModifiers = IterableExtensions.<String>toSet(IterableExtensions.<State, String>map(IterableExtensions.<XMultiStatement, State>flatMap(Iterables.<XMultiStatement>filter((Iterables.<XStatement>concat(_xStatements, _flatMap)), XMultiStatement.class), _function_1), _function_2));
       boolean _isEmpty = multiStatementModifiers.isEmpty();
       if (_isEmpty) {
         this.modGenerate(rule, ":default", stringBuilder);
@@ -102,12 +100,12 @@ public class XSSGenerator extends AbstractGenerator {
     {
       this.generateSelectors(IterableExtensions.<Selector>toSet(rule.getSelectors()), rule.getGroupSelectors(), mod, stringBuilder);
       stringBuilder.append(" {\n");
-      EList<XStatement> _xStatements = rule.getXStatements();
       final Function1<GroupProperty, EList<XStatement>> _function = (GroupProperty it) -> {
         return it.getStatements();
       };
       Iterable<XStatement> _flatMap = IterableExtensions.<GroupProperty, XStatement>flatMap(rule.getGroupStatements(), _function);
-      final Iterable<XStatement> statements = Iterables.<XStatement>concat(_xStatements, _flatMap);
+      EList<XStatement> _xStatements = rule.getXStatements();
+      final Iterable<XStatement> statements = Iterables.<XStatement>concat(_flatMap, _xStatements);
       final Consumer<XStatement> _function_1 = (XStatement it) -> {
         if ((it instanceof MultiStatement)) {
           this.modGenerate(((MultiStatement) it), mod, stringBuilder);
@@ -233,75 +231,19 @@ public class XSSGenerator extends AbstractGenerator {
     StringBuilder _xblockexpression = null;
     {
       final StringJoiner stringJoiner = new StringJoiner(", ");
-      final Consumer<Selector> _function = (Selector it) -> {
-        String _name = it.getName();
-        String _plus = (_name + mod);
-        stringJoiner.add(_plus);
+      final Function1<GroupSelector, EList<Selector>> _function = (GroupSelector it) -> {
+        return it.getSubSelectors();
       };
-      selectors.forEach(_function);
-      stringBuilder.append(stringJoiner.toString());
-      boolean _not = (!(selectors.isEmpty() || groups.isEmpty()));
-      if (_not) {
-        stringBuilder.append(", ");
-      }
-      final StringJoiner stringJoiner2 = new StringJoiner(", ");
-      final Consumer<GroupSelector> _function_1 = (GroupSelector it) -> {
-        stringJoiner2.add(this.modGenerate(it, mod));
+      Iterable<Selector> _flatMap = IterableExtensions.<GroupSelector, Selector>flatMap(groups, _function);
+      final Function1<Selector, String> _function_1 = (Selector it) -> {
+        return it.getName();
       };
-      groups.forEach(_function_1);
-      _xblockexpression = stringBuilder.append(stringJoiner2.toString());
-    }
-    return _xblockexpression;
-  }
-  
-  public CharSequence generateSelectors(final Set<Selector> selectors, final List<GroupSelector> groups, final StringBuilder stringBuilder) {
-    StringBuilder _xblockexpression = null;
-    {
-      final StringJoiner stringJoiner = new StringJoiner(", ");
-      final Consumer<Selector> _function = (Selector it) -> {
-        stringJoiner.add(it.getName());
+      final Set<String> sels = IterableExtensions.<String>toSet(IterableExtensions.<Selector, String>map(Iterables.<Selector>concat(selectors, _flatMap), _function_1));
+      final Consumer<String> _function_2 = (String it) -> {
+        stringJoiner.add((it + mod));
       };
-      selectors.forEach(_function);
-      stringBuilder.append(stringJoiner.toString());
-      boolean _not = (!(selectors.isEmpty() || groups.isEmpty()));
-      if (_not) {
-        stringBuilder.append(", ");
-      }
-      final StringJoiner stringJoiner2 = new StringJoiner(", ");
-      final Consumer<GroupSelector> _function_1 = (GroupSelector it) -> {
-        stringJoiner2.add(this.generate(it));
-      };
-      groups.forEach(_function_1);
-      _xblockexpression = stringBuilder.append(stringJoiner2.toString());
-    }
-    return _xblockexpression;
-  }
-  
-  public String modGenerate(final GroupSelector group, final String mod) {
-    String _xblockexpression = null;
-    {
-      final StringJoiner stringJoiner = new StringJoiner(", ");
-      final Consumer<Selector> _function = (Selector it) -> {
-        String _replace = it.getName().replace("\"", "");
-        String _replace_1 = mod.replace(":default", "");
-        String _plus = (_replace + _replace_1);
-        stringJoiner.add(_plus);
-      };
-      group.getSubSelectors().forEach(_function);
-      _xblockexpression = stringJoiner.toString();
-    }
-    return _xblockexpression;
-  }
-  
-  public String generate(final GroupSelector group) {
-    String _xblockexpression = null;
-    {
-      final StringJoiner stringJoiner = new StringJoiner(", ");
-      final Consumer<Selector> _function = (Selector it) -> {
-        stringJoiner.add(it.getName().replace("\"", ""));
-      };
-      group.getSubSelectors().forEach(_function);
-      _xblockexpression = stringJoiner.toString();
+      sels.forEach(_function_2);
+      _xblockexpression = stringBuilder.append(stringJoiner.toString());
     }
     return _xblockexpression;
   }

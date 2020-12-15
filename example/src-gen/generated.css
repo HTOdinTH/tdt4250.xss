@@ -1,17 +1,17 @@
-div a, p+a, span, ol li, .tab, p+a, body {
+div a, p+a, span, ol li, .tab, body {
     border: black;
     box-shadow: 5.0px 10.0px black;
     --webkit-blur: 1px;
     display: block;
 }
 
-.popup:default {
-    background-color: blue;
+.popup {
     z-index: 10;
     border-radius: 10%;
     box-shadow: 15.0px 30.0px black;
     --webkit-blur: 1px;
     display: block;
+    background-color: blue;
 }
 
 .popup:hover {

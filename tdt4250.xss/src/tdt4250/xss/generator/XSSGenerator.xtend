@@ -59,18 +59,10 @@ class XSSGenerator extends AbstractGenerator {
 		stringBuilder
 	}
 	
-//	def CharSequence plainGenerate(Rule rule, StringBuilder stringBuilder) {
-//		generateSelectors(rule.selectors.toSet, rule.groupSelectors, stringBuilder)
-//		stringBuilder.append(" {\n")
-//		rule.groupStatements.forEach[generate(it, stringBuilder)]
-//		rule.XStatements.forEach[generate(it, stringBuilder)]
-//		stringBuilder.append("}\n\n")
-//	}
-//	
 	def CharSequence modGenerate(Rule rule, String mod, StringBuilder stringBuilder) {
 		generateSelectors(rule.selectors.toSet, rule.groupSelectors, mod, stringBuilder)
 		stringBuilder.append(" {\n")
-		val statements = rule.XStatements + rule.groupStatements.flatMap[it.statements]
+		val statements = rule.groupStatements.flatMap[it.statements] + rule.XStatements
 		statements.forEach[
 			if (it instanceof MultiStatement) {
 				modGenerate(it as MultiStatement, mod, stringBuilder)
@@ -141,32 +133,13 @@ class XSSGenerator extends AbstractGenerator {
 	
 	def CharSequence generateSelectors(Set<Selector> selectors, List<GroupSelector> groups, String mod, StringBuilder stringBuilder) {
 		val stringJoiner = new StringJoiner(", ")
-		selectors.forEach[stringJoiner.add(it.name + mod)]
+		
+		val sels = (selectors + groups.flatMap[it.subSelectors]).map[it.name].toSet
+		sels.forEach[stringJoiner.add(it + mod)]
+		
 		stringBuilder.append(stringJoiner.toString)
 		
-		if (!(selectors.isEmpty || groups.isEmpty)) {
-			stringBuilder.append(", ")
-		}
-		
-		val stringJoiner2 = new StringJoiner(", ")
-		val temp = groups.flatMap[it.subSelectors.map[it.name]].toSet
-		temp.forEach[stringJoiner2.add(it + mod)]
-		stringBuilder.append(stringJoiner2.toString)
-	}
-	
-	def CharSequence generateSelectors(Set<Selector> selectors, List<GroupSelector> groups, StringBuilder stringBuilder) {
-		val stringJoiner = new StringJoiner(", ")
-		selectors.forEach[stringJoiner.add(it.name)]
-		stringBuilder.append(stringJoiner.toString)
-		
-		if (!(selectors.isEmpty || groups.isEmpty)) {
-			stringBuilder.append(", ")
-		}
-		
-		val stringJoiner2 = new StringJoiner(", ")
-		val temp = groups.flatMap[it.subSelectors.map[it.name]].toSet
-		temp.forEach[stringJoiner2.add(it)]
-		stringBuilder.append(stringJoiner2.toString)
+
 	}
 	
 	def String evaluateExpression(String expression, String value) {
