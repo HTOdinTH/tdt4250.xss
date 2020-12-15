@@ -48,10 +48,9 @@ class XSSGenerator extends AbstractGenerator {
 	
 	def CharSequence generate(Rule rule, StringBuilder stringBuilder) {
 		val multiStatementModifiers = (rule.XStatements + rule.groupStatements.flatMap[it.statements])
-			.toSet.filter(XMultiStatement).flatMap[it.states].map[it.modifier.name].toSet
-
+			.filter(XMultiStatement).flatMap[it.states].map[it.modifier.name].toSet
 		if (multiStatementModifiers.isEmpty) {
-			plainGenerate(rule, stringBuilder)
+			modGenerate(rule, ":default", stringBuilder)
 		} else {
 			multiStatementModifiers.add(":default")
 			multiStatementModifiers.forEach[modGenerate(rule, it, stringBuilder)]
@@ -60,19 +59,19 @@ class XSSGenerator extends AbstractGenerator {
 		stringBuilder
 	}
 	
-	def CharSequence plainGenerate(Rule rule, StringBuilder stringBuilder) {
-		generateSelectors(rule.selectors.toSet, rule.groupSelectors, stringBuilder)
-		stringBuilder.append(" {\n")
-		rule.groupStatements.forEach[generate(it, stringBuilder)]
-		rule.XStatements.forEach[generate(it, stringBuilder)]
-		stringBuilder.append("}\n\n")
-	}
-	
+//	def CharSequence plainGenerate(Rule rule, StringBuilder stringBuilder) {
+//		generateSelectors(rule.selectors.toSet, rule.groupSelectors, stringBuilder)
+//		stringBuilder.append(" {\n")
+//		rule.groupStatements.forEach[generate(it, stringBuilder)]
+//		rule.XStatements.forEach[generate(it, stringBuilder)]
+//		stringBuilder.append("}\n\n")
+//	}
+//	
 	def CharSequence modGenerate(Rule rule, String mod, StringBuilder stringBuilder) {
 		generateSelectors(rule.selectors.toSet, rule.groupSelectors, mod, stringBuilder)
 		stringBuilder.append(" {\n")
-		rule.groupStatements.forEach[generate(it, stringBuilder)]
-		rule.XStatements.forEach[
+		val statements = rule.XStatements + rule.groupStatements.flatMap[it.statements]
+		statements.forEach[
 			if (it instanceof MultiStatement) {
 				modGenerate(it as MultiStatement, mod, stringBuilder)
 			} else if (it instanceof MultiRefStatement) {
