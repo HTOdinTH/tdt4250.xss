@@ -47,7 +47,7 @@ class XSSGenerator extends AbstractGenerator {
 	}
 	
 	def CharSequence generate(Rule rule, StringBuilder stringBuilder) {
-		val multiStatementModifiers = (rule.XStatements + rule.groupStatements).toSet.filter(XMultiStatement).flatMap[it.states].map[it.modifier.name].toSet
+		val multiStatementModifiers = (rule.XStatements + rule.groupStatements.flatMap[it.statements]).toSet.filter(XMultiStatement).flatMap[it.states].map[it.modifier.name].toSet
 
 		if (multiStatementModifiers.isEmpty) {
 			plainGenerate(rule, stringBuilder)
