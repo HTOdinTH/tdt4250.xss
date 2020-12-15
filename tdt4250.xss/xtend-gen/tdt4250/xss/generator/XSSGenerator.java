@@ -44,8 +44,9 @@ import tdt4250.xss.xSS.XStatement;
 public class XSSGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    String filename = resource.getURI().lastSegment().replace(".xss", "");
     EObject _get = resource.getContents().get(0);
-    fsa.generateFile("generated.css", this.generateCSS(((Stylesheet) _get)));
+    fsa.generateFile((filename + ".css"), this.generateCSS(((Stylesheet) _get)));
   }
   
   public String generateCSS(final Stylesheet stylesheet) {

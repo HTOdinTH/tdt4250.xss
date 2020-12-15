@@ -5,7 +5,7 @@ XSelectors:
   	span,
   	"ol li"
   	)
-  @tabs (.tab, p+a, body)
+  @tabs (.tab, p+a, body) 
 
 XProperties:
   $depth-shadow (
