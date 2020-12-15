@@ -21,4 +21,4 @@ XProperties:
 Rules:
   @boxes, @tabs : border=black; $depth-shadow=1;
   .popup : @popup; background-color=blue;
-  @boxes : background-color (:default=black; :hover=blue; :active=red;); font-size (:default=10pt; :hover=12pt;);
+  @boxes : color=black; background-color (:default=black; :hover=blue; :active=red;); font-size (:default=10pt; :hover=12pt;); font-family=arial;
