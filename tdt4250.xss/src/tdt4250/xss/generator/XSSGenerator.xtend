@@ -37,7 +37,7 @@ class XSSGenerator extends AbstractGenerator {
 	}
 	
 	def String generateCSS(Stylesheet stylesheet) {
-		generateCSS(stylesheet, new StringBuilder).toString
+		generateCSS(stylesheet, new StringBuilder).toString.replace(":default", "").replace("\"", "")
 	}
 	
 	def CharSequence generateCSS(Stylesheet stylesheet, StringBuilder stringBuilder) {
@@ -47,8 +47,8 @@ class XSSGenerator extends AbstractGenerator {
 	}
 	
 	def CharSequence generate(Rule rule, StringBuilder stringBuilder) {
-		val multiStatementModifiers = (rule.XStatements + rule.groupStatements.flatMap[it.statements]).toSet.filter(XMultiStatement).flatMap[it.states].map[it.modifier.name].toSet
-		println(multiStatementModifiers)
+		val multiStatementModifiers = (rule.XStatements + rule.groupStatements.flatMap[it.statements])
+			.filter(XMultiStatement).flatMap[it.states].map[it.modifier.name].toSet
 		if (multiStatementModifiers.isEmpty) {
 			modGenerate(rule, ":default", stringBuilder)
 		} else {
@@ -149,7 +149,8 @@ class XSSGenerator extends AbstractGenerator {
 		}
 		
 		val stringJoiner2 = new StringJoiner(", ")
-		groups.forEach[stringJoiner2.add(modGenerate(it, mod))]
+		val temp = groups.flatMap[it.subSelectors.map[it.name]].toSet
+		temp.forEach[stringJoiner2.add(it + mod)]
 		stringBuilder.append(stringJoiner2.toString)
 	}
 	
@@ -163,22 +164,9 @@ class XSSGenerator extends AbstractGenerator {
 		}
 		
 		val stringJoiner2 = new StringJoiner(", ")
-		groups.forEach[stringJoiner2.add(generate(it))]
+		val temp = groups.flatMap[it.subSelectors.map[it.name]].toSet
+		temp.forEach[stringJoiner2.add(it)]
 		stringBuilder.append(stringJoiner2.toString)
-	}
-	
-	def String modGenerate(GroupSelector group, String mod) {
-		val stringJoiner = new StringJoiner(", ")
-		group.subSelectors.forEach[stringJoiner.add(it.name.replace("\"", "") + mod.replace(":default", ""))]
-		
-		stringJoiner.toString
-	}
-	
-	def String generate(GroupSelector group) {
-		val stringJoiner = new StringJoiner(", ")
-		group.subSelectors.forEach[stringJoiner.add(it.name.replace("\"", ""))]
-		
-		stringJoiner.toString
 	}
 	
 	def String evaluateExpression(String expression, String value) {
