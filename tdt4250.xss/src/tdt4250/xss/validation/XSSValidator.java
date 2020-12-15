@@ -3,6 +3,11 @@
  */
 package tdt4250.xss.validation;
 
+import org.eclipse.xtext.validation.Check;
+
+import net.objecthunter.exp4j.ExpressionBuilder;
+import tdt4250.xss.xSS.Expression;
+import tdt4250.xss.xSS.XSSPackage;
 
 /**
  * This class contains custom validation rules. 
@@ -21,5 +26,16 @@ public class XSSValidator extends AbstractXSSValidator {
 //					INVALID_NAME);
 //		}
 //	}
+	
+	@Check
+	public void checkExpressionValid(Expression expression) {
+		if (expression.getName().contains("{")) {
+			try {
+				new ExpressionBuilder(expression.getName()).build();
+			} catch (IllegalArgumentException iae) {
+				error("Invalid mathematical expression", XSSPackage.Literals.EXPRESSION__NAME);
+			}
+		}
+	}
 	
 }

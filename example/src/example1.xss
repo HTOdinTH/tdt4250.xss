@@ -9,7 +9,7 @@ XSelectors:
 
 XProperties:
   $depth-shadow (
-    box-shadow="{5 * x}px {10 * x}px black";
+    box-shadow="{5 *( x}px {10 * x}px black";
     --webkit-blur=1px;
 	display=block; 
   )
