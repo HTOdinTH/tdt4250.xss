@@ -1,14 +1,12 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Exp4j
-Bundle-SymbolicName: exp4j
+Bundle-Name: exp4j
+Bundle-SymbolicName: net.objecthunter.exp4j
 Bundle-Version: 0.4.8
-Bundle-ClassPath: .
-Bundle-Vendor: net.objecthunter
+Automatic-Module-Name: exp4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: net.objecthunter.exp4j,
  net.objecthunter.exp4j.function,
  net.objecthunter.exp4j.operator,
  net.objecthunter.exp4j.shuntingyard,
  net.objecthunter.exp4j.tokenizer
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Automatic-Module-Name: exp4j
