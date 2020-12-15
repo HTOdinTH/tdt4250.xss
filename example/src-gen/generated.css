@@ -1,6 +1,6 @@
 div a, p+a, span, ol li, .tab, body {
     border: black;
-    box-shadow: 5.0px 10.0px black;
+    box-shadow: 8.0px 10.0px black;
     --webkit-blur: 1px;
     display: block;
 }
@@ -8,14 +8,14 @@ div a, p+a, span, ol li, .tab, body {
 .popup {
     z-index: 10;
     border-radius: 10%;
-    box-shadow: 15.0px 30.0px black;
+    box-shadow: 24.0px 30.0px black;
     --webkit-blur: 1px;
     display: block;
     background-color: blue;
 }
 
 .popup:hover {
-    box-shadow: 20.0px 40.0px black;
+    box-shadow: 32.0px 40.0px black;
     --webkit-blur: 1px;
     display: block;
 }

@@ -41,9 +41,14 @@ public class XSSValidator extends AbstractXSSValidator {
 				while (matcher.find()) {
 					String group = matcher.group();
 					String expr = group.replace("{", "").replace("}", "");
-					new ExpressionBuilder(expr)
+					Boolean valid = new ExpressionBuilder(expr)
 			    		.variable("x")
-			    		.build();
+			    		.build()
+			    		.setVariable("x",  1.0)
+			    		.validate().isValid();
+					if (!valid) {
+						throw new IllegalArgumentException();
+					}
 				}
 			} catch (IllegalArgumentException iae) {
 				error("Invalid mathematical expression", XSSPackage.Literals.EXPRESSION__NAME);
